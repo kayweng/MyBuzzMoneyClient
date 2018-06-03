@@ -4,7 +4,7 @@
     <el-container direction="vertical">
       <el-main class="container-body">
         <el-row class="container-body-row">
-          <el-col :span="24">
+          <el-col>
             <div class="empty-row"></div>
             <h2>EASY EXCHANGE YOUR CURRENCY</h2>
           </el-col>
@@ -12,10 +12,13 @@
       </el-main>
       <el-footer class="default-row">
         <el-row>
-          <el-col :span="12">
+          <el-col :md="12" :sm="12" :xs="24" class="hidden-xs-only">
             <small class="italic white">We are not money changer, we merely provide a better way of currency exchange.</small>
           </el-col>
-          <el-col :span="12">
+          <el-col :md="12" :sm="12" :xs="16" class="hidden-sm-and-up">
+            <small class="italic white">A better way of currency exchange</small>
+          </el-col>
+          <el-col :md="12" :sm="12" :xs="8">
             <div class="right">
               <el-tooltip class="item" effect="dark" content="Send Email To Us" placement="top-start">
                 <button class="btn btn-social btn-round btn-outline btn-email white" @click="emailUs">
@@ -108,7 +111,8 @@
 
 <script>
   import LandingNav from 'src/components/LandingNav.vue'
-  
+  import 'element-ui/lib/theme-chalk/display.css'
+
   export default {
     components: {
       landingNav: LandingNav

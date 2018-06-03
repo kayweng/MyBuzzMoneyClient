@@ -11,6 +11,9 @@
                   <i class="fa fa-facebook"></i>
                   Signup with facebook
                 </button>
+                <div class="default-row">
+                  <el-button @click="openFacebookPrivacyURL" type="text">Read Facebook Privacy Policy</el-button>
+                </div>
               </el-collapse-item>
             </el-collapse>
           </div>
@@ -152,7 +155,7 @@
           <br/>
           <!-- Recaptcha -->
           <div class="row center-item">
-              <div class="g-recaptcha" data-sitekey="6LfwwUkUAAAAAGcTAv-UXTyeRdH2UKoydww1wsab"></div>
+              <div class="g-recaptcha" data-sitekey="6Lfj31wUAAAAAIxBl40oHzGXuk8aCZ-IiZnC1GCy"></div>
               <input type="hidden" v-model="model.reCaptcha" />
           </div>
           <br/>
@@ -210,7 +213,7 @@
     },
     data () {
       return {
-        terms: 'By proceeding, I agree that you can collect, use and disclose the information provided by me in accordance with your <a href="#/policy">Privacy Policy</a> which I have read and understand.',
+        terms: 'By proceeding, I agree that you can collect, use and disclose the information provided by me in accordance with your <a href="https://termsfeed.com/terms-conditions/d60b2f84cfb9b72c889d50dacdfdc9dd" target="_blank">Privacy Policy</a> which I have read and understand.',
         calendarDate: null,
         model: new SignUpModel(),
         fbConnected: false
@@ -284,6 +287,10 @@
       },
       showMobileHint () {
         this.showNotifyMessage('Please add country code to a mobile number. Example: +609871234', 3000, 'primary', 'fa fa-mobile')
+      },
+      openFacebookPrivacyURL () {
+        var fbPrivacyUrl = window.open('https://termsfeed.com/terms-conditions/42373f8cfb1d0bcfa540b7776965117b', '_blank')
+        fbPrivacyUrl.focus()
       },
       resetForm () {
         swal({

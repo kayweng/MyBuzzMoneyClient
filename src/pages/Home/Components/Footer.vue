@@ -1,9 +1,9 @@
 <template>
-  <el-container class="container-fluid">
+  <el-footer class="container-fluid">
     <el-row>
-      <p class="copyright white">© My Buzz Money 2018</p>
+      <label for="" class="copyright white">© My Buzz Money 2018</label>
     </el-row>
-  </el-container>
+  </el-footer>
 </template>
 
 <style scoped>
@@ -11,11 +11,5 @@
   .container-fluid{
     vertical-align: middle;
     background: linear-gradient(to right, #2980B9, #5DADE2);
-    max-height: 55px !important;
-  }
-
-  p.copyright{
-    padding-top: 10px;
-    padding-left: 30px;
   }
 </style>

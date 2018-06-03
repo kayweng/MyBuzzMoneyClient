@@ -13,6 +13,7 @@
               <el-row>
                 <el-col :sm="11" :xs="8">
                   <fg-input type="number"
+                            step="0.01"
                             name="from amount"
                             label="From Amount"
                             placeholder= "0.00"
@@ -25,6 +26,7 @@
                 <el-col :sm="2" :xs="6">&nbsp;</el-col>
                 <el-col :sm="11" :xs="8">
                   <fg-input type="number"
+                            step="any"
                             name="to amount"
                             label="To Amount"
                             placeholder= "0.00"
@@ -78,7 +80,7 @@
 <script>
   import { FadeRenderTransition, CurrencySelect } from 'src/components/index'
   import { mapActions } from 'vuex'
-  import { required, numeric } from 'vuelidate/lib/validators'
+  import { required } from 'vuelidate/lib/validators'
 
   export default {
     components: {
@@ -97,7 +99,9 @@
     },
     validations: {
       model: {
-        frAmount: { required, numeric },
+        frAmount: { 
+          required 
+        },
         frCurrency: { required },
         toCurrency: { required }
       }
