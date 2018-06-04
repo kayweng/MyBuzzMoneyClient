@@ -2,7 +2,7 @@ import axios from 'axios'
 import { store } from 'src/store/index'
 
 const aws = axios.create({
-  baseURL: 'https://ntkllpb1qj.execute-api.ap-southeast-1.amazonaws.com/Development/',
+  baseURL: 'https://pdy18qzfyf.execute-api.ap-southeast-1.amazonaws.com/Development',
   timeout: 30000
 })
 

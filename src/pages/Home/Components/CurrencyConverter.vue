@@ -99,9 +99,7 @@
     },
     validations: {
       model: {
-        frAmount: { 
-          required 
-        },
+        frAmount: { required },
         frCurrency: { required },
         toCurrency: { required }
       }

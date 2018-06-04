@@ -1,8 +1,7 @@
 @import "../variables";
 
 @mixin input_validation($type, $color) {
-  .form-group,
-  .form-group.#{$type} {
+  .form-group {
     .el-input__inner,
     .el-textarea__inner,
     .el-input-number__decrease:hover,
@@ -27,7 +26,6 @@
   }
 }
 
-@include input_validation('has-success', $success-color)
-@include input_validation('has-error', $danger-color)
-@include input_validation('', $medium-dark-gray)
-
+@include input_validation('has-success', $success-color);
+@include input_validation('has-error', $danger-color);
+@include input_validation('', $medium-dark-gray);
