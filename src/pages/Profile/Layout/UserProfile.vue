@@ -12,7 +12,7 @@
             <h5 class="card-title left">{{ model.email }}</h5>
           </div>
           <div class="row text-center">
-            <circleImg  :imagePath="model.imageUrl == null ? 'static/img/faces/user.jpg' : model.imageData"
+            <circleImg  :imagePath="model.imageData === undefined ? model.imageUrl : model.imageData"
                         :sizeStyle="'width: 120px; height:120px'"
                         :isUpload="model.edit"
                         @change="uploadedImage">
@@ -36,7 +36,7 @@
                         label="First Name"
                         placeholder= "Alan"
                         @blur="$v.model.firstName.$touch()"
-                        :class="{'input-error': $v.model.firstName.$error }"
+                        :class="{'input-error': model.edit && $v.model.firstName.$error }"
                         :maxLength="20"
                         :readonly="!model.edit"
                         v-model="model.firstName">
@@ -53,7 +53,7 @@
                         label="Last Name"
                         placeholder= "Bob"
                         @blur="$v.model.lastName.$touch()"
-                        :class="{'input-error': $v.model.lastName.$error }"
+                        :class="{'input-error': model.edit && $v.model.lastName.$error }"
                         :maxLength="30"
                         :readonly="!model.edit"
                         v-model="model.lastName">
@@ -66,7 +66,7 @@
           </div> 
           <div class="row">
             <!-- gender -->
-            <div class="col-md-6 col-12 form-group" :class="{'input-error': $v.model.gender.$error }">
+            <div class="col-md-6 col-12 form-group" :class="{'input-error': model.edit && $v.model.gender.$error }">
               <label class="control-label">GENDER</label>
                 <el-select class="select-default"
                           size="large"
@@ -92,7 +92,7 @@
                         label="Mobile Number"
                         placeholder= "+6012345678"
                         @blur="$v.model.mobile.$touch()"
-                        :class="{'input-error': $v.model.mobile.$error }"
+                        :class="{'input-error':  model.edit && $v.model.mobile.$error }"
                         :maxLength="14"
                         :readonly="!model.edit"
                         v-model="model.mobile">
@@ -109,7 +109,7 @@
               <fg-input label="Birth Date" 
                         name="birthdate"
                         @blur="$v.model.birthdate.$touch()"
-                        :class="{'input-error': $v.model.birthdate.$error }"
+                        :class="{'input-error': model.edit && $v.model.birthdate.$error }"
                         :readonly="!model.edit"
                         v-model="model.birthdate">
                 <el-date-picker v-model="calendarDate"
@@ -134,7 +134,7 @@
                         label="Premise Address"
                         placeholder= "Premise Address"
                         @blur="$v.model.address.$touch()"
-                        :class="{'input-error': $v.model.address.$error }"
+                        :class="{'input-error': model.edit && $v.model.address.$error }"
                         :maxLength="200"
                         :readonly="!model.edit"
                         v-model="model.address">
@@ -146,7 +146,7 @@
           </div>
           <div class="row">
             <!-- country -->
-            <div class="col-md-6 col-12 form-group" :class="{'input-error': $v.model.country.$error }">
+            <div class="col-md-6 col-12 form-group" :class="{'input-error': model.edit && $v.model.country.$error }">
               <label class="control-label">COUNTRY</label>
               <el-select class="select-default"
                           size="large"

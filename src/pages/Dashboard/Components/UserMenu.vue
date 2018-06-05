@@ -9,7 +9,7 @@
     </div>
     <div v-else>
       <div class="photo" >
-        <img :src="value.imageData" alt="profile"/>
+        <img :src="value.imageData === undefined ? value.imageUrl : value.imageData" alt="profile"/>
       </div>
       <div class="info">
         <a data-toggle="collapse" style="cursor:pointer;" :aria-expanded="!isClosed" @click.stop="toggleMenu">
