@@ -159,6 +159,9 @@ h4{
   align-items: center; /* for vertical alignment */
 }
 
+.hidden {
+  display: none!important;
+}
 /* border */
 .border-orangered {
   border-color: orangered !important;

@@ -65,7 +65,9 @@
     },
     data () {
       return {
-        model: new UserModel()
+        model: new UserModel(),
+        timeoutAlert: null,
+        countdownSeconds: 60
       }
     },
     computed: {
@@ -96,11 +98,16 @@
         })
       },
       resetSessionExpire (vm) {
+        vm.timeoutAlert = setTimeout(function () {
+          swal.close()
+          vm.logoutUser(true)
+        }, 3060000)
+
         setTimeout(function () {
           swal({
             type: 'warning',
             title: 'Session Expire',
-            html: '<small>Your session will expire in 60 seconds.<br/>Click Yes to continue, or Cancel to logout.</small>',
+            html: `<small>Your session will expire in ${vm.countdownSeconds} seconds.<br/>Click Yes to continue, or Cancel to logout.</small>`,
             buttonsStyling: false,
             showCancelButton: true,
             confirmButtonClass: 'btn btn-primary btn-round btn-wd',
@@ -108,12 +115,11 @@
           }).then((result) => {
             if (result.value) {
               vm.$store.dispatch('refreshSession').then(response => {
+                clearTimeout(this.timeoutAlert)
                 vm.resetSessionExpire(vm)
-              }, (error) => {
-                console.log(error)
-                vm.logoutUser(true)
               })
             } else {
+              clearTimeout(this.timeoutAlert)
               vm.logoutUser(true)
             }
           })

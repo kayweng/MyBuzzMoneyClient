@@ -12,15 +12,16 @@
             <h5 class="card-title left">{{ model.email }}</h5>
           </div>
           <div class="row text-center">
-            <circleImg  :imagePath="model.imageData === undefined ? model.imageUrl : model.imageData"
-                        :sizeStyle="'width: 120px; height:120px'"
+            <circleImg  :imagePath="model.imageData === null ? model.imageUrl : model.imageData"
+                        :sizeStyle="'width: 160px; height: 160px'"
                         :isUpload="model.edit"
                         @change="uploadedImage">
             </circleImg>
             <div class="col-12 text-center error-message">
               <span v-if="model.edit" class="error-message">
-                <i class="fa fa-info-circle green-sea" style="font-size: 18px; cursor:pointer;" 
-                  title="click for more tips" @click="showImageTips" aria-hidden="true"></i>
+                <el-tooltip class="item" effect="dark" content="click to more tips" placement="top-start">
+                  <i class="fa fa-info-circle green-sea" style="font-size: 18px; cursor:pointer;" @click="showImageTips" aria-hidden="true"></i>
+                </el-tooltip>
                 <span v-if="model.edit && model.imageUrl === null && this.selectedImageFile === null">Update profile picture</span>
               </span>
               <span v-if="model.edit && this.selectedImageFile !== null" class="note-message">{{this.selectedImageFile.name}}</span>
@@ -194,8 +195,8 @@
   import CircleImage from 'src/components/CircleImage.vue'
   import UserModel from 'src/models/userModel'
   import swal from 'sweetalert2'
-  import cloneDeep from 'clone-deep'
   import { UserProfileBus } from 'src/eventBus/userProfileBus.js'
+  import clone from 'clone'
 
   export default {
     components: {
@@ -237,13 +238,13 @@
         }).then((result) => {
           if (result.value) {
             this.selectedImageFile = null
-            this.model = cloneDeep(this.originalState)
+            this.model = clone(this.originalState)
             this.calendarDate = this.model.birthdate
           }
         })
       },
       showImageTips () {
-        this.showNotifyMessage('Profile image must be a jpeg/jpg file type and file size of image less than 500 KB.', 3000, 'info', 'fa fa-file-image-o')
+        this.showNotifyMessage('Profile image must be a jpeg/jpg file type and file size of image less than 500 KB.', 3000, 'primary', 'fa fa-file-image-o')
       },
       uploadedImage (value) {
         if (value) {
@@ -255,8 +256,7 @@
       },
       async initUserProfile () {
         await this.getUserProfileInfo(this.cognitoUserEmail).then((data) => {
-          // this.model = this.$store.state.user.profile
-          this.model = cloneDeep(this.$store.state.user.profile)
+          this.model = clone(this.$store.state.user.profile)
           this.calendarDate = this.model.birthdate
         }, (error) => {
           console.log(error)
@@ -279,7 +279,7 @@
 
         this.saveUserProfile(profileInfo).then((response) => {
           this.model = this.$store.state.user.profile
-          this.originalState = cloneDeep(this.model)
+          this.originalState = clone(this.model)
           this.model.edit = false
           this.$loading.endLoading('loading')
           this.showNotifyMessage('User profile information has been updated successfully.', 3000, 'info', 'nc-icon nc-check-2')
@@ -341,7 +341,7 @@
       },
       'model.edit' (val) {
         if (val) {
-          this.originalState = cloneDeep(this.model)
+          this.originalState = clone(this.model)
         } else {
           this.model = this.originalState
           this.selectedImageFile = null

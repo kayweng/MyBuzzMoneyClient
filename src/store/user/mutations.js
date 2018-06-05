@@ -8,11 +8,15 @@ const mutations = {
   },
   
   async setUserProfileImageState (state, data) {
+    state.profile.imageData = null
+    
     if (state.profile !== null && data !== '-') {
       await readImageUrlData(data).then(response => {
         state.profile.imageData = response
         localStorage.setItem('user', JSON.stringify(state.profile))
       })
+    } else {
+      localStorage.setItem('user', JSON.stringify(state.profile))
     }
   }
 }

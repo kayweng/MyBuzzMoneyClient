@@ -12,7 +12,7 @@ class userModel extends basedModel {
       this.firstName = data.firstName
       this.lastName = data.lastName
       this.email = data.email
-      this.mobile = data.mobile
+      this.mobile = data.mobile === '-' ? null : data.mobile
       this.birthdate = new Date(data.birthdate)
       this.gender = data.gender === '-' ? null : data.gender
       this.address = data.address === '-' ? null : data.address

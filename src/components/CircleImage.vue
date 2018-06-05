@@ -8,24 +8,25 @@
           </template>
         </v-loading>
       </div>
-      <img :src="imagePath" :style="sizeStyle" alt="" v-else/>
-      <slot name="title" v-if="$slots.title || title">
-        <h5>{{ title }}</h5>
-      </slot>
-      <slide-render-transition :duration="200">
-        <slot name="upload" v-if="$slots.upload || isUpload ">
-          <div>
-            <div class="empty-row"></div>
-            <div class="imgUrl">
-              <small>{{ imageUrl }}</small>
+      <label for="" v-else>
+        <img :src="imagePath" :style="sizeStyle" alt="" />
+        <slot name="title" v-if="$slots.title || title">
+          <h5>{{ title }}</h5>
+        </slot>
+        <slide-render-transition :duration="200">
+          <slot name="upload" v-if="$slots.upload || isUpload ">
+            <div>
+              <div class="camera" @click="openFileUpload">
+                <i class="fa fa-camera"></i>
+              </div>
+              <div class="imgUrl">
+                <small>{{ imageUrl }}</small>
+              </div>
+              <input type="file" class="hidden" @change="uploadImage" name="file" ref="fileUpload" id="fileUpload" accept="image/x-jpg,image/jpeg"/>
             </div>
-            <p class="file">
-              <input type="file" @change="uploadImage" name="file" id="fileUpload" accept="image/x-jpg,image/jpeg"/>
-              <label for="fileUpload">Upload</label>
-            </p>
-          </div>
         </slot>
       </slide-render-transition>
+      </label>
     </div>  
   </fade-render-transition>
 </template>
@@ -35,19 +36,46 @@
     width: 100%;
   }
 
-  img {
-    border: 4px solid rgba(255, 255, 255, 0.3);
+  label {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    min-width: 120px;
-    min-height: 120px;
   }
 
-  .imgUrl {
-    color: grey;
-    padding-bottom: 8px;
+  img {
+    border-radius: 50%;
+    border: 0;
+    vertical-align: middle;
   }
+
+  .camera:hover {
+    background: #2471A3;
+  }
+
+  .camera {
+    cursor: pointer;
+    position: absolute;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    background: #5D6D7E;
+  }
+
+  .fa-camera {
+    color: white;
+  }
+
 </style>
 
 <script>
@@ -86,6 +114,9 @@
       }
     },
     methods: {
+      openFileUpload () {
+        this.$refs.fileUpload.click()
+      },
       uploadImage () {
         var uploadControl = document.getElementById('fileUpload')
 
