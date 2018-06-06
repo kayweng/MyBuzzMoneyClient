@@ -43,7 +43,7 @@
   }
 
   .sidebar {
-    background: linear-gradient(to bottom, #212F3D, #ABB2B9) !important;
+    background: linear-gradient(to bottom, #283747, #2C3E50) !important;
   }
 </style>
 
@@ -54,14 +54,14 @@
       title: {
         type: String
       },
-      // backgroundColor: {
-      //   type: String,
-      //   default: 'black',
-      //   validator: (value) => {
-      //     let acceptedValues = ['', 'blue', 'azure', 'green', 'orange', 'red', 'purple', 'black']
-      //     return acceptedValues.indexOf(value) !== -1
-      //   }
-      // },
+      backgroundColor: {
+        type: String,
+        default: 'black',
+        validator: (value) => {
+          let acceptedValues = ['', 'blue', 'azure', 'green', 'orange', 'red', 'purple', 'black']
+          return acceptedValues.indexOf(value) !== -1
+        }
+      },
       backgroundImage: {
         type: String,
         default: 'static/img/sidebar.jpg'

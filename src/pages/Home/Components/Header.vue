@@ -1,24 +1,20 @@
 <template>
   <el-container direction="vertical" class="container-fluid">
-    <landing-nav :title="'My Buzz Money'" :icon="'fa fa-forumbee'"></landing-nav>
+    <landing-nav :title="'My Buzz Money'"></landing-nav>
     <el-container direction="vertical">
       <el-main class="container-body">
         <el-row class="container-body-row">
           <el-col>
-            <div class="empty-row"></div>
             <h2>EASY EXCHANGE YOUR CURRENCY</h2>
           </el-col>
         </el-row>
       </el-main>
       <el-footer class="default-row">
-        <el-row>
+        <el-row class="no-padding">
+          <el-col :md="12" :sm="12" :xs="24">
+            <small class="italic">Congratulations, You found a better way of currency exchange.</small>
+          </el-col>
           <el-col :md="12" :sm="12" :xs="24" class="hidden-xs-only">
-            <small class="italic white">We are not money changer, we merely provide a better way of currency exchange.</small>
-          </el-col>
-          <el-col :md="12" :sm="12" :xs="16" class="hidden-sm-and-up">
-            <small class="italic white">A better way of currency exchange</small>
-          </el-col>
-          <el-col :md="12" :sm="12" :xs="8">
             <div class="right">
               <el-tooltip class="item" effect="dark" content="Send Email To Us" placement="top-start">
                 <button class="btn btn-social btn-round btn-outline btn-email white" @click="emailUs">
@@ -42,8 +38,7 @@
 
   .container-fluid{
     min-height: 100vh;
-    color: white;
-    padding-left: 15px;
+    width: 100%;
     background-image: url("/static/img/background/bg_home.jpg");
     background-size: cover;                      
     background-repeat: no-repeat;
@@ -51,11 +46,11 @@
   }
 
   h2{
-    /* background: -webkit-linear-gradient(to right, white, #808B96);
-    background: linear-gradient(to right, white, #808B96); */
+    background: -webkit-linear-gradient(to right, black, #808B96);
+    background: linear-gradient(to right, black, #808B96);
     -webkit-background-clip: text;
     background-clip: text;
-    /* -webkit-text-fill-color: transparent; */
+    -webkit-text-fill-color: transparent;
   }
 
   .container-body {
@@ -92,39 +87,29 @@
   } */
 
   /* Landscape phones and portrait tablets */
-  /* @media (max-width: 767px) {
-    .empty-row{
-      height: 180px;
+  /* @media (max-width: 768px) {
+    .container-fluid{
+      min-height: 90vh;
     }
   } */
 
   /* Portrait phones and smaller */
-  /* @media (max-width: 480px) {
-      .container-fluid{
-        min-height: 240px;
-      }
-      .empty-row{
-        height: 60px;
-      }
-  } */
+  @media (max-width: 480px) {
+    .container-fluid{
+      min-height: 50vh;
+    }
+  }
 </style>
 
 <script>
   import LandingNav from 'src/components/LandingNav.vue'
   import 'element-ui/lib/theme-chalk/display.css'
+  import externalMixin from 'src/mixins/externalMixin'
 
   export default {
     components: {
       landingNav: LandingNav
     },
-    methods: {
-      openFacebookPage () {
-        var fb = window.open('http://www.facebook.com', '_blank')
-        fb.focus()
-      },
-      emailUs () {
-        window.location.href = 'mailto:customer_support@mybuzzmoney.com?'
-      }
-    }
+    mixins: [externalMixin]
   }
 </script>

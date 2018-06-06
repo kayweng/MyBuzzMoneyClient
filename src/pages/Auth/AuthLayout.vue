@@ -1,8 +1,10 @@
 <template>
   <el-container direction="vertical" class="wrapper wrapper-full-page">
     <notifications></notifications>
-    <landing-nav :title="'My Buzz Money'" :icon="'fa fa-forumbee'"></landing-nav>
-    <el-container class="full-page" direction="vertical" :data-color="backgroundColor" :class="pageClass">
+    <landing-nav :title="'My Buzz Money'" 
+      :iconClass="'fa fa-forumbee white'" :titleClass="'white pointer'"
+      :signUpButtonClass="'btn btn-round btn-signup-auth'" :signInButtonClass="'btn btn-outline btn-round btn-login-auth'"></landing-nav>
+    <el-container class="full-page" direction="vertical" :class="pageClass">
       <div class="content">
         <div class="container">
           <el-row class="row d-flex justify-content-center align-items-center">
@@ -12,10 +14,16 @@
           </el-row>
         </div>
       </div>
-      <div class="full-page-background" style="background-image: url(static/img/background/bg_auth.jpg)"></div>
+      <div class="full-page-background auth-background"></div>
     </el-container>
   </el-container>
 </template>
+
+<style scoped>
+  .auth-background {
+    background-image: url("/static/img/background/bg_auth.jpg")
+  }
+</style>
 
 <script>
   import CollapseTransition from 'element-ui/lib/transitions/collapse-transition'
@@ -37,7 +45,7 @@
       },
       backgroundColor: {
         type: String,
-        default: 'black'
+        default: 'white'
       }
     },
     methods: {

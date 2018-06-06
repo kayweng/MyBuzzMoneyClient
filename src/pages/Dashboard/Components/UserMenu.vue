@@ -3,7 +3,7 @@
     <div class="center" v-if="this.$loading.anyLoading">
       <v-loading loader='loadUserMenu'>
         <template slot='spinner'>
-          <loading-spinner height='30px' width='30px' />
+          <loading-spinner height='30px' width='30px' :spinColor="'white'" />
         </template>
       </v-loading>
     </div>

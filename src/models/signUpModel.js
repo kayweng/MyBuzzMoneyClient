@@ -24,8 +24,7 @@ class SignUpModel extends basedModel {
       mobile: validator.mobile,
       birthdate: validator.birthdate,
       password: validator.password,
-      confirmPassword: validator.confirmPassword,
-      agreement: validator.mandatory
+      confirmPassword: validator.confirmPassword
     }
   }
 

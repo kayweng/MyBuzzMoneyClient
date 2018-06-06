@@ -36,6 +36,10 @@ h4{
   min-height: 44px!important;
 }
 
+.no-padding {
+  padding: 0;
+}
+
 /* font style */
 .italic{
   font-style: italic;
@@ -62,8 +66,6 @@ h4{
   color: rgba(255,255,255,0.6);
   line-height: 1.5;
   outline: none;
-  float: right;
-  margin-right: 12px;
 }
 
 .terms {
@@ -112,6 +114,18 @@ h4{
 
 .white-smoke {
   color: whitesmoke
+}
+
+.buzz-purple {
+  color: #581845;
+}
+
+.honey-comb {
+  color: #F1C40F;
+}
+
+.buzz-blue {
+  color: #1F618D
 }
 
 /* shape */
@@ -205,7 +219,7 @@ h4{
 
 .btn-signup{
   background-color: transparent;
-  border: 2px solid #1F618D;
+  border: 2px solid #2471A3;
   color: #2471A3 !important;
 }
 
@@ -213,6 +227,16 @@ h4{
   background-color: #2471A3 !important;
   border: 2px solid white;
   color: white !important;
+}
+
+.btn-signup-auth{
+  background-color: transparent;
+  border: 2px solid white;
+  color: white !important;
+}
+
+.btn-signup-auth:hover{
+  background-color: #2471A3 !important;
 }
 
 .btn-login{
@@ -225,6 +249,16 @@ h4{
   background-color: #2471A3 !important;
   border: 0px !important;
   color: white !important;
+}
+
+.btn-login-auth{
+  background-color: transparent;
+  border: 0px !important;
+  color: white !important;
+}
+
+.btn-login-auth:hover{
+  background-color: #2471A3 !important;
 }
 
 .btn-reset{

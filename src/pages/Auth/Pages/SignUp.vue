@@ -145,11 +145,8 @@
           <br/>
           <!-- Agreement -->
           <div class="row">
-            <check-box v-model="model.agreement" :class="{'input-error': $v.model.agreement.$error }">
+            <check-box ref="chkTerms" v-model="model.agreement">
               <span class="terms" v-html="terms"></span>
-              <div :class="{'error': !$v.model.agreement.required}">
-                <p class="terms" :class="{'note-message': $v.model.agreement.required, 'error-message': !$v.model.agreement.required }" >Note: Please tick the check box to accept and agree our terms and agreements</p>
-              </div>
             </check-box>
           </div>
           <br/>
@@ -213,7 +210,7 @@
     },
     data () {
       return {
-        terms: 'By proceeding, I agree that you can collect, use and disclose the information provided by me in accordance with your <a href="https://termsfeed.com/terms-conditions/d60b2f84cfb9b72c889d50dacdfdc9dd" target="_blank">Privacy Policy</a> which I have read and understand.',
+        terms: 'By proceeding, I agree that you can collect, use and disclose the information provided by me in accordance with your <a href="https://termsfeed.com/terms-conditions/d60b2f84cfb9b72c889d50dacdfdc9dd" target="_blank">My Buzz Money Services Agreement</a> which I have read and understand.',
         calendarDate: null,
         model: new SignUpModel(),
         fbConnected: false
@@ -314,6 +311,11 @@
           this.$v.model.$touch()
           return
         }
+
+        if (!this.model.agreement) {
+          this.swalError('Please agree to My Buzz Money services agreement by tick the check box')
+          return
+        }
         
         if (location.hostname !== 'localhost') {
           try {
@@ -360,9 +362,12 @@
     },
     mounted () {
       facebook.getLoginStatus().then(response => {
+        console.log(response)
         if (response === 'connected') {
           this.fbConnected = true
         }
+      }, error => {
+        console.log(error)
       })
     },
     beforeMount () {

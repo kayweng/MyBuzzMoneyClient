@@ -10,8 +10,8 @@ const mutations = {
   async setUserProfileImageState (state, data) {
     state.profile.imageData = null
     
-    if (state.profile !== null && 
-      data !== '-' && 
+    if (state.profile !== null &&
+      data !== '-' &&
       data !== 'static/img/faces/user.jpg') {
       await readImageUrlData(data).then(response => {
         state.profile.imageData = response

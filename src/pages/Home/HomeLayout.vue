@@ -11,12 +11,6 @@
   </div>
 </template>
 
-<style scoped>
-  .container-fluid {
-    padding: 0!important;
-  }
-</style>
-
 <script>
   import Header from './Components/Header.vue'
   import Footer from './Components/Footer.vue'
