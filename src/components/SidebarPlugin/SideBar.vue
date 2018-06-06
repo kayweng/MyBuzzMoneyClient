@@ -43,7 +43,7 @@
   }
 
   .sidebar {
-    background: linear-gradient(to bottom, #2471A3, white) !important;
+    background: linear-gradient(to bottom, #212F3D, #ABB2B9) !important;
   }
 </style>
 

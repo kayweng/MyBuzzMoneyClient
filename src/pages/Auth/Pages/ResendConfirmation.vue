@@ -60,7 +60,7 @@
             component: {
               template: `<span>You will receive a confirmation email shortly.</span>`
             },
-            timeout: 3000,
+            timeout: 5000,
             icon: 'nc-icon nc-send',
             horizontalAlign: 'right',
             verticalAlign: 'bottom',

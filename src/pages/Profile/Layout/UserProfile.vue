@@ -244,7 +244,7 @@
         })
       },
       showImageTips () {
-        this.showNotifyMessage('Profile image must be a jpeg/jpg file type and file size of image less than 500 KB.', 3000, 'primary', 'fa fa-file-image-o')
+        this.showNotifyMessage('Profile image must be a jpeg/jpg file type and file size of image less than 500 KB.', 5000, 'primary', 'fa fa-file-image-o')
       },
       uploadedImage (value) {
         if (value) {
@@ -282,10 +282,10 @@
           this.originalState = clone(this.model)
           this.model.edit = false
           this.$loading.endLoading('loading')
-          this.showNotifyMessage('User profile information has been updated successfully.', 3000, 'info', 'nc-icon nc-check-2')
+          this.showNotifyMessage('User profile information has been updated successfully.', 5000, 'primary', 'nc-icon nc-check-2')
         }, (error) => {
           console.log(error)
-          this.showNotifyMessage('User profile information failed to updated', 3000, 'error', 'nc-icon nc-check-2')
+          this.showNotifyMessage('User profile information failed to updated', 5000, 'error', 'nc-icon nc-check-2')
           this.$loading.endLoading('loading')
         })
       },

@@ -231,7 +231,7 @@
           console.log(response)
 
           if (!response.email) {
-            this.showNotifyMessage('Invalid email address', 3000, 'danger')
+            this.showNotifyMessage('Invalid email address', 5000, 'danger')
             return
           }
 
@@ -286,7 +286,7 @@
         }
       },
       showMobileHint () {
-        this.showNotifyMessage('Please add country code to a mobile number. Example: +609871234', 3000, 'primary', 'fa fa-mobile')
+        this.showNotifyMessage('Please add country code to a mobile number. Example: +609871234', 5000, 'primary', 'fa fa-mobile')
       },
       openFacebookPrivacyURL () {
         var fbPrivacyUrl = window.open('https://termsfeed.com/terms-conditions/42373f8cfb1d0bcfa540b7776965117b', '_blank')

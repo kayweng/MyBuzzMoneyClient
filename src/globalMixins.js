@@ -73,7 +73,7 @@ export default {
         component: {
           template: `<span>${message}</span>`
         },
-        timeout: duration || 3000,
+        timeout: duration || 5000,
         icon: icon || 'nc-icon nc-bulb-63',
         horizontalAlign: hAlign || 'right', // right | center | left
         verticalAlign: vAlign || 'top', // top | bottom

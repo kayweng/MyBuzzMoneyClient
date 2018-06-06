@@ -62,7 +62,7 @@
             component: {
               template: `<span>You will receive a verification email with code</span>`
             },
-            timeout: 3000,
+            timeout: 5000,
             icon: 'nc-icon nc-send',
             horizontalAlign: 'right',
             verticalAlign: 'bottom',
