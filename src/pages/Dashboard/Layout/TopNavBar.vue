@@ -2,12 +2,14 @@
   <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
       <div class="navbar-minimize">
-        <button class="btn btn-outline btn-fill btn-round btn-icon d-none d-lg-block" @click="minimizeSidebar">
-          <i :class="$sidebar.isMinimized ? 'fa fa-ellipsis-v' : 'fa fa-navicon'"></i>
-        </button>
+        <el-tooltip class="item" effect="dark" content="Minimized Sidebar" placement="top-start">
+          <button class="btn btn-outline btn-fill btn-round btn-icon d-none d-lg-block" @click="minimizeSidebar">
+            <i :class="$sidebar.isMinimized ? 'fa fa-ellipsis-v' : 'fa fa-navicon'"></i>
+          </button>
+        </el-tooltip>
       </div>
       <!-- <a class="navbar-brand">{{this.$route.name}}</a> -->
-      <button type="button"
+      <!-- <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"
               aria-controls="navigation-index"
@@ -27,7 +29,12 @@
             </a>
           </drop-down>
         </ul>
-      </div>
+      </div> -->
+      <el-tooltip class="item" effect="dark" content="Logout me" placement="top-start">
+        <button class="btn btn-logout btn-round btn-icon d-none d-lg-block" @click="logout">
+          <i class="fa fa-power-off"></i>
+        </button>
+      </el-tooltip>
     </div>
   </nav>
 </template>

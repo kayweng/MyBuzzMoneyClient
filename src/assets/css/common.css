@@ -305,6 +305,12 @@ h4{
   cursor: pointer;
 }
 
+.btn-logout {
+  background-color: #C0392B;
+  border: 0;
+  color: white;
+}
+
 /* Cursor */
 .pointer{
   cursor: pointer;
