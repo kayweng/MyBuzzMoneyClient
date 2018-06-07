@@ -30,7 +30,7 @@
 </style>
 
 <script>
-  import { InfoCard } from 'src/components/index'
+  import { InfoCard } from 'src/components/index.js'
 
   export default {
     data () {

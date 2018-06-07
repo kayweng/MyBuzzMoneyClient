@@ -3,7 +3,7 @@
     <notifications></notifications>
     <side-bar>
       <user-menu v-model="model">
-        <li class="nav-item">
+        <li :class="{ active: isActive, 'nav-item': true }">
           <a class="nav-link sidebar-menu-item" href="#/user-profile">
             <i class="nc-icon nc-circle-09"></i>
             <p class="sidebar-normal">My Profile</p>
@@ -74,7 +74,10 @@
       ...mapGetters([
         'cognitoUserEmail',
         'cognitoUserName'
-      ])
+      ]),
+      isActive () {
+        return this.$route.name === "My Profile"
+      }
     },
     methods: {
       ...mapActions([
@@ -101,7 +104,7 @@
         vm.timeoutAlert = setTimeout(function () {
           swal.close()
           vm.logoutUser(true)
-        }, 3060000)
+        }, 3060000) // 3060000
 
         setTimeout(function () {
           swal({
@@ -115,15 +118,15 @@
           }).then((result) => {
             if (result.value) {
               vm.$store.dispatch('refreshSession').then(response => {
-                clearTimeout(this.timeoutAlert)
+                clearTimeout(vm.timeoutAlert)
                 vm.resetSessionExpire(vm)
               })
             } else {
-              clearTimeout(this.timeoutAlert)
+              clearTimeout(vm.timeoutAlert)
               vm.logoutUser(true)
             }
           })
-        }, 3000000)
+        }, 3000000) // 3000000
       }
     },
     beforeRouteEnter (to, from, next) {

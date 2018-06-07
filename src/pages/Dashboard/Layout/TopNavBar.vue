@@ -8,8 +8,8 @@
           </button>
         </el-tooltip>
       </div>
-      <!-- <a class="navbar-brand">{{this.$route.name}}</a> -->
-      <!-- <button type="button"
+      <a class="navbar-brand">{{this.$route.name}}</a>
+      <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"
               aria-controls="navigation-index"
@@ -20,7 +20,7 @@
         <span class="navbar-toggler-bar burger-lines"></span>
         <span class="navbar-toggler-bar burger-lines"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end">
+      <!-- <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <drop-down position="right">
             <i slot="title" class="nc-icon nc-bullet-list-67"></i>

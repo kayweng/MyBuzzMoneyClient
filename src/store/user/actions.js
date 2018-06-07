@@ -10,6 +10,7 @@ const actions = {
         var userJSON = JSON.parse(json)
         
         commit('setUserProfileState', userJSON)
+        commit('setUserProfileImageState', userJSON.imageUrl)
         resolve(true)
       } else if (payload === null) {
         resolve(false)

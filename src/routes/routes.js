@@ -72,7 +72,7 @@ let profileMenuPage = {
   children: [
     {
       path: '/user-profile',
-      name: 'UserProfile',
+      name: 'My Profile',
       component: UserProfile
     }
   ]
