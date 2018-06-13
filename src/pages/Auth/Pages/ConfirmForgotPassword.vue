@@ -113,7 +113,7 @@
       }
     },
     validations: {
-      model: PasswordModel.validationScheme()
+      model: PasswordModel.resetValidationScheme()
     },
     methods: {
       validateStep (ref) {
@@ -166,7 +166,6 @@
       },
       beforeMount () {
         this.model.resetState()
-        this.mode.forceReset = true
       }
     }
   }

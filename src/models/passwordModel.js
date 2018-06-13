@@ -13,7 +13,7 @@ class PasswordModel extends basedModel {
     this.forceReset = false
   }
 
-  static validationScheme () {
+  static resetValidationScheme () {
     return {
       code: {
         required,
@@ -21,13 +21,21 @@ class PasswordModel extends basedModel {
       },
       email: validator.emailAddress,
       oldPassword: requiredIf(function () {
-        return forceReset
+        return this.forceReset
       }),
       newPassword: validator.password,
       confirmPassword: validator.confirmNewPassword,
       forceReset: {
         required
       }
+    }
+  }
+
+  static passwordValidationScheme () {
+    return {
+      oldPassword: { required },
+      newPassword: validator.password,
+      confirmPassword: validator.confirmNewPassword
     }
   }
 

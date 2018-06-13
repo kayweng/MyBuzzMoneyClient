@@ -20,21 +20,28 @@
         <span class="navbar-toggler-bar burger-lines"></span>
         <span class="navbar-toggler-bar burger-lines"></span>
       </button>
-      <!-- <div class="collapse navbar-collapse justify-content-end">
+      <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <drop-down position="right">
             <i slot="title" class="nc-icon nc-bullet-list-67"></i>
-            <a href="#" @click="logout" class="dropdown-item text-danger">
-              <i class="nc-icon nc-button-power"></i> Log out
+            <a href="#"  class="dropdown-item medium">
+              <i class="fa fa-list"></i> Activity
+            </a>
+            <a href="#/change-password" class="dropdown-item medium">
+              <i class="fa fa-key"></i> Change Password
+            </a>
+            <div class="divider"></div>
+            <a href="#" @click="logout" class="dropdown-item text-danger medium">
+              <i class="fa fa-power-off"></i> Logout
             </a>
           </drop-down>
         </ul>
-      </div> -->
-      <el-tooltip class="item" effect="dark" content="Logout me" placement="top-start">
+      </div>
+      <!-- <el-tooltip class="item" effect="dark" content="Logout me" placement="top-start">
         <button class="btn btn-logout btn-round btn-icon d-none d-lg-block" @click="logout">
           <i class="fa fa-power-off"></i>
         </button>
-      </el-tooltip>
+      </el-tooltip> -->
     </div>
   </nav>
 </template>

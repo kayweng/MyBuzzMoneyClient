@@ -12,11 +12,11 @@ import SignUp from 'src/pages/Auth/Pages/SignUp.vue'
 import ResendConfirmation from 'src/pages/Auth/Pages/ResendConfirmation.vue'
 import ForgotPassword from 'src/pages/Auth/Pages/ForgotPassword.vue'
 import ConfirmForgotPassword from 'src/pages/Auth/Pages/ConfirmForgotPassword.vue'
-import ChangePassword from 'src/pages/Auth/Pages/ChangePassword.vue'
+import ChangePassword from 'src/pages/Profile/Pages/ChangePassword.vue'
 
 // Dashboard page
 import DashboardLayout from 'src/pages/Dashboard/DashboardLayout.vue'
-import UserProfile from 'src/pages/Profile/Layout/UserProfile.vue'
+import UserProfile from 'src/pages/Profile/Pages/UserProfile.vue'
 
 let loginPage = {
   path: '/login',
@@ -51,12 +51,6 @@ let confirmForgotPasswordPage = {
   component: ConfirmForgotPassword
 }
 
-let changePasswordPage = {
-  path: '/change-password',
-  name: 'ChangePassword',
-  component: ChangePassword
-}
-
 let dashboardLayoutPage = {
   path: '/dashboard',
   name: 'Dashboard',
@@ -74,6 +68,20 @@ let profileMenuPage = {
       path: '/user-profile',
       name: 'My Profile',
       component: UserProfile
+    }
+  ]
+}
+
+let changePasswordPage = {
+  path: '/changePassword',
+  name: 'ChangePassword',
+  component: DashboardLayout,
+  beforeEnter: authRoute,
+  children: [
+    {
+      path: '/change-password',
+      name: 'Change Password',
+      component: ChangePassword
     }
   ]
 }

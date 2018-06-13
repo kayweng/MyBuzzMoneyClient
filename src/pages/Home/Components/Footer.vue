@@ -26,8 +26,7 @@
   }
 
   .copyright{
-    bottom: 0;
-    position: relative;
+    margin-top: 14px;
   }
 </style>
 
