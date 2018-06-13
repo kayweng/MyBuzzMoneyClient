@@ -2,18 +2,17 @@
    <form method="#" action="#">
     <fade-render-transition :duration="200">
       <card>
-        {{ $v.model }}
         <div class="row">
-          <div class="col-md-6 col-12">
+          <div class="col-md-4 col- col-12">
             <fg-input type="password"
-                      name="old Password"
+                      name="password"
                       label="Old Password"
                       @blur="$v.model.oldPassword.$touch()"
                       :class="{'input-error': $v.model.oldPassword.$error }"
                       v-model="model.oldPassword">
             </fg-input>
             <div class="error-message">
-              <span v-if="$v.model.oldPassword.required" class="error-message">The old password field is required</span>
+              <span v-if="!$v.model.oldPassword.required" class="error-message">The old password field is required</span>
             </div>
           </div>
           <div class="col-12"></div>
@@ -21,26 +20,28 @@
         <div class="row">
           <div class="col-md-6 col-12">
             <fg-input type="password"
-                      name="new Password"
+                      name="new password"
                       label="New Password"
                       @blur="$v.model.newPassword.$touch()"
                       :class="{'input-error': $v.model.newPassword.$error }"
                       v-model="model.newPassword">
             </fg-input>
             <div class="error-message">
-              <span v-if="$v.model.newPassword.required" class="error-message">The new password field is required</span>
+              <span v-if="!$v.model.newPassword.required" class="error-message">The new password field is required</span>
+              <span v-if="$v.model.newPassword.required && !$v.model.newPassword.passwordPolicy" class="error-message">Passwords must be at least 8 characters and numbers in length</span>
             </div>
           </div>
           <div class="col-md-6 col-12">
             <fg-input type="password"
-                      name="Confirm New Password"
+                      name="confirm password"
                       label="Confirm New Password"
                       @blur="$v.model.confirmPassword.$touch()"
                       :class="{'input-error': $v.model.confirmPassword.$error }"
                       v-model="model.confirmPassword">
             </fg-input>
             <div class="error-message">
-              <span v-if="$v.model.confirmPassword.required" class="error-message">The confirm password field is required</span>
+              <span v-if="!$v.model.confirmPassword.required" class="error-message">The confirm password field is required</span>
+              <span v-if="$v.model.confirmPassword.required && !$v.model.confirmPassword.sameAs" class="error-message">The confirm password must be same as password</span>
             </div>
           </div>
         </div>
@@ -61,6 +62,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import { FadeRenderTransition } from 'src/components/index'
   import { PasswordModel } from 'src/models/passwordModel'
+  import { mandatory, password, confirmNewPassword } from 'src/validations/userValidator.js'
 
   export default {
     components: {
@@ -72,15 +74,15 @@
       }
     },
     validations: {
-      model: PasswordModel.passwordValidationScheme()
+      model: PasswordModel.changePasswordValidationScheme()
     },
     methods: {
       changePassword () {
-
+        if (this.$v.model.$invalid || this.$v.model.$error) {
+          this.$v.model.$touch()
+          return
+        }
       }
-    },
-    beforeMount () {
-      this.model.resetState()
     }
   }
 </script>

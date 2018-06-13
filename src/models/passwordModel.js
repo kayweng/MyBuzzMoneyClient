@@ -31,9 +31,9 @@ class PasswordModel extends basedModel {
     }
   }
 
-  static passwordValidationScheme () {
+  static changePasswordValidationScheme () {
     return {
-      oldPassword: { required },
+      oldPassword: validator.mandatory,
       newPassword: validator.password,
       confirmPassword: validator.confirmNewPassword
     }

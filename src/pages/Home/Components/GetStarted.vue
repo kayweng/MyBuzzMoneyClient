@@ -12,7 +12,8 @@
 
 <style scoped>
   .container-fluid{
-    background: linear-gradient(to right, #2874A6, #5DADE2);
+    background-color: #283747;
+    background: linear-gradient(to right, #283747, #2C3E50);
     min-height: 250px;
   }
 
