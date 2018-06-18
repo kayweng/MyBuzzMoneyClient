@@ -128,6 +128,7 @@
     mounted () {
       if (this.$route.query.s !== undefined && this.$route.query.s === 'true') {
         this.notifySessionExpired()
+        this.$router.replace({ name: "Login", query: {s: "false"} })
       }
     }
   }

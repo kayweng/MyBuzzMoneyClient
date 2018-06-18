@@ -16,16 +16,13 @@
         <slide-render-transition :duration="200">
           <slot name="upload" v-if="$slots.upload || isUpload ">
             <div>
-              <div class="camera" @click="openFileUpload">
+              <div class="camera" @click="$refs.fileUpload.click()">
                 <i class="fa fa-camera"></i>
-              </div>
-              <div class="imgUrl">
-                <small>{{ imageUrl }}</small>
               </div>
               <input type="file" class="hidden" @change="uploadImage" name="file" ref="fileUpload" id="fileUpload" accept="image/x-jpg,image/jpeg"/>
             </div>
-        </slot>
-      </slide-render-transition>
+          </slot>
+        </slide-render-transition>
       </label>
     </div>  
   </fade-render-transition>
@@ -108,15 +105,7 @@
         default: 500000  // 500KB
       }
     },
-    data () {
-      return {
-        imageUrl: null
-      }
-    },
     methods: {
-      openFileUpload () {
-        this.$refs.fileUpload.click()
-      },
       uploadImage () {
         var uploadControl = document.getElementById('fileUpload')
 

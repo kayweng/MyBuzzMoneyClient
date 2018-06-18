@@ -3,7 +3,7 @@
     <fade-render-transition :duration="200">
       <card>
         <div class="row">
-          <div class="col-md-4 col- col-12">
+          <div class="col-md-6 col- col-12">
             <fg-input type="password"
                       name="password"
                       label="Old Password"
@@ -49,7 +49,8 @@
         <div class="row">
           <div class="text-center col-12">
             <div class="button-inline">
-              <button type="submit" @click.prevent="changePassword" class="btn btn-round btn-danger btn-wd">Confirm</button>
+              <button type="button" @click="resetPassword" class="btn btn-round btn-reset btn-wd">Reset</button>
+              <button type="submit" @click.prevent="requestPasswordChanged" class="btn btn-round btn-danger btn-wd">Confirm</button>
             </div>
           </div>
         </div>
@@ -63,6 +64,7 @@
   import { FadeRenderTransition } from 'src/components/index'
   import { PasswordModel } from 'src/models/passwordModel'
   import { mandatory, password, confirmNewPassword } from 'src/validations/userValidator.js'
+  import swal from 'sweetalert2'
 
   export default {
     components: {
@@ -77,11 +79,38 @@
       model: PasswordModel.changePasswordValidationScheme()
     },
     methods: {
-      changePassword () {
+      ...mapActions([
+        'changePassword'
+      ]),
+      requestPasswordChanged () {
         if (this.$v.model.$invalid || this.$v.model.$error) {
           this.$v.model.$touch()
           return
         }
+
+        swal({
+          type: 'warning',
+          title: 'Change Password',
+          html: '<small>Are you sure that you want to changes password ?</small>',
+          buttonsStyling: false,
+          showCancelButton: true,
+          confirmButtonClass: 'btn btn-warning btn-round btn-wd',
+          confirmButtonText: 'Yes'
+        }).then((result) => {
+          if (result.value) {
+            this.changePassword({ oldPassword: this.model.oldPassword, newPassword: this.model.newPassword })
+            .then(()=>{
+              this.showNotifyMessage('Your password has been changed successfully.', 5000, 'primary', 'nc-icon nc-check-2')
+              this.$router.push('Dashboard')
+            }, (error) => {
+              this.swalError(error.message)
+              this.resetPassword()
+            })
+          }
+        })
+      },
+      resetPassword () {
+        this.model.resetState()
       }
     }
   }

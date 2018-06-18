@@ -279,9 +279,15 @@ h4{
   border: 1px solid white;
 }
 
-.btn-email{
+.btn-email {
   color: white !important;
   background-color: #A93226 !important;
+  border: 0 !important;
+}
+
+.btn-facebook {
+  color: white!important;
+  background-color: #3b5998 !important;
   border: 0 !important;
 }
 

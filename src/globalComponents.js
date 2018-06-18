@@ -7,6 +7,7 @@ import {
   Tooltip,
   Collapse, CollapseItem,
   Container, Row, Col,
+  Tabs, TabPane,
   Header, Aside, Main, Footer
 } from 'element-ui'
 
@@ -34,6 +35,8 @@ const GlobalComponents = {
     Vue.component(Container.name, Container)
     Vue.component(Row.name, Row)
     Vue.component(Col.name, Col)
+    Vue.component(Tabs.name, Tabs)
+    Vue.component(TabPane.name, TabPane)
     Vue.component(Header.name, Header)
     Vue.component(Aside.name, Aside)
     Vue.component(Main.name, Main)

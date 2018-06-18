@@ -18,6 +18,13 @@ import ChangePassword from 'src/pages/Profile/Pages/ChangePassword.vue'
 import DashboardLayout from 'src/pages/Dashboard/DashboardLayout.vue'
 import UserProfile from 'src/pages/Profile/Pages/UserProfile.vue'
 
+// Exchange page
+import RequestExchange from 'src/pages/Exchange/Pages/RequestExchange.vue'
+import OfferExchange from 'src/pages/Exchange/Pages/OfferExchange.vue'
+
+import SettingLayout from 'src/pages/Setting/SettingLayout.vue'
+
+// auth components
 let loginPage = {
   path: '/login',
   name: 'Login',
@@ -35,22 +42,23 @@ let signUpPage = {
 
 let resendConfirmationPage = {
   path: '/resend-confirmation',
-  name: 'ResendConfirmation',
+  name: 'Resend Confirmation',
   component: ResendConfirmation
 }
 
 let forgotPasswordPage = {
   path: '/reset-password',
-  name: 'ResetPassword',
+  name: 'Reset Password',
   component: ForgotPassword
 }
 
 let confirmForgotPasswordPage = {
   path: '/confirm-password',
-  name: 'ConfirmPassword',
+  name: 'Confirm Password',
   component: ConfirmForgotPassword
 }
 
+// dashboard components
 let dashboardLayoutPage = {
   path: '/dashboard',
   name: 'Dashboard',
@@ -58,6 +66,7 @@ let dashboardLayoutPage = {
   beforeEnter: authRoute
 }
 
+// profile components
 let profileMenuPage = {
   path: '/profile',
   name: 'Profile',
@@ -74,7 +83,7 @@ let profileMenuPage = {
 
 let changePasswordPage = {
   path: '/changePassword',
-  name: 'ChangePassword',
+  name: 'Change Password',
   component: DashboardLayout,
   beforeEnter: authRoute,
   children: [
@@ -85,6 +94,42 @@ let changePasswordPage = {
     }
   ]
 }
+
+// exchange components
+let exchangePage = {
+  path: '/exchange',
+  name: 'Exchange',
+  component: DashboardLayout,
+  beforeEnter: authRoute,
+  children: [
+    {
+      path: '/exchange-request',
+      name: 'Request Exchange',
+      component: RequestExchange
+    },
+    {
+      path: '/exchange-offer',
+      name: 'Offer Exchange',
+      component: OfferExchange
+    }
+  ]
+}
+
+// setting components
+let settingPage = {
+  path: '/setting',
+  name: 'Setting',
+  component: DashboardLayout,
+  beforeEnter: authRoute,
+  children: [
+    {
+      path: '/setting',
+      name: 'Setting',
+      component: SettingLayout
+    }
+  ]
+}
+
 
 const routes = [
   {
@@ -100,6 +145,8 @@ const routes = [
   changePasswordPage,
   dashboardLayoutPage,
   profileMenuPage,
+  exchangePage,
+  settingPage,
   { path: '*', component: NotFound }
 ]
 

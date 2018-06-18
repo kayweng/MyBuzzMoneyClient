@@ -9,7 +9,7 @@ const state = {
 }
 
 const getters = {
-  currencyBasedCode: state => staet.baseCode,
+  currencyBasedCode: state => state.baseCode,
   currencyCodes: state => state.currencyCodes,
   baseCurrencyRates: state => state.baseCurrencyRates
 }

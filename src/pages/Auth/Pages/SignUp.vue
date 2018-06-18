@@ -152,7 +152,7 @@
           <br/>
           <!-- Recaptcha -->
           <div class="row center-item">
-              <div class="g-recaptcha" data-sitekey="6Lfj31wUAAAAAIxBl40oHzGXuk8aCZ-IiZnC1GCy"></div>
+              <div class="g-recaptcha" ref="recaptcha" :data-sitekey="rcapt_sig_key"></div>
               <input type="hidden" v-model="model.reCaptcha" />
           </div>
           <br/>
@@ -172,6 +172,10 @@
 </template>
 
 <style scoped>
+  .card {
+    padding: 4px;
+  }
+  
   .fb-signin-button {
     display: inline-block;
     padding: 4px 8px;
@@ -213,7 +217,9 @@
         terms: 'By proceeding, I agree that you can collect, use and disclose the information provided by me in accordance with your <a href="https://termsfeed.com/terms-conditions/d60b2f84cfb9b72c889d50dacdfdc9dd" target="_blank">My Buzz Money Services Agreement</a> which I have read and understand.',
         calendarDate: null,
         model: new SignUpModel(),
-        fbConnected: false
+        fbConnected: false,
+        rcapt_sig_key: "6Lfj31wUAAAAAIxBl40oHzGXuk8aCZ-IiZnC1GCy",
+        rcapt_id: 0 
       }
     },
     validations: {
@@ -361,6 +367,10 @@
       }
     },
     mounted () {
+      if (window.grecaptcha) {
+        this.rcapt_id = grecaptcha.render( this.$refs['recaptcha'], { sitekey : this.rcapt_sig_key })
+      }
+
       facebook.getLoginStatus().then(response => {
         console.log(response)
         if (response === 'connected') {

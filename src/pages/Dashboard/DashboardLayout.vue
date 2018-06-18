@@ -5,31 +5,37 @@
       <user-menu v-model="model">
         <li :class="{ active: isActive, 'nav-item': true }">
           <a class="nav-link sidebar-menu-item" href="#/user-profile">
-            <i class="nc-icon nc-circle-09"></i>
+            <i class="fa fa-user-circle-o"></i>
             <p class="sidebar-normal">My Profile</p>
           </a>
         </li>
         <li class="nav-item" v-if="this.$sidebar.showSidebar">
+          <a class="nav-link sidebar-menu-item" href="#/change-password">
+            <i class="fa fa-key"></i>
+            <p class="sidebar-normal">Change Password</p>
+          </a>
+        </li>
+        <li class="nav-item" v-if="this.$sidebar.showSidebar">
           <a class="nav-link sidebar-menu-item text-danger" @click="logout">
-            <i class="nc-icon nc-button-power"></i>
+            <i class="fa fa-power-off"></i>
             <p class="sidebar-normal text-danger">Logout</p>
           </a>
         </li>
       </user-menu>
       <template slot-scope="props" slot="links">
         <!-- dashboard: show summary info -->
-        <sidebar-item :link="{name: 'Dashboard', icon: 'nc-icon nc-badge', path: '/dashboard'}">
+        <sidebar-item :link="{name: 'Dashboard', icon: 'fa fa-tachometer', path: '/dashboard'}">
         </sidebar-item>
         <!-- new post: user create a new exchange request post -->
-        <sidebar-item :link="{name: 'Exchange', icon: 'nc-icon nc-puzzle-10'}">
-          <sidebar-item :link="{name: 'Request', path: '/components/request'}"></sidebar-item>
+        <sidebar-item :link="{name: 'Exchange', icon: 'fa fa-exchange'}">
+          <sidebar-item :link="{name: 'Request', path: '/exchange-request'}"></sidebar-item>
           <sidebar-item :link="{name: 'Offer', path: '/components/offer'}"></sidebar-item>
         </sidebar-item>
         <!-- map: show pin location of available post on map -->
-        <sidebar-item :link="{name: 'Map', icon: 'nc-icon nc-map-big', path: '/map'}">
+        <sidebar-item :link="{name: 'Map', icon: 'fa fa-map-o', path: '/map'}">
         </sidebar-item>
-        <!-- setting: application configuration -->
-        <sidebar-item :link="{name: 'Setting', icon: 'nc-icon nc-settings-gear-64', path: '/settings'}">
+        <!-- setting: maintain user preferables -->
+        <sidebar-item :link="{name: 'Setting', icon: 'fa fa-cog', path: '/setting'}">
         </sidebar-item>
       </template>
     </side-bar>

@@ -43,7 +43,7 @@
     height: 60px;
     width: 60px;
     margin-left: 11px !important;
-    border: 2px solid snow;
+    border: 3px solid #922B21;
   }
 
   .subtitle {
@@ -55,15 +55,6 @@
   .nav {
     padding-top: 10px;
   }
-
-  .nc-icon{
-    font-size: 28px!important;
-    width: 30px;
-    text-align: center;
-    vertical-align: middle;
-    float: left;
-  }
-
 </style>
 
 <script>
