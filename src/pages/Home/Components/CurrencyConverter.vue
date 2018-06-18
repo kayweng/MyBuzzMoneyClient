@@ -40,7 +40,7 @@
               <!-- Currency Code -->
               <el-row>
                 <el-col :sm="11" :xs="8" :class="{'input-error': $v.model.frCurrency.$error }">
-                  <currency-select  class="select-default element-fluid" 
+                  <currency-select  :selectClasses="'select-default'"
                                     v-model="model.frCurrency"
                                     @changed="model.frCurrency = $event" ></currency-select>
                 </el-col>
@@ -50,7 +50,7 @@
                   </button>
                 </el-col>
                 <el-col :sm="11" :xs="8" :class="{'input-error': $v.model.toCurrency.$error }">
-                  <currency-select  class="select-default element-fluid"  
+                  <currency-select  :selectClasses="'select-default'"
                                     v-model="model.toCurrency"
                                     @changed="model.toCurrency = $event" ></currency-select>
                 </el-col>
@@ -85,7 +85,7 @@
   export default {
     components: {
       FadeRenderTransition,
-      CurrencySelect
+      [CurrencySelect.name]: CurrencySelect
     },
     data () {
       return {

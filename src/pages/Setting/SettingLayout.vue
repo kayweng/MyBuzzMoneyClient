@@ -2,7 +2,7 @@
   <el-tabs v-model="activeTab" @tab-click="handleClick">
     <el-tab-pane name="Preferences">
       <span slot="label"><i class="fa fa-cog"></i> Preferences</span>
-      <preferences></preferences>
+      <preferences v-model="model.preferences"></preferences>
     </el-tab-pane>
     <el-tab-pane name="Accounts">
       <span slot="label"><i class="fa fa-cubes"></i> Accounts</span>

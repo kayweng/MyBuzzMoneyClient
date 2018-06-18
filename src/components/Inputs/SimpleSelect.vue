@@ -9,34 +9,28 @@
     </slot>
     <el-select v-model="fieldModelValue" placeholder="Select">
       <el-option
-        v-for="(item, index) in currencies"
+        v-for="(item, index) in items"
         :key="index" 
-        :label="item.currency_code"
-        :value="item.currency_code">
-        <span class="currency-country">{{ item.country }}</span>
-        <span class="currency-code">{{ item.currency_code }}</span>
+        :label="item.label"
+        :value="item.value">
+        <span class="country">{{ item.label }}</span>
       </el-option>
     </el-select>
   </div>
 </template>
 
 <style scoped>
-  .currency-country {
+  .country {
     float: left;
-  }
-
-  .currency-code {
-    float: right;
-    color: #8492a6;
-    font-size: 12px;
   }
 </style>
 
 
 <script>
   export default {
-    name: 'currency-select',
+    name: 'simple-select',
     props: {
+      items: Object,
       label: String,
       value: String,
       labelClasses: {

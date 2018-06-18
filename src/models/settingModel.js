@@ -1,15 +1,12 @@
-import { required, numeric, requiredIf } from 'vuelidate/lib/validators'
+// import { required, numeric, requiredIf } from 'vuelidate/lib/validators'
 import basedModel from './baseModel'
 
 class SettingModel extends basedModel {
   constructor () {
-    super ()
+    super()
 
     this.username = null
-    this.location = null
-    this.localCurrency = null   // code
-    this.notifications = null   // { expiredIn3Days: false, receiveExchange: false, deniedExchange: false }
-    
+    this.preferences = null     // { location: { country: null, city:null, suburb: null }, localCurrency: null, notifications: { expiredIn3Days: false, receiveExchange: false, deniedExchange: false } }
     this.linkedAccounts = null  // [{ bankCode: Mbb, swiftCode: MBBDKL, accountNumber: 00000 }
   }
 }

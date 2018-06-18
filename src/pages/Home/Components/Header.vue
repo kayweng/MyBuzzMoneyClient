@@ -102,8 +102,8 @@
 </style>
 
 <script>
-  import LandingNav from 'src/components/LandingNav.vue'
   import 'element-ui/lib/theme-chalk/display.css'
+  import LandingNav from 'src/components/LandingNav.vue'
   import externalMixin from 'src/mixins/externalMixin'
 
   export default {

@@ -27,6 +27,11 @@ export default {
 
       return countries
     },
+    states (countryCode) {
+      const states = []
+
+      return states
+    },
     genders () {
       const genders = [
         {value: 'M', label: 'Male'},

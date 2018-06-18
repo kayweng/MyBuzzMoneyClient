@@ -2,6 +2,7 @@ import Checkbox from './Inputs/Checkbox.vue'
 import Radio from './Inputs/Radio.vue'
 import FormGroupInput from './Inputs/formGroupInput.vue'
 import CurrencySelect from './Inputs/CurrencySelect.vue'
+import SimpleSelect from './Inputs/SimpleSelect.vue'
 import Switch from './Switch.vue'
 import Progress from './Progress.vue'
 
@@ -33,6 +34,7 @@ let components = {
   Radio,
   FormGroupInput,
   CurrencySelect,
+  SimpleSelect,
   Card,
   ChartCard,
   StatsCard,
@@ -56,6 +58,7 @@ export {
   Radio,
   FormGroupInput,
   CurrencySelect,
+  SimpleSelect,
   Card,
   ChartCard,
   StatsCard,

@@ -5,11 +5,9 @@
         <div class="row">
           <div class="col-md-6 col-12 form-group">
             <label class="control-label">Exchange Currency</label>
-              <el-select class="select-default"
-                        size="large"
-                        placeholder="Select Gender">
+              <el-select size="large"
+                          placeholder="Select Gender">
                 <el-option v-for="option in genders"
-                            class="select-default"
                             :value="option.value"
                             :label="option.label"
                             :key="option.value">

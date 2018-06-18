@@ -195,7 +195,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import { FadeRenderTransition, SlideRenderTransition,  Switch as LSwitch } from 'src/components/index'
   import { readImageFileData } from 'src/js/image'
-  import CircleImage from 'src/components/CircleImage.vue'
+  import CircleImage from 'src/components/Images/CircleImage.vue'
   import UserModel from 'src/models/userModel'
   import swal from 'sweetalert2'
   import { UserProfileBus } from 'src/eventBus/userProfileBus.js'
