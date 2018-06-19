@@ -54,6 +54,11 @@
             </simple-select>
           </el-col>
         </el-row>
+        <el-row>
+          <span class="note-message">
+            <small>* Please select a nearest city/suburb if your city/suburb not found in list</small>
+          </span>
+        </el-row>
         <hr/>
         <!-- Notifications -->
         <el-row>
@@ -121,9 +126,20 @@
       }
     },
     methods: {
-      checkNotification (value, id) {
-        console.log(value)
-        console.log(id)
+      checkNotification (checked, id) {
+        switch (id) {
+          case "expiredIn3Days":
+            this.value.notifications.expiredIn3Days = checked
+            break
+          case "exchangeAccepted":
+            this.value.notifications.exchangeAccepted = checked
+            break
+          case "exchangeDenied":
+            this.value.notifications.exchangeDenied = checked
+            break
+        }
+
+        console.log(this.value)
       }
     },
     watch: {

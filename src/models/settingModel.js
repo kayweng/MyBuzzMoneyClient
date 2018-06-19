@@ -18,7 +18,7 @@ class SettingModel extends basedModel {
         exchangeAccepted: false,
         exchangeDenied: false
       }
-    },
+    }
     this.linkedAccounts = null  // [{ bankCode: Mbb, swiftCode: MBBDKL, accountNumber: 00000 }
   }
 }

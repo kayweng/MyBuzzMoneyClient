@@ -74,14 +74,14 @@ h4{
 }
 
 .note {
-  color: darkgrey !important;
+  color: #707B7C !important;
   font-size: 0.75em !important;
   padding-top: 10px !important;
 }
 
 .note-message {
-  color: grey !important;
-  font-size: .75rem;
+  color: #707B7C !important;
+  font-size: 12px !important;
   min-height: 18px;
   margin-left: 2px;
   text-transform: none !important;
