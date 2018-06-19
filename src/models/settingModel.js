@@ -6,7 +6,19 @@ class SettingModel extends basedModel {
     super()
 
     this.username = null
-    this.preferences = null     // { location: { country: null, city:null, suburb: null }, localCurrency: null, notifications: { expiredIn3Days: false, receiveExchange: false, deniedExchange: false } }
+    this.preferences = {
+      localCurrency: null,
+      location: {
+        country: null,
+        state: null,
+        city: null
+      },
+      notifications: {
+        expiredIn3Days: false,
+        exchangeAccepted: false,
+        exchangeDenied: false
+      }
+    },
     this.linkedAccounts = null  // [{ bankCode: Mbb, swiftCode: MBBDKL, accountNumber: 00000 }
   }
 }

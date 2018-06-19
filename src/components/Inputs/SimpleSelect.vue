@@ -30,7 +30,7 @@
   export default {
     name: 'simple-select',
     props: {
-      items: Object,
+      items: Array,
       label: String,
       value: String,
       labelClasses: {

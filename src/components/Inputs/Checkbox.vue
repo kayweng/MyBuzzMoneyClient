@@ -5,6 +5,7 @@
              class="form-check-input"
              type="checkbox"
              :disabled="disabled"
+             :value="value"
              v-model="model" />
       <span class="form-check-sign"></span>
       <slot></slot>
@@ -18,6 +19,7 @@
       prop: 'checked'
     },
     props: {
+      value: String,
       checked: [Array, Boolean],
       disabled: [Boolean, String],
       inline: Boolean
@@ -33,7 +35,7 @@
           return this.checked
         },
         set (check) {
-          this.$emit('input', check)
+          this.$emit('input', check, this.value)
         }
       },
       inlineClass () {

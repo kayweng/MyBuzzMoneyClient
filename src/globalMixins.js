@@ -1,5 +1,7 @@
 import swal from 'sweetalert2'
-import currencyCodes from 'src/js/currency_data.js'
+import currencyCodes from 'src/data/currency_data.js'
+import countryStates from 'src/data/states_data.js'
+import stateCities from 'src/data/cities_data.js'
 
 export default {
   computed: {
@@ -26,11 +28,6 @@ export default {
       ]
 
       return countries
-    },
-    states (countryCode) {
-      const states = []
-
-      return states
     },
     genders () {
       const genders = [
@@ -105,6 +102,16 @@ export default {
       } else {
         this.$store.dispatch('signOut')
         this.$router.push(sessionExpired ? '/login?s=true' : 'Login')
+      }
+    },
+    getStates (countryCode) {
+      return countryStates[countryCode]
+    },
+    getCities (countryCode, statesCode) {
+      if (countryCode && statesCode) {
+        return stateCities[countryCode][statesCode]
+      } else {
+        return []
       }
     }
   }
