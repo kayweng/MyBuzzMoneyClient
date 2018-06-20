@@ -22,7 +22,7 @@
         </el-row>
         <el-row>
           <el-col :xs="24" :sm="12">
-            <simple-select  ref="ddlCountry" 
+            <simple-select  :id="'ddlCountry'" 
                             :items="countries"
                             v-model="value.location.country"
                             @changed="value.location.country = $event">
@@ -32,7 +32,7 @@
             </simple-select>
           </el-col>
           <el-col :xs="24" :sm="12">
-            <simple-select  ref="ddlState" 
+            <simple-select  :id="'ddlState'" 
                             :items="stateValues"
                             v-model="value.location.state"
                             @changed="value.location.state = $event">
@@ -44,7 +44,7 @@
         </el-row>
         <el-row>
           <el-col :xs="24" :sm="12">
-            <simple-select  ref="ddlCity" 
+            <simple-select  :id="'ddlCity'" 
                             :items="citiValues"
                             v-model="value.location.city"
                             @changed="value.location.city = $event">
@@ -56,7 +56,7 @@
         </el-row>
         <el-row>
           <span class="note-message">
-            <small>* Please select a nearest city/suburb if your city/suburb not found in list</small>
+            * Please select a nearest city/suburb if your city/suburb not found in list
           </span>
         </el-row>
         <hr/>
@@ -128,18 +128,16 @@
     methods: {
       checkNotification (checked, id) {
         switch (id) {
-          case "expiredIn3Days":
+          case 'chkExpired3Days':
             this.value.notifications.expiredIn3Days = checked
             break
-          case "exchangeAccepted":
+          case 'chkReceiveExchange':
             this.value.notifications.exchangeAccepted = checked
             break
-          case "exchangeDenied":
+          case 'chkDeniedExchange':
             this.value.notifications.exchangeDenied = checked
             break
         }
-
-        console.log(this.value)
       }
     },
     watch: {
@@ -162,9 +160,6 @@
         if (cities) {
           this.citiValues = cities
         }
-      },
-      'value.notifications' (value) {
-        console.log(value)
       }
     }
   }

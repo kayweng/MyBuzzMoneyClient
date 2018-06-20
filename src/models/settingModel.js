@@ -19,7 +19,11 @@ class SettingModel extends basedModel {
         exchangeDenied: false
       }
     }
-    this.linkedAccounts = null  // [{ bankCode: Mbb, swiftCode: MBBDKL, accountNumber: 00000 }
+    this.linkedAccounts = [] 
+    // [
+    //  { type: Bank, bankAccount: null, swiftCode: MBBKL },
+    //  { type: Paypal, account: null, swiftCode: MBBKL },
+    // ]
   }
 }
 

@@ -7,7 +7,7 @@
         </label>
       </span>
     </slot>
-    <el-select v-model="fieldModelValue" placeholder="Select">
+    <el-select ref="ddlXXX" v-model="fieldModelValue" placeholder="Select">
       <el-option
         v-for="(item, index) in items"
         :key="index" 
@@ -30,6 +30,7 @@
   export default {
     name: 'simple-select',
     props: {
+      id: String,
       items: Array,
       label: String,
       value: String,

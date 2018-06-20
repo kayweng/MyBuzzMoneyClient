@@ -6,6 +6,7 @@
     </el-tab-pane>
     <el-tab-pane name="Accounts">
       <span slot="label"><i class="fa fa-cubes"></i> Accounts</span>
+      <link-accounts v-model="model.linkedAccounts"></link-accounts>
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -13,10 +14,12 @@
 <script scoped>
   import SettingModel from 'src/models/settingModel.js'
   import Preferences from 'src/pages/Setting/Components/Preferences.vue'
+  import LinkAccounts from 'src/pages/Setting/Components/LinkAccounts.vue'
 
   export default {
     components: {
-      Preferences
+      Preferences,
+      LinkAccounts
     },
     data() {
       return {
@@ -26,7 +29,7 @@
     },
     methods: {
       handleClick(tab, event) {
-        console.log(tab, event);
+       
       }
     }
   };

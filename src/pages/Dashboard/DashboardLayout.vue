@@ -27,13 +27,13 @@
         <sidebar-item :link="{name: 'Dashboard', icon: 'fa fa-tachometer', path: '/dashboard'}">
         </sidebar-item>
         <!-- new post: user create a new exchange request post -->
-        <sidebar-item :link="{name: 'Exchange', icon: 'fa fa-exchange'}">
+        <!-- <sidebar-item :link="{name: 'Exchange', icon: 'fa fa-exchange'}">
           <sidebar-item :link="{name: 'Request', path: '/exchange-request'}"></sidebar-item>
           <sidebar-item :link="{name: 'Offer', path: '/components/offer'}"></sidebar-item>
-        </sidebar-item>
+        </sidebar-item> -->
         <!-- map: show pin location of available post on map -->
-        <sidebar-item :link="{name: 'Map', icon: 'fa fa-map-o', path: '/map'}">
-        </sidebar-item>
+        <!-- <sidebar-item :link="{name: 'Map', icon: 'fa fa-map-o', path: '/map'}">
+        </sidebar-item> -->
         <!-- setting: maintain user preferables -->
         <sidebar-item :link="{name: 'Setting', icon: 'fa fa-cog', path: '/setting'}">
         </sidebar-item>
