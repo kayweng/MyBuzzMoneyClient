@@ -19,6 +19,16 @@
   opacity: 0;
 }
 
+.pop-out-enter-active,
+.pop-out-leave-active {
+  transition: all 0.5s;
+}
+.pop-out-enter,
+.pop-out-leave-active {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
 @keyframes shaking {
   0% { transform: translate(15px); }
   20% { transform: translate(-15px); }

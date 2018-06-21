@@ -8,6 +8,10 @@
       <span slot="label"><i class="fa fa-cubes"></i> Accounts</span>
       <link-accounts v-model="model.linkedAccounts"></link-accounts>
     </el-tab-pane>
+    <el-tab-pane name="Verification">
+      <span slot="label"><i class="fa fa-certificate"></i> Verifications</span>
+      <link-accounts v-model="model.linkedAccounts"></link-accounts>
+    </el-tab-pane>
   </el-tabs>
 </template>
 

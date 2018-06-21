@@ -9,6 +9,7 @@ import routes from './routes/routes'
 import Vuelidate from 'vuelidate'
 import App from './App.vue'
 import VueLoading from 'vuex-loading'
+import VModal from 'vue-js-modal'
 
 /* user plugins */
 Vue.use(VueRouter)
@@ -16,6 +17,7 @@ Vue.use(LightBootstrap)
 Vue.use(vMediaQuery)
 Vue.use(Vuelidate)
 Vue.use(VueLoading)
+Vue.use(VModal)
 
 /* user mixins */
 Vue.mixin(globalMixins)
