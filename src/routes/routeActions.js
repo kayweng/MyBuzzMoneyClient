@@ -9,11 +9,11 @@ async function loginRoute (to, from, next) {
     store.dispatch('signOut')
     next()
   } else {
-    await store.dispatch('getCurrentUser').then((response) => {
+    await store.dispatch('getCurrentUser').then((_) => {
       next('Dashboard')
     }, (error) => {
       console.log(error)
-      next()
+      next('/login?s=true')
     })
   }
 }

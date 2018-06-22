@@ -73,7 +73,8 @@
       return {
         model: new UserModel(),
         timeoutAlert: null,
-        countdownSeconds: 60
+        idleInterval: null,
+        idleTime: 0
       }
     },
     computed: {
@@ -106,39 +107,53 @@
           }
         })
       },
-      resetSessionExpire (vm) {
+      increaseIdleTime (vm) {
+        vm.idleTime = vm.idleTime + 1
+        if (vm.idleTime > 3) {
+          vm.promptTimeout(vm)
+        }
+      },
+      promptTimeout (vm) {
         vm.timeoutAlert = setTimeout(function () {
           swal.close()
           vm.logoutUser(true)
-        }, 3060000) // 3060000
+        }, 5000)
 
-        setTimeout(function () {
-          swal({
-            type: 'warning',
-            title: 'Session Expire',
-            html: `<small>Your session will expire in ${vm.countdownSeconds} seconds.<br/>Click Yes to continue, or Cancel to logout.</small>`,
-            buttonsStyling: false,
-            showCancelButton: true,
-            confirmButtonClass: 'btn btn-primary btn-round btn-wd',
-            confirmButtonText: 'Yes'
-          }).then((result) => {
-            if (result.value) {
-              vm.$store.dispatch('refreshSession').then(response => {
-                clearTimeout(vm.timeoutAlert)
-                vm.resetSessionExpire(vm)
-              })
-            } else {
-              clearTimeout(vm.timeoutAlert)
-              vm.logoutUser(true)
-            }
-          })
-        }, 3000000) // 3000000
+        //remove increament
+        clearInterval(vm.idleInterval)
+        vm.idleInterval = null
+
+        swal({
+          type: 'warning',
+          title: 'Idle Timeout',
+          html: `<small>You have idle for 20 minutes.<br/>Click Yes to continue or Cancel to logout.</small>`,
+          buttonsStyling: false,
+          showCancelButton: true,
+          confirmButtonClass: 'btn btn-primary btn-round btn-wd',
+          confirmButtonText: 'Yes'
+        }).then((result) => {
+          clearTimeout(vm.timeoutAlert)
+
+          if (result.value) {
+            vm.idleTime = 0
+            vm.resetIncreaseIdle(vm)
+          } else {
+            vm.logoutUser(true)
+          }
+        })
+      },
+      resetIncreaseIdle (vm) {
+        if (vm.idleInterval === null) {
+          vm.idleInterval = setInterval(function () {
+            vm.increaseIdleTime(vm)
+          }, 3000)
+        }
       }
     },
     beforeRouteEnter (to, from, next) {
       next(vm => {
         vm.retrieveUserInfo()
-        vm.resetSessionExpire(vm)
+        vm.resetIncreaseIdle(vm)
       })
     }
 }

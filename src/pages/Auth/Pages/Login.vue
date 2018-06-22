@@ -112,7 +112,7 @@
       notifySessionExpired () {
         this.$notify({
           component: {
-            template: `<span>Your session was expired.<br/>Please continue site with login.</span>`
+            template: `<span>Your session was expired.<br/>Please continue with login.</span>`
           },
           timeout: 5000,
           icon: 'nc-icon nc-bulb-63',

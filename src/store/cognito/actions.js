@@ -25,7 +25,7 @@ export default function actionsFactory (config) {
 
   return {
 
-    getCurrentUser ({ commit }) {
+    getCurrentUser ({ commit, state }) {
       return new Promise((resolve, reject) => {
         const cognitoUser = cognitoUserPool.getCurrentUser()
         if (!cognitoUser) {
@@ -36,13 +36,22 @@ export default function actionsFactory (config) {
         }
 
         cognitoUser.getSession((err, session) => {
-          if (err) {
-            reject(err)
-            return
-          }
+          // session invalid, attemp to refresh token
+          if (!session.isValid()) {
+            const refreshToken = new CognitoRefreshToken({RefreshToken: state.user.tokens.RefreshToken})
+           
+            cognitoUser.refreshSession(refreshToken, (err, _) => {
+              if (err !== null) {
+                reject({
+                  message: 'Session expired'
+                })
+                return
+              }
+            })
+          } 
 
           const constructedUser = constructUser(cognitoUser, session)
-          
+              
           commit(types.AUTHENTICATE, constructedUser)
           resolve(constructedUser)
         })
