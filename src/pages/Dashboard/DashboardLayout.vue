@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="{'nav-open': $sidebar.showSidebar}">
+  <div id="dashboardLayout" class="wrapper" :class="{'nav-open': $sidebar.showSidebar}">
     <notifications></notifications>
     <side-bar>
       <user-menu v-model="model">
@@ -72,7 +72,7 @@
     data () {
       return {
         model: new UserModel(),
-        timeoutAlert: null,
+        timeoutIdleResponse: null,
         idleInterval: null,
         idleTime: 0
       }
@@ -109,12 +109,12 @@
       },
       increaseIdleTime (vm) {
         vm.idleTime = vm.idleTime + 1
-        if (vm.idleTime > 3) {
-          vm.promptTimeout(vm)
+        if (vm.idleTime > 19) {
+          vm.prompIdleTimeout(vm)
         }
       },
-      promptTimeout (vm) {
-        vm.timeoutAlert = setTimeout(function () {
+      prompIdleTimeout (vm) {
+        vm.timeoutIdleResponse = setTimeout(function () {
           swal.close()
           vm.logoutUser(true)
         }, 5000)
@@ -132,28 +132,39 @@
           confirmButtonClass: 'btn btn-primary btn-round btn-wd',
           confirmButtonText: 'Yes'
         }).then((result) => {
-          clearTimeout(vm.timeoutAlert)
+          clearTimeout(vm.timeoutIdleResponse)
 
           if (result.value) {
-            vm.idleTime = 0
-            vm.resetIncreaseIdle(vm)
+            vm.resetIdleTime(vm)
+            vm.initIdleIncreament(vm)
           } else {
             vm.logoutUser(true)
           }
         })
       },
-      resetIncreaseIdle (vm) {
+      initIdleIncreament (vm) {
         if (vm.idleInterval === null) {
           vm.idleInterval = setInterval(function () {
             vm.increaseIdleTime(vm)
-          }, 3000)
+          }, 60000)
         }
+      },
+      resetIdleTime (vm) {
+        vm.idleTime = 0
       }
     },
     beforeRouteEnter (to, from, next) {
       next(vm => {
         vm.retrieveUserInfo()
-        vm.resetIncreaseIdle(vm)
+        vm.initIdleIncreament(vm)
+
+        document.getElementById('dashboardLayout').addEventListener('mousemove', function () {
+          vm.resetIdleTime(vm)
+        })
+
+         document.getElementById('dashboardLayout').addEventListener('keyup', function () {
+          vm.resetIdleTime(vm)
+        })
       })
     }
 }

@@ -54,11 +54,6 @@
             </simple-select>
           </el-col>
         </el-row>
-        <el-row>
-          <span class="note-message">
-            * Please select a nearest city/suburb if your city/suburb not found in list
-          </span>
-        </el-row>
         <hr/>
         <!-- Notifications -->
         <el-row>

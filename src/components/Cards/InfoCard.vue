@@ -1,7 +1,7 @@
 <template>
     <div class="center card-item">
         <slot if="$slot['image']" name="image">
-          <img :src="'/static/img/' + imgName " />
+          <img :src="'/static/images/' + imgName " />
         </slot>
         <h6>{{ title }} </h6>
         <p class="text-muted">{{ message }}</p>

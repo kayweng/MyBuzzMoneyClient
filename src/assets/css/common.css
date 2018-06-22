@@ -92,6 +92,10 @@ h4{
   font-size: 0.75em !important;
 }
 
+.large {
+  font-size: 0.9em !important;
+}
+
 .none-transform {
   text-transform: none !important;
 }

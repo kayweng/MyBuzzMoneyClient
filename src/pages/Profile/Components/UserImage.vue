@@ -80,7 +80,7 @@
   import loadingSpinner from 'vuex-loading/src/spinners/spinner.vue'
 
   export default {
-    name: 'circleImg',
+    name: 'user-image',
     components: {
       FadeRenderTransition,
       SlideRenderTransition,

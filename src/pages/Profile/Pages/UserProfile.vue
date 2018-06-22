@@ -12,11 +12,11 @@
           <h5 class="card-title left">{{ model.email }}</h5>
         </div>
         <div class="row text-center">
-          <circleImg  :imagePath="model.imageData === null ? model.imageUrl : model.imageData"
+          <user-image  :imagePath="model.imageData === null ? model.imageUrl : model.imageData"
                       :sizeStyle="'width: 160px; height: 160px'"
                       :isUpload="model.edit"
                       @change="uploadedImage">
-          </circleImg>
+          </user-image>
           <slide-render-transition :duration="200">
             <div class="container-fluid text-center">
               <div v-if="model.edit && selectedImageFile === null" class="container-fluid">
@@ -195,7 +195,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import { FadeRenderTransition, SlideRenderTransition,  Switch as LSwitch } from 'src/components/index'
   import { readImageFileData } from 'src/js/image'
-  import CircleImage from 'src/components/Images/CircleImage.vue'
+  import UserImage from './../Components/UserImage.vue'
   import UserModel from 'src/models/userModel'
   import swal from 'sweetalert2'
   import { UserProfileBus } from 'src/eventBus/userProfileBus.js'
@@ -205,7 +205,7 @@
     components: {
       FadeRenderTransition,
       SlideRenderTransition,
-      [CircleImage.name]: CircleImage,
+      [UserImage.name]: UserImage,
       LSwitch
     },
     data () {
