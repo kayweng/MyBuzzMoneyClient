@@ -101,6 +101,10 @@ h4{
 }
 
 /* color */
+.green {
+  color: green
+}
+
 .white{
   color: white !important;
 }
@@ -175,12 +179,13 @@ h4{
 
 .outer {
   width: 100%;
-  text-align: center;
+  position: relative;
 }
   
-.inner {
-  display: inline-block;
-  left: 50%;
+.inner{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .center-item {

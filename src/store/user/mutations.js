@@ -12,7 +12,7 @@ const mutations = {
     
     if (state.profile !== null &&
       data !== '-' &&
-      data !== 'static/img/faces/user.jpg') {
+      data !== 'static/images/faces/user.jpg') {
       await readImageUrlData(data).then(response => {
         state.profile.imageData = response
         localStorage.setItem('user', JSON.stringify(state.profile))

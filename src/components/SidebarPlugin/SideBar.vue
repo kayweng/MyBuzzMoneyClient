@@ -64,7 +64,7 @@
       },
       backgroundImage: {
         type: String,
-        default: 'static/img/sidebar.jpg'
+        default: 'static/images/sidebar.jpg'
       },
       activeColor: {
         type: String,
@@ -76,7 +76,7 @@
       },
       logo: {
         type: String,
-        default: 'static/img/logo.png'
+        default: 'static/images/logo.png'
       },
       sidebarLinks: {
         type: Array,

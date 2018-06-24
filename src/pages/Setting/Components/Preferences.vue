@@ -1,6 +1,6 @@
 <template>
   <fade-render-transition :duration="200">
-    <el-container>
+    <el-container direction="vertical">
       <el-main>
         <!-- Local Currency -->
         <el-row>
@@ -103,19 +103,19 @@
         citiValues: [],
         messages : [
           {
-            ref: 'chkExpired3Days',
+            ref: 'chkExpired',
             checked: false,
-            message: 'Send me notification for an exchange will be <strong class="strongbow">expired in 3 days</strong>'
+            message: 'Send me notification for a request is <strong class="strongbow">expired.</strong>'
           },
           {
-            ref: 'chkReceiveExchange',
+            ref: 'chkAccepted',
             checked: false,
-            message: 'Send me notification for an exchange is <strong class="strongbow">accepted</strong>'
+            message: 'Send me notification for a request is <strong class="green">accepted.</strong>'
           },
           {
-            ref: 'chkDeniedExchange',
+            ref: 'chkDenied',
             checked: false,
-            message: 'Send me notification for an exchange is <strong class="strongbow">denied</strong>'
+            message: 'Send me notification for a request is <strong class="text-danger">denied.</strong>'
           }
         ]
       }
@@ -123,14 +123,14 @@
     methods: {
       checkNotification (checked, id) {
         switch (id) {
-          case 'chkExpired3Days':
-            this.value.notifications.expiredIn3Days = checked
+          case 'chkExpired':
+            this.value.notifications.expired = checked
             break
-          case 'chkReceiveExchange':
-            this.value.notifications.exchangeAccepted = checked
+          case 'chkAccepted':
+            this.value.notifications.accepted = checked
             break
-          case 'chkDeniedExchange':
-            this.value.notifications.exchangeDenied = checked
+          case 'chkDenied':
+            this.value.notifications.denied = checked
             break
         }
       }

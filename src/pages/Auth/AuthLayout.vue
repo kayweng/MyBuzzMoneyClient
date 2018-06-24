@@ -21,7 +21,7 @@
 
 <style scoped>
   .auth-background {
-    background-image: url("/static/img/background/bg_auth.jpg")
+    background-image: url("/static/images/background/bg_auth.jpg")
   }
 </style>
 

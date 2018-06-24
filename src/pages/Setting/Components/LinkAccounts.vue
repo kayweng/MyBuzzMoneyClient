@@ -1,8 +1,8 @@
 <template>
   <div>
-    <add-linked-account-modal :modalHeight="'400px'"></add-linked-account-modal>
+    <add-linked-account-modal @returnLinkedAccount="addLinkedAccount"></add-linked-account-modal>
     <fade-render-transition :duration="200">
-      <el-container>
+      <el-container direction="vertical" class="container-fluid center">
         <el-main>
           <el-row>
             <el-col>
@@ -21,9 +21,26 @@
           <div v-else>
             <el-container>
               <card>
-                <div class="table-responsive table-full-width">
-                  <el-table :data="value">
-                    <el-table-column label="Type" property="type">
+                <div >
+                  <el-table style="width: 100%" :data="value" fixed="left">
+                    <el-table-column label="Type" property="type" align="left">
+                       <template slot-scope="scope">
+                         <el-tag :type="scope.row.type === 'PayPal' ? 'primary' : 'success'">{{scope.row.type}}</el-tag>
+                       </template>
+                    </el-table-column>
+                    <el-table-column label="Content" min-width="200" property="value" align="left">
+                    </el-table-column>
+                    <el-table-column label="Created Date" property="createdOn" align="left">
+                    </el-table-column>
+                    <el-table-column label="Actions">
+                      <div class="td-actions" slot-scope="props">
+                        <a v-tooltip.top-center="'Edit'" @click="editLinkedAccount(props.$index, props.row)" class="btn btn-primary btn-link btn-xs">
+                          <i class="fa fa-pencil buzz-blue"></i>
+                        </a>
+                        <a v-tooltip.top-center="'Delete'" @click="deleteLinkedAccount(props.$index, props.row)" class="btn btn-danger btn-link btn-xs">
+                          <i class="fa fa-close"></i>
+                        </a>
+                      </div>
                     </el-table-column>
                   </el-table>
                 </div>
@@ -54,6 +71,7 @@
   import { FadeRenderTransition, SimpleSelect } from 'src/components/index'
   import {Table, TableColumn} from 'element-ui'
   import AddLinkedAccountModal from 'src/pages/Setting/Modals/AddLinkedAccount.vue'
+  import swal from 'sweetalert2'
 
   export default {
     components: {
@@ -69,6 +87,53 @@
     methods: {
       addAccount () {
         this.$modal.show('add-linked-account')
+      },
+      editLinkedAccount (val) {
+
+      },
+      addLinkedAccount (val) {
+        this.$modal.hide('add-linked-account')
+
+        var sameTypeExists = 0
+        var sameValueExists = 0
+
+        const mapping = this.value.map(x => {
+          if (x.type === val.type) {
+            sameTypeExists = sameTypeExists + 1
+          }
+
+          if (x.value === val.value) {
+            sameValueExists = sameValueExists + 1
+          }
+        })
+        
+        if (sameTypeExists > 0){
+          this.showNotifyMessage("Only one '" + val.type + "' linked account is allowed.", 5000, 'warning')
+          return
+        }
+
+        if (sameValueExists > 0){
+          this.showNotifyMessage("'" + val.value + "' is already exists in linked account.", 5000, 'warning')
+          return
+        }
+
+        this.value.push(val)
+      },
+      deleteLinkedAccount (index, row) {
+        swal({
+          type: 'warning',
+          title: 'Linked Account',
+          html: '<small>Are you confirm to remove selected linked account ?</small>',
+          buttonsStyling: false,
+          showCancelButton: true,
+          confirmButtonClass: 'btn btn-primary btn-round btn-wd',
+          confirmButtonText: 'Yes'
+        }).then((result) => {
+          if (result.value) {
+            const index = this.value.indexOf(row)
+            this.value.splice(index, 1)
+          }
+        })
       }
     }
   }

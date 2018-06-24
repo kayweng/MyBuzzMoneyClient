@@ -48,6 +48,8 @@
 
   .camera:hover {
     background: #2471A3;
+    height: 100%;
+    transition: height 0.25s ease-out;
   }
 
   .camera {
@@ -67,6 +69,8 @@
     width: 100%;
     height: 25px;
     background: #5D6D7E;
+    transition: height 0.25s ease-in;
+    opacity: 0.7;
   }
 
   .fa-camera {

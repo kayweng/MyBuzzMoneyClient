@@ -14,9 +14,9 @@ class SettingModel extends basedModel {
         city: null
       },
       notifications: {
-        expiredIn3Days: false,
-        exchangeAccepted: false,
-        exchangeDenied: false
+        expired: false,
+        accepted: false,
+        denied: false
       }
     }
     this.linkedAccounts = [] 

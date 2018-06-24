@@ -39,7 +39,7 @@
   .container-fluid{
     min-height: 100vh;
     width: 100%;
-    background-image: url("/static/img/background/bg_home.jpg");
+    background-image: url("/static/images/background/bg_home.jpg");
     background-size: cover;                      
     background-repeat: no-repeat;
     background-position: center center;

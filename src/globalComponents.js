@@ -8,6 +8,7 @@ import {
   Collapse, CollapseItem,
   Container, Row, Col,
   Tabs, TabPane,
+  Tag,
   Header, Aside, Main, Footer
 } from 'element-ui'
 
@@ -37,6 +38,7 @@ const GlobalComponents = {
     Vue.component(Col.name, Col)
     Vue.component(Tabs.name, Tabs)
     Vue.component(TabPane.name, TabPane)
+    Vue.component(Tag.name, Tag)
     Vue.component(Header.name, Header)
     Vue.component(Aside.name, Aside)
     Vue.component(Main.name, Main)

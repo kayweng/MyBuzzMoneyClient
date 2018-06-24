@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3 col-sm-5 col-12 text-center" v-if="$slots.member-image || image">
       <slot name="image">
-        <img class="img-circle" :style="imageSize" :src="'/static/img/' + image" alt="image">
+        <img class="img-circle" :style="imageSize" :src="'/static/images/' + image" alt="image">
       </slot>
     </div>
     <div class="col-md-9 col-sm-7 col-12" v-if="$slots.member-info || name || title || info">

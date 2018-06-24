@@ -19,7 +19,7 @@ class userModel extends basedModel {
       this.country = data.country === '-' ? null : data.country
       this.userType = data.userType
       this.userTypeDescription = data.userTypeDescription
-      this.imageUrl = data.imageUrl === '-' ? 'static/img/faces/user.jpg' : data.imageUrl
+      this.imageUrl = data.imageUrl === '-' ? 'static/images/faces/user.jpg' : data.imageUrl
       this.active = data.active
       this.createdOn = data.createdOn
       this.modifiedOn = data.modifiedOn
