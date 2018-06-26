@@ -7,24 +7,17 @@
         </label>
       </span>
     </slot>
-    <el-select ref="ddlXXX" v-model="fieldModelValue" placeholder="Select">
+    <el-select v-model="fieldModelValue" placeholder="Select">
       <el-option
         v-for="(item, index) in items"
         :key="index" 
         :label="item.label"
         :value="item.value">
-        <span class="country">{{ item.label }}</span>
+        <span style="float: left;">{{ item.label }}</span>
       </el-option>
     </el-select>
   </div>
 </template>
-
-<style scoped>
-  .country {
-    float: left;
-  }
-</style>
-
 
 <script>
   export default {

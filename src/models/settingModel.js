@@ -2,28 +2,29 @@
 import basedModel from './baseModel'
 
 class SettingModel extends basedModel {
-  constructor () {
+  constructor (data) {
     super()
-
-    this.username = null
+    
+    var setting = data
+    var preferences = setting.preferences
+    var location = preferences.location
+    var notifications = preferences.notifications
+    var linkedAccounts = setting.linkedAccounts
+  
     this.preferences = {
-      localCurrency: null,
+      localCurrency: preferences.localCurrency,
       location: {
-        country: null,
-        state: null,
-        city: null
+        country: location.country,
+        state: location.state,
+        city: location.city
       },
       notifications: {
-        expired: false,
-        accepted: false,
-        denied: false
+        expired: notifications.expired,
+        accepted: notifications.accepted,
+        denied: notifications.denied
       }
     }
-    this.linkedAccounts = [] 
-    // [
-    //  { type: Bank, bankAccount: null, swiftCode: MBBKL },
-    //  { type: Paypal, account: null, swiftCode: MBBKL },
-    // ]
+    this.linkedAccounts = linkedAccounts
   }
 }
 

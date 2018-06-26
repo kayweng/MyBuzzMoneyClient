@@ -31,6 +31,7 @@
               </span>
             </simple-select>
           </el-col>
+          <el-row hidden-sm-and-up>&nbsp;</el-row>
           <el-col :xs="24" :sm="12">
             <simple-select  :id="'ddlState'" 
                             :items="stateValues"

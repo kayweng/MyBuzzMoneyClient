@@ -13,7 +13,7 @@ const actions = {
         commit('setUserProfileImageState', userJSON.imageUrl)
         resolve(true)
       } else if (payload === null) {
-        resolve(false)
+        reject('Invalid Payload')
       } else {
         aws.get('/user/' + payload).then(response => {
           commit('setUserProfileState', response.data)

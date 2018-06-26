@@ -88,7 +88,8 @@
     },
     methods: {
       ...mapActions([
-        'getUserProfileInfo'
+        'getUserProfileInfo',
+        'getUserSetting'
       ]),
       toggleSidebar () {
         if (this.$sidebar.showSidebar) {
@@ -106,6 +107,9 @@
             this.logoutUser(true)
           }
         })
+      },
+      async retrieveUserSetting () {
+        await this.getUserSetting(this.cognitoUserEmail)
       },
       increaseIdleTime (vm) {
         vm.idleTime = vm.idleTime + 1
@@ -156,6 +160,7 @@
     beforeRouteEnter (to, from, next) {
       next(vm => {
         vm.retrieveUserInfo()
+        vm.retrieveUserSetting()
         vm.initIdleIncreament(vm)
 
         document.getElementById('dashboardLayout').addEventListener('mousemove', function () {

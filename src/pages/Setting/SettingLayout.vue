@@ -26,7 +26,7 @@
     },
     data() {
       return {
-        model: new SettingModel(),
+        model: this.$store.state.setting.userSetting,
         activeTab: 'Preferences'
       };
     },
@@ -34,6 +34,9 @@
       handleClick(tab, event) {
        
       }
+    },
+    mounted () {
+      console.log('setting mounted')
     }
   };
 </script>
