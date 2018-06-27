@@ -35,7 +35,7 @@ const date = {
 
   toISODateString: function (val) {
     var dt = val
-    var dtString = formatDateToString(dt, '')
+    var dtString = formatDateToString(dt, '-')
  
     return dtString
   },

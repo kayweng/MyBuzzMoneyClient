@@ -205,6 +205,7 @@
   import swal from 'sweetalert2'
   import LandingLayout from 'src/pages/Auth/AuthLayout.vue'
   import facebook from 'src/js/facebook.js'
+  import { date } from 'src/js/date.js'
 
   export default {
     components: {
@@ -342,7 +343,7 @@
             email: this.model.email,
             name: this.model.name(),
             phone_number: this.model.mobile === null ? null : this.model.mobile,
-            birthdate: this.model.birthdate.toISOString().slice(0, 10)
+            birthdate: date.toISODateString(vathis.model.birthdatel)
           }
         }).then(() => {
           swal({

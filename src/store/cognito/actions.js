@@ -43,7 +43,7 @@ export default function actionsFactory (config) {
             })
             return
           }
-          console.log(state.user.tokens)
+          
           const constructedUser = constructUser(cognitoUser, session)
               
           commit(types.AUTHENTICATE, constructedUser)
@@ -273,6 +273,7 @@ export default function actionsFactory (config) {
     signOut ({ commit, state }) {
       return new Promise((resolve, reject) => {
         localStorage.removeItem('user')
+        localStorage.removeItem('setting')
         localStorage.removeItem('userImage')
         localStorage.removeItem('keepMeSignedIn')
         // Make sure the user is authenticated

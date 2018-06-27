@@ -4,7 +4,7 @@ const mutations = {
   setUserSettingState (state, data) {
     state.userSetting = new SettingModel(data)
     localStorage.setItem('setting', JSON.stringify(state.userSetting))
-    console.log('set user setting ...')
+    console.log(state.userSetting)
   }
 }
 

@@ -200,7 +200,7 @@
   import swal from 'sweetalert2'
   import { UserProfileBus } from 'src/eventBus/userProfileBus.js'
   import clone from 'clone'
- 
+  
   export default {
     components: {
       FadeRenderTransition,
