@@ -26,7 +26,7 @@
     },
     data() {
       return {
-        model: this.$store.state.setting.userSetting,
+        model: new SettingModel(),
         activeTab: 'Preferences'
       };
     },
@@ -35,8 +35,19 @@
        
       }
     },
+    watch: {
+      '$store.state.setting.userSetting' (val) {
+        if (val) {
+          this.model = val
+        }
+
+        this.$loading.endLoading('loading')
+      }
+    },
     mounted () {
-      console.log('setting mounted')
+      if (!this.$store.state.setting.userSetting.loaded) {
+        this.$loading.startLoading('loading')
+      }
     }
   };
 </script>

@@ -198,7 +198,7 @@
   import UserImage from './../Components/UserImage.vue'
   import UserModel from 'src/models/userModel'
   import swal from 'sweetalert2'
-  import { UserProfileBus } from 'src/eventBus/userProfileBus.js'
+  import { UserEventBus } from 'src/eventBus/userEventBus.js'
   import clone from 'clone'
   
   export default {
@@ -353,7 +353,7 @@
       '$store.state.user.profile.imageData' (val) {
         if (val) {
           this.model.imageData = val
-          UserProfileBus.setUserProfileImage(val)
+          UserEventBus.setUserProfileImage(val)
         }
       }
     },

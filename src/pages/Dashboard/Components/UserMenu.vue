@@ -60,7 +60,7 @@
 <script>
   import CollapseTransition from 'element-ui/lib/transitions/collapse-transition'
   import loadingSpinner from 'vuex-loading/src/spinners/spinner.vue'
-  import { UserProfileBus } from 'src/eventBus/userProfileBus.js'
+  import { UserEventBus } from 'src/eventBus/userEventBus.js'
 
   export default {
     components: {
@@ -89,14 +89,14 @@
       this.$loading.startLoading('loadUserMenu')
     },
     created () {
-      UserProfileBus.$on('setUserImage', (data) => {
+      UserEventBus.$on('setUserImage', (data) => {
         if (data) {
           this.value.imageData = data
         }
       })
     },
     beforeDestroy () {
-      UserProfileBus.$off('setUserImage')
+      UserEventBus.$off('setUserImage')
     }
   }
 </script>

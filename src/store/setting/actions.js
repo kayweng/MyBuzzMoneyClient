@@ -14,6 +14,7 @@ const actions = {
         reject('Invalid Payload')
       } else {
         aws.get('/setting/' + payload).then(response => {
+          // response.data => JSON object
           commit('setUserSettingState', response.data)
           resolve(true)
         }).catch(error => {
