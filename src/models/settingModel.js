@@ -6,10 +6,8 @@ class SettingModel extends basedModel {
     super()
     
     this.resetState()
-    
+   
     if (data !== null && data !== undefined) {
-      this.loaded = true
-
       var setting = data
       var preferences = null
       var location = null
@@ -36,11 +34,11 @@ class SettingModel extends basedModel {
       var linkedAccounts = setting.linkedAccounts
 
       this.preferences = {
-        localCurrency: preferences.localCurrency,
+        localCurrency: preferences.localCurrency === '-' ? null : preferences.localCurrency,
         location: {
-          country: location.country,
-          state: location.state,
-          city: location.city
+          country: location.country === '-' ? null : location.country,
+          state: location.state === '-' ? null : location.state,
+          city: location.city === '-' ? null : location.city
         },
         notifications: {
           expired: notifications.expired,
@@ -53,16 +51,15 @@ class SettingModel extends basedModel {
   }
 
   resetState () {
-    this.loaded = false,
     this.preferences = {
-      localCurrency: '',
+      localCurrency: null,
       location: {
         country: '',
         state: '',
         city: ''
       },
       notifications: {
-        expired: false,
+        expired: true,
         accepted: false,
         denied: false
       }

@@ -6,8 +6,8 @@
         <el-row>
           <el-col :xs="24" :sm="12">
             <currency-select  ref="ddlCurrency"
-                              v-model="value.localCurrency"
-                              @changed="value.localCurrency = $event">
+                              v-model="model.localCurrency"
+                              @changed="model.localCurrency = $event">
               <span slot="label">
                 <label for="ddlCurrency" class="control-label medium">Local Currency &nbsp;</label>
               </span>
@@ -24,19 +24,19 @@
           <el-col :xs="24" :sm="12">
             <simple-select  :id="'ddlCountry'" 
                             :items="countries"
-                            v-model="value.location.country"
-                            @changed="value.location.country = $event">
+                            v-model="model.location.country"
+                            @changed="model.location.country = $event">
               <span slot="label">
                 <label for="ddlCountry" class="control-label medium">Country &nbsp;</label>
               </span>
             </simple-select>
           </el-col>
-          <el-row hidden-sm-and-up>&nbsp;</el-row>
+          
           <el-col :xs="24" :sm="12">
             <simple-select  :id="'ddlState'" 
                             :items="stateValues"
-                            v-model="value.location.state"
-                            @changed="value.location.state = $event">
+                            v-model="model.location.state"
+                            @changed="model.location.state = $event">
               <span slot="label">
                 <label for="ddlState" class="control-label medium">State &nbsp;</label>
               </span>
@@ -47,8 +47,8 @@
           <el-col :xs="24" :sm="12">
             <simple-select  :id="'ddlCity'" 
                             :items="citiValues"
-                            v-model="value.location.city"
-                            @changed="value.location.city = $event">
+                            v-model="model.location.city"
+                            @changed="model.location.city = $event">
               <span slot="label">
                 <label for="ddlCity" class="control-label medium">City/Suburb &nbsp;</label>
               </span>
@@ -70,6 +70,14 @@
             </check-box>
           </div>
         </el-row>
+        <!-- Buttons -->
+        <el-row class="empty-row"></el-row>
+        <el-row class="text-center">
+          <div class="button-inline">
+            <button type="button" @click="resetPreferences" class="btn btn-round btn-reset btn-wd">Reset</button>
+            <button type="submit" @click.prevent="savePreferences" class="btn btn-round btn-submit btn-wd">Save</button>
+          </div>
+        </el-row>
       </el-main>
     </el-container>
   </fade-render-transition>
@@ -87,6 +95,8 @@
 
 <script>
   import { FadeRenderTransition, CurrencySelect, SimpleSelect, Checkbox } from 'src/components/index'
+  import clone from 'clone'
+  import swal from 'sweetalert2'
 
   export default {
     components: {
@@ -100,6 +110,7 @@
     },
     data () {
       return {
+        model: null,
         stateValues: [],
         citiValues: [],
         messages : [
@@ -125,38 +136,59 @@
       checkNotification (checked, id) {
         switch (id) {
           case 'chkExpired':
-            this.value.notifications.expired = checked
+            this.model.notifications.expired = checked
             break
           case 'chkAccepted':
-            this.value.notifications.accepted = checked
+            this.model.notifications.accepted = checked
             break
           case 'chkDenied':
-            this.value.notifications.denied = checked
+            this.model.notifications.denied = checked
             break
         }
+      },
+      resetPreferences () {
+        swal({
+          type: 'warning',
+          title: 'Undo Changes',
+          html: '<small>Are you sure that you want to undo changes in preferences ?</small>',
+          buttonsStyling: false,
+          showCancelButton: true,
+          confirmButtonClass: 'btn btn-warning btn-round btn-wd',
+          confirmButtonText: 'Yes'
+        }).then((result) => {
+          if (result.value) {
+            this.model = clone(this.value)
+          }
+        })
+      },
+      savePreferences () {
+
       }
     },
     watch: {
-      'value.location.country' (value) {
+      'model.location.country' (value) {
         var states = this.getStates(value)
         this.stateValues = []
         this.citiValues = []
-        this.value.location.state = null
-        this.value.location.city = null
-
+        this.model.location.state = null
+        this.model.location.city = null
+      
         if (states) {
           this.stateValues = states
         }
       },
-      'value.location.state' (value) {
-        var cities = this.getCities(this.value.location.country, value)
+      'model.location.state' (value) {
+        var cities = this.getCities(this.model.location.country, value)
         this.citiValues = []
-        this.value.location.city = null
+        this.model.location.city = null
 
         if (cities) {
           this.citiValues = cities
         }
       }
+    },
+    created () {
+      this.model = clone(this.value)
     }
   }
 </script>
