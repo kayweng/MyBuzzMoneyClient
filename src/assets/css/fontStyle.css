@@ -1,0 +1,56 @@
+.italic{
+  font-style: italic;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.gill-Sans{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.copyright {
+  font-family: 'Sanomat Grab Web Regular', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+  outline: none;
+}
+
+.terms {
+  text-transform: initial !important;
+  color: black;
+}
+
+.note {
+  font-size: 15px !important;
+  padding-top: 10px !important;
+}
+
+.note-message {
+  color: #707B7C !important;
+  font-size: 12px !important;
+  min-height: 18px;
+  margin-left: 2px;
+  text-transform: none !important;
+}
+
+.medium {
+  font-size: 0.75em !important;
+}
+
+.large {
+  font-size: 0.9em !important;
+}
+
+.none-transform {
+  text-transform: none !important;
+}

@@ -15,19 +15,19 @@ class SettingModel extends basedModel {
 
       if (typeof setting.preferences === 'object') {
         preferences = setting.preferences
-      }else{
+      } else {
         preferences = JSON.parse(setting.preferences)
       }
 
       if (typeof preferences.location === 'object') {
         location = preferences.location
-      }else{
+      } else {
         location = JSON.parse(preferences.location)
       }
 
       if (typeof preferences.location === 'object') {
         notifications = preferences.notifications
-      }else{
+      } else {
         notifications = JSON.parse(preferences.notifications)
       }
 

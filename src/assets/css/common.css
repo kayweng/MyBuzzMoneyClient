@@ -1,29 +1,4 @@
-html, body{
-  height:100%;
-  overflow-x: hidden;
-}
-
-h1{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-h2{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-h3{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-h4{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
 /* element */
-.el-row {
-  padding-top: 15px;
-}
-
 .empty-row{
   height: 20px;
   padding: 1px;
@@ -39,110 +14,6 @@ h4{
 
 .no-padding {
   padding: 0;
-}
-
-/* font style */
-.italic{
-  font-style: italic;
-}
-
-.bold{
-  font-weight: bold;
-}
-
-.gill-Sans{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-}
-
-.bold{
-  font-weight: bold;
-}
-
-.copyright {
-  font-family: 'Sanomat Grab Web Regular', sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  font-size: 12px;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.5;
-  outline: none;
-}
-
-.terms {
-  text-transform: initial !important;
-  color: black;
-}
-
-.note {
-  color: #707B7C !important;
-  font-size: 0.75em !important;
-  padding-top: 10px !important;
-}
-
-.note-message {
-  color: #707B7C !important;
-  font-size: 12px !important;
-  min-height: 18px;
-  margin-left: 2px;
-  text-transform: none !important;
-}
-
-.medium {
-  font-size: 0.75em !important;
-}
-
-.large {
-  font-size: 0.9em !important;
-}
-
-.none-transform {
-  text-transform: none !important;
-}
-
-/* color */
-.green {
-  color: green
-}
-
-.white{
-  color: white !important;
-}
-
-.grey{
-  color: grey !important;
-}
-
-.orangered{
-  color: orangered !important;
-}
-
-.indianred {
-  color:#CD5C5C !important;
-}
-
-.green-sea {
-  color: #45B39D !important;
-}
-
-.white-smoke {
-  color: whitesmoke
-}
-
-.buzz-purple {
-  color: #581845;
-}
-
-.honey-comb {
-  color: #F1C40F;
-}
-
-.buzz-blue {
-  color: #1F618D
-}
-
-.strongbow {
-  color: #922B21;
 }
 
 /* shape */
@@ -198,6 +69,12 @@ h4{
 .hidden {
   display: none!important;
 }
+
+.bottom {
+  position: absolute!important;
+  bottom: 0 !important;
+}
+
 /* border */
 .border-orangered {
   border-color: orangered !important;
@@ -239,18 +116,6 @@ h4{
   color: white !important;
 }
 
-.btn-signup{
-  background-color: transparent;
-  border: 2px solid #2471A3;
-  color: #2471A3 !important;
-}
-
-.btn-signup:hover{
-  background-color: #2471A3 !important;
-  border: 2px solid white;
-  color: white !important;
-}
-
 .btn-signup-auth{
   background-color: transparent;
   border: 2px solid white;
@@ -259,18 +124,6 @@ h4{
 
 .btn-signup-auth:hover{
   background-color: #2471A3 !important;
-}
-
-.btn-login{
-  background-color: transparent;
-  border: 0px !important;
-  color: #2471A3 !important;
-}
-
-.btn-login:hover{
-  background-color: #2471A3 !important;
-  border: 0px !important;
-  color: white !important;
 }
 
 .btn-login-auth{
@@ -299,12 +152,6 @@ h4{
   color: white;
   background-color: rgb(68, 22, 175);
   border: 1px solid white;
-}
-
-.btn-email {
-  color: white !important;
-  background-color: #A93226 !important;
-  border: 0 !important;
 }
 
 .btn-facebook {

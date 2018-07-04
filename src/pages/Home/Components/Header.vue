@@ -1,97 +1,56 @@
 <template>
-  <el-container direction="vertical" class="container-fluid">
-    <landing-nav :title="'My Buzz Money'"></landing-nav>
+  <el-container direction="vertical" class="container-fluid ctn-header">
+    <!-- navigation landing bar -->
+    <el-header>
+      <landing-nav :title="'My Buzz Money'"></landing-nav>
+    </el-header>
+    <!-- content -->
     <el-container direction="vertical">
-      <el-main class="container-body">
-        <el-row class="container-body-row">
-          <el-col>
-            <h2>EASY EXCHANGE YOUR CURRENCY</h2>
-          </el-col>
+      <el-main class="ctn-body">
+        <el-row class="bottom">
+          <h1 class="company-slogan">EASY EXCHANGE YOUR CURRENCY</h1>
         </el-row>
       </el-main>
-      <el-footer class="default-row">
-        <el-row class="no-padding">
-          <el-col :md="12" :sm="12" :xs="24">
-            <small class="italic">Congratulations, You found a better way of currency exchange.</small>
-          </el-col>
-          <el-col :md="12" :sm="12" :xs="24" class="hidden-xs-only">
-            <div class="right">
-              <el-tooltip class="item" effect="dark" content="Send Email To Us" placement="top-start">
-                <button class="btn btn-social btn-round btn-outline btn-email white" @click="emailUs">
-                  <i class="fa fa-envelope-o"></i>
-                </button>
-              </el-tooltip>
-              <el-tooltip class="item" effect="dark" content="Visit Our Facebook" placement="top-start">
-                <button class="btn btn-social btn-round btn-outline btn-facebook white" title="My Buzz Money Official Facebook Page" @click="openFacebookPage">
-                  <i class="fa fa-facebook"></i>
-                </button>
-              </el-tooltip>
-            </div>
-          </el-col>
-        </el-row>
-      </el-footer>
     </el-container>
+    <!-- footer -->
+    <el-footer class="default-row">
+      <el-row class="no-padding">
+        <el-col :sm="12" :xs="24">
+          <small class="italic note dim-black" v-html="'Congratulations, You found a better way of currency exchange. <br/>--- My Buzz Money Team'"></small>
+        </el-col>
+        <el-col :sm="12" :xs="24" class="hidden-xs-only">
+          <div class="right">
+            <el-tooltip class="item" effect="dark" content="Send Email To Us" placement="top-start">
+              <button class="btn btn-round btn-email" @click="emailUs">
+                <i class="fa fa-envelope-o"></i>
+              </button>
+            </el-tooltip>
+            <el-tooltip class="item" effect="dark" content="Visit Our Facebook" placement="top-start">
+              <button class="btn btn-social btn-round btn-outline btn-facebook white" title="My Buzz Money Official Facebook Page" @click="openFacebookPage">
+                <i class="fa fa-facebook"></i>
+              </button>
+            </el-tooltip>
+          </div>
+        </el-col>
+      </el-row>
+    </el-footer>
   </el-container>
 </template>
 
 <style scoped>
 
-  .container-fluid{
+  .ctn-header{
     min-height: 100vh;
-    width: 100%;
     background-image: url("/static/images/background/bg_home.jpg");
-    background-size: cover;                      
+    background-size: auto;                      
     background-repeat: no-repeat;
     background-position: center center;
+    background-color: lightgrey;
   }
 
-  h2{
-    background: -webkit-linear-gradient(to right, black, #808B96);
-    background: linear-gradient(to right, black, #808B96);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .container-body {
+  .ctn-body {
     position: relative;
   }
-
-  .container-body-row {
-    position: absolute;
-    bottom: 0%;
-  }
-
-  /* Large desktops and laptops */
-  /* @media (min-width: 768px) {
-    .container-fluid{
-      min-height: 100vh;
-    }
-    .empty-row{
-      height: 300px;
-    }
-  }*/
-  
-  /* Landscape tablets and medium desktops */
-  /* @media (min-width: 992px) and (max-width: 1199px) {
-    .empty-row{
-      height: 250px;
-    }
-  } */
-
-  /* Portrait tablets and small desktops */
-  /* @media (min-width: 768px) and (max-width: 991px) {
-    .empty-row{
-      height: 200px;
-    }
-  } */
-
-  /* Landscape phones and portrait tablets */
-  /* @media (max-width: 768px) {
-    .container-fluid{
-      min-height: 90vh;
-    }
-  } */
 
   /* Portrait phones and smaller */
   @media (max-width: 480px) {
@@ -102,7 +61,6 @@
 </style>
 
 <script>
-  import 'element-ui/lib/theme-chalk/display.css'
   import LandingNav from 'src/components/LandingNav.vue'
   import externalMixin from 'src/mixins/externalMixin'
 

@@ -41,6 +41,9 @@ new Vue({
 
 /* We import element-ui variables at the end so they can override the default element-ui colors */
 import './assets/sass/element_variables.scss'
+import './assets/css/standard_theme.css'
+import './assets/css/color.css'
+import './assets/css/fontStyle.css'
 import './assets/css/common.css'
 import './assets/css/animation.css'
 import 'element-ui/lib/theme-chalk/index.css'

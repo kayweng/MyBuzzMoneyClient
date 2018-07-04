@@ -1,0 +1,96 @@
+html, body{
+  height:100%;
+  overflow-x: hidden;
+  font-family: 'Nunito', Helvetica, Arial, sans-serif;
+}
+
+/*heading*/
+h1{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h2{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h3{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h4{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.company-slogan{
+  background: -webkit-linear-gradient(to right, #808B96, #000);
+  background: linear-gradient(to right, #808B96, #000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/*
+  primary:    #0062cc
+  secondary:  #6c757d
+  success:    #28a745
+  danger:     #dc3545
+  warning:    #ffc107
+  info:       #17a2b8
+  light:      #f8f9fa
+  dark:       #343a40
+  buzz-blue:  #2471A3
+*/
+
+/*label*/
+.company-label {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0062cc;
+  cursor: pointer;
+  padding-top: 4px;
+}
+
+/*icon*/
+.company-logo {
+  color: #0062cc;
+  border-color: #0062cc;
+  font-size: 20px;
+}
+
+/*button*/
+.btn-signup{
+  border-radius: 30px;
+  border-color: #0062cc;
+  background-color: transparent;
+  border: 2px solid #0062cc;
+  color: #0062cc !important;
+}
+
+.btn-signup:hover{
+  background-color: #0062cc !important;
+  border-color: white;
+  color: white !important;
+}
+
+.btn-login{
+  border-radius: 30px;
+  border-color: #0062cc;
+  background-color: transparent;
+  border: 0;
+  color: #0062cc !important;
+}
+
+.btn-login:hover{
+  background-color: #0062cc !important;
+  border: 0px !important;
+  color: white !important;
+}
+
+.btn-email{
+  border-radius: 30px;
+  color: white !important;
+  background-color: #A93226 !important;
+  border: 0 !important;
+}
