@@ -1,4 +1,4 @@
-import { required, numeric, requiredIf } from 'vuelidate/lib/validators'
+import { required, numeric } from 'vuelidate/lib/validators'
 import basedModel from './baseModel'
 
 class ExchangeModel extends basedModel {
@@ -11,7 +11,7 @@ class ExchangeModel extends basedModel {
     this.amount = null            // 100.00
     this.geolocation = null       // { lat: 0 lang: 0 }
     this.address = null           // 242, Jalan Merdeka, Taman Gopeng Baru, 31600
-    this.method = null            // 1-Meetup, 2-Bank Transfer, 3-Via Mybuzzmoney  
+    this.method = null            // 1-Meetup, 2-Bank Transfer, 3-Via Mybuzzmoney
     this.type = null              // 1-Request, 2-Offer
     this.expireDate = null        // created date + 14 days
   }
@@ -31,7 +31,7 @@ class ExchangeModel extends basedModel {
   }
 
   resetState () {
-    this.exchangeId = null 
+    this.exchangeId = null
     this.baseCurrency = null
     this.requestCurrency = null
     this.amount = null

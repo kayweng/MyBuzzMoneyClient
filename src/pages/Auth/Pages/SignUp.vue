@@ -219,8 +219,8 @@
         calendarDate: null,
         model: new SignUpModel(),
         fbConnected: false,
-        rcapt_sig_key: "6Lfj31wUAAAAAIxBl40oHzGXuk8aCZ-IiZnC1GCy",
-        rcapt_id: 0 
+        rcapt_sig_key: '6Lfj31wUAAAAAIxBl40oHzGXuk8aCZ-IiZnC1GCy',
+        rcapt_id: 0
       }
     },
     validations: {
@@ -369,7 +369,7 @@
     },
     mounted () {
       if (window.grecaptcha) {
-        this.rcapt_id = grecaptcha.render( this.$refs['recaptcha'], { sitekey : this.rcapt_sig_key })
+        this.rcapt_id = grecaptcha.render(this.$refs['recaptcha'], { sitekey: this.rcapt_sig_key })
       }
 
       facebook.getLoginStatus().then(response => {

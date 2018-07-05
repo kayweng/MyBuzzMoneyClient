@@ -73,7 +73,7 @@
         model: {
           type: 'Bank Account',
           createdOn: null,
-          value: null,        //bank account
+          value: null,        // bank account
           bankName: null,
           swiftCode: null
         }

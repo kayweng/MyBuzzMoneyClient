@@ -25,7 +25,7 @@
 </style>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  // import { mapGetters, mapActions } from 'vuex'
   import { FadeRenderTransition } from 'src/components/index'
   import { ExchangeModel } from 'src/models/exchangeModel.js'
 

@@ -6,30 +6,28 @@ html, body{
 
 /*heading*/
 h1{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Raleway', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 h2{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Raleway', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 h3{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Raleway', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 h4{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Raleway', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.company-slogan{
-  background: -webkit-linear-gradient(to right, #808B96, #000);
-  background: linear-gradient(to right, #808B96, #000);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
+h5{
+  font-family: 'Raleway', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+h6{
+  font-family: 'Raleway', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 /*
   primary:    #0062cc
   secondary:  #6c757d
@@ -42,7 +40,6 @@ h4{
   buzz-blue:  #2471A3
 */
 
-/*label*/
 .company-label {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 20px;
@@ -52,7 +49,15 @@ h4{
   padding-top: 4px;
 }
 
-/*icon*/
+.company-slogan{
+  background: -webkit-linear-gradient(to right, #808B96, #000);
+  background: linear-gradient(to right, #808B96, #000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
 .company-logo {
   color: #0062cc;
   border-color: #0062cc;
@@ -88,9 +93,21 @@ h4{
   color: white !important;
 }
 
+/*social*/
+.btn-facebook {
+  border-radius: 30px;
+  color: white!important;
+  background-color: #3b5998 !important;
+  border: 0 !important;
+  padding: 10px !important;
+  margin-right: 8px;
+}
+
 .btn-email{
   border-radius: 30px;
   color: white !important;
   background-color: #A93226 !important;
   border: 0 !important;
+  padding: 10px !important;
+  margin-right: 8px;
 }

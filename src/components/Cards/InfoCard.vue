@@ -1,42 +1,51 @@
 <template>
-    <div class="center card-item">
-        <slot if="$slot['image']" name="image">
-          <img :src="'/static/images/' + imgName " />
-        </slot>
-        <h6>{{ title }} </h6>
-        <p class="text-muted">{{ message }}</p>
-    </div>
+  <div class="card-item">
+    <slot if="$slot['image']" name="image">
+      <div class="card-item-img">
+        <img :src="'/static/images/' + imgName " />
+      </div>
+    </slot>
+    <h6>{{ title }} </h6>
+    <p class="text-muted">{{ message }}</p>
+  </div>
 </template>
 
 <style scoped>
     h6{
-      padding-top: 15px;
-      text-align: center;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+      padding-top: 16px;
     }
 
     .card-item {
-        display: inline-block;
-        vertical-align: top;
-        width: 100%;
-        min-height: 180px;
-        padding-left: 15px;
-        padding-right: 15px;
+      text-align: center;
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      min-height: 180px;
+      padding-left: 15px;
+      padding-right: 15px;
     }
 
-    .card-item > img{
-        height: 60px;
-        width: 60px;
-        display: block; /*for the img inside your div */ 
-        margin: 0 auto; 
+    .card-item-img {
+      max-height: 100px;
+      max-width: 100px;
+      padding: 20px;
+      border-radius: 50%;
+      background-color: aliceblue;
+    }
+
+    .card-item-img > img{
+      max-height: 60px;
+      max-width: 60px;
+      display: block; /*for the img inside your div */ 
+      margin: 0 auto; 
     }
 
     .card-item > p{
-        font-size: small;
-        color: #515A5A;
-        padding-top: 10px;
-        display: block;
-        text-align: left;
+      text-align: center;
+      font-size: small;
+      padding-top: 10px;
+      display: block;
+      max-width: 250px;
     }
 
 </style>

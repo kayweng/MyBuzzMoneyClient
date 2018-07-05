@@ -193,7 +193,7 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import { FadeRenderTransition, SlideRenderTransition,  Switch as LSwitch } from 'src/components/index'
+  import { FadeRenderTransition, SlideRenderTransition } from 'src/components/index'
   import { readImageFileData } from 'src/js/image'
   import UserImage from './../Components/UserImage.vue'
   import UserModel from 'src/models/userModel'
@@ -205,8 +205,7 @@
     components: {
       FadeRenderTransition,
       SlideRenderTransition,
-      [UserImage.name]: UserImage,
-      LSwitch
+      [UserImage.name]: UserImage
     },
     data () {
       return {
@@ -233,8 +232,8 @@
       resetForm () {
         swal({
           type: 'warning',
-          title: 'Undo Changes',
-          html: '<small>Are you sure that you want to undo changes in profile ?</small>',
+          title: 'Discard Changes',
+          html: '<small>Are you sure that you want to discrad changes ?</small>',
           buttonsStyling: false,
           showCancelButton: true,
           confirmButtonClass: 'btn btn-warning btn-round btn-wd',

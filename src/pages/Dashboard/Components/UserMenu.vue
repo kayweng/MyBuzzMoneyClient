@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <div class="center" v-if="this.$loading.anyLoading">
+    <div class="center" v-if="isLoading">
       <v-loading loader='loadUserMenu'>
         <template slot='spinner'>
           <loading-spinner height='30px' width='30px' :spinColor="'white'" />
@@ -70,6 +70,7 @@
     props: ['value'],
     data () {
       return {
+        isLoading: true,
         isClosed: true
       }
     },
@@ -79,13 +80,13 @@
       }
     },
     watch: {
-      'value.lastName' (value) {
-        if (value) {
-          this.$loading.endLoading('loadUserMenu')
-        }
+      'value' (value) {
+        this.isLoading = false
+        this.$loading.endLoading('loadUserMenu')
       }
     },
     mounted () {
+      this.isLoading = true
       this.$loading.startLoading('loadUserMenu')
     },
     created () {

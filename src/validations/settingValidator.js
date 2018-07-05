@@ -1,9 +1,9 @@
-import { required, numeric, maxLength } from 'vuelidate/lib/validators'
+import { required, numeric } from 'vuelidate/lib/validators'
 
 const paypalMeLink = {
   required,
   paypalLink: val => {
-    if(val === 'https://www.paypal.me/') {
+    if (val === 'https://www.paypal.me/') {
       return false
     }
 

@@ -90,40 +90,40 @@
     name: 'AddLinkedAccountModal',
     data () {
       return {
-        modalWidth: "50%",
-        modalHeight: "65%",
+        modalWidth: '50%',
+        modalHeight: '65%',
         selectedAccountType: null,
-        selectedTypeInfo: null,
+        selectedTypeInfo: null
       }
     },
-    methods:{
+    methods: {
       addNewPayPalLink (val) {
         this.$emit('returnLinkedAccount', val)
         this.$modal.hide('AddLinkedAccountModal')
       },
-      addNewBankAccount(val) {
+      addNewBankAccount (val) {
         this.$emit('returnLinkedAccount', val)
         this.$modal.hide('AddLinkedAccountModal')
       },
-      selectAccountType (val){
+      selectAccountType (val) {
         this.selectedAccountType = val
       },
-      beforeClose() {
+      beforeClose () {
         this.clearInfo()
         this.selectedAccountType = null
       },
-      showInfo(val) {
+      showInfo (val) {
         if (val === 'Bank') {
           this.selectedTypeInfo = 'You can add a verified bank account to your linked account. Money changer send/transfer money to your bank account.'
         } else if (val === 'PayPal') {
           this.selectedTypeInfo = 'You can add your PayPal.Me link to your linked account. Money changer send currency to your paypal account.'
         }
       },
-      clearInfo() {
+      clearInfo () {
         this.selectedTypeInfo = '* Please select an account type<br/>&nbsp;'
       }
     },
-    mounted (){
+    mounted () {
       this.clearInfo()
     },
     created () {

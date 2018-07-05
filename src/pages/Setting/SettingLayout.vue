@@ -24,19 +24,20 @@
       Preferences,
       LinkAccounts
     },
-    data() {
+    data () {
       return {
         model: new SettingModel(),
         activeTab: 'Preferences'
-      };
+      }
     },
     methods: {
-      handleClick(tab, event) {
+      handleClick (tab, event) {
        
       }
     },
     watch: {
       '$store.state.setting.userSetting' (val) {
+        console.log(val)
         if (val) {
           this.model = val
         }
@@ -45,9 +46,9 @@
       }
     },
     mounted () {
-      if (this.$store.state.setting.userSetting.preferences == undefined) {
+      if (this.$store.state.setting.userSetting.preferences === undefined) {
         this.$loading.startLoading('loading')
       }
     }
-  };
+  }
 </script>

@@ -8,25 +8,27 @@
     <el-container direction="vertical">
       <el-main class="ctn-body">
         <el-row class="bottom">
-          <h1 class="company-slogan">EASY EXCHANGE YOUR CURRENCY</h1>
+          <h2 class="company-slogan">EASY EXCHANGE YOUR CURRENCY</h2>
         </el-row>
       </el-main>
     </el-container>
     <!-- footer -->
-    <el-footer class="default-row">
+    <el-footer>
       <el-row class="no-padding">
-        <el-col :sm="12" :xs="24">
-          <small class="italic note dim-black" v-html="'Congratulations, You found a better way of currency exchange. <br/>--- My Buzz Money Team'"></small>
+        <!-- message -->
+        <el-col :sm="16" :xs="24">
+          <small class="italic note dim-black" v-html="'Congratulations, You have found a great way to exchange your currency. <br/> - My Buzz Money Team'"></small>
         </el-col>
-        <el-col :sm="12" :xs="24" class="hidden-xs-only">
+        <!-- socials -->
+        <el-col :sm="8" :xs="24" class="hidden-xs-only">
           <div class="right">
             <el-tooltip class="item" effect="dark" content="Send Email To Us" placement="top-start">
-              <button class="btn btn-round btn-email" @click="emailUs">
+              <button class="btn btn-email" @click="emailUs">
                 <i class="fa fa-envelope-o"></i>
               </button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="Visit Our Facebook" placement="top-start">
-              <button class="btn btn-social btn-round btn-outline btn-facebook white" title="My Buzz Money Official Facebook Page" @click="openFacebookPage">
+              <button class="btn btn-facebook" title="My Buzz Money Official Facebook Page" @click="openFacebookPage">
                 <i class="fa fa-facebook"></i>
               </button>
             </el-tooltip>
@@ -38,6 +40,9 @@
 </template>
 
 <style scoped>
+  footer {
+    height: 70px!important;
+  }
 
   .ctn-header{
     min-height: 100vh;
@@ -50,13 +55,6 @@
 
   .ctn-body {
     position: relative;
-  }
-
-  /* Portrait phones and smaller */
-  @media (max-width: 480px) {
-    .container-fluid{
-      min-height: 50vh;
-    }
   }
 </style>
 

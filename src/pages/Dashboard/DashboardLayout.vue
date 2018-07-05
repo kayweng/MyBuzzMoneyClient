@@ -83,7 +83,7 @@
         'cognitoUserName'
       ]),
       isActive () {
-        return this.$route.name === "My Profile"
+        return this.$route.name === 'My Profile'
       }
     },
     methods: {
@@ -123,7 +123,7 @@
           vm.logoutUser(true)
         }, 5000)
 
-        //remove increament
+        // remove increament
         clearInterval(vm.idleInterval)
         vm.idleInterval = null
 
@@ -167,7 +167,7 @@
           vm.resetIdleTime(vm)
         })
 
-         document.getElementById('dashboardLayout').addEventListener('keyup', function () {
+        document.getElementById('dashboardLayout').addEventListener('keyup', function () {
           vm.resetIdleTime(vm)
         })
       })

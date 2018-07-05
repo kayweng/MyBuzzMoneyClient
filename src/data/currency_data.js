@@ -225,7 +225,7 @@ const currencyCodes = [
   // {'country': 'Vanuatu', 'currency_code': 'VUV'},
   // {'country': 'Vatican', 'currency_code': 'EUR'},
   // {'country': 'Venezuela', 'currency_code': 'VEF'},
-  {'country': 'Vietnam', 'currency_code': 'VND'},
+  {'country': 'Vietnam', 'currency_code': 'VND'}
   // {'country': 'Virgin Islands (British) ', 'currency_code': 'USD'},
   // {'country': 'Virgin Islands (USA) ', 'currency_code': 'USD'},
   // {'country': 'Wallis and Futuna Islands', 'currency_code': 'XPF'},

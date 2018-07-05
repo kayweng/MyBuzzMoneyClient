@@ -110,10 +110,10 @@
     },
     data () {
       return {
-        model: null,
+        model: clone(this.value),
         stateValues: [],
         citiValues: [],
-        messages : [
+        messages: [
           {
             ref: 'chkExpired',
             checked: false,
@@ -149,8 +149,8 @@
       resetPreferences () {
         swal({
           type: 'warning',
-          title: 'Undo Changes',
-          html: '<small>Are you sure that you want to undo changes in preferences ?</small>',
+          title: 'Discard Changes',
+          html: '<small>Are you sure that you want to discard changes ?</small>',
           buttonsStyling: false,
           showCancelButton: true,
           confirmButtonClass: 'btn btn-warning btn-round btn-wd',
@@ -158,14 +158,18 @@
         }).then((result) => {
           if (result.value) {
             this.model = clone(this.value)
+            console.log(this.model)
           }
         })
       },
       savePreferences () {
-
+        console.log(this.model)
       }
     },
     watch: {
+      'value' (value) {
+        this.model = clone(value)
+      },
       'model.location.country' (value) {
         var states = this.getStates(value)
         this.stateValues = []
@@ -186,9 +190,6 @@
           this.citiValues = cities
         }
       }
-    },
-    created () {
-      this.model = clone(this.value)
     }
   }
 </script>

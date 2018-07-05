@@ -130,7 +130,6 @@ let settingPage = {
   ]
 }
 
-
 const routes = [
   {
     path: '/',

@@ -60,10 +60,9 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapActions } from 'vuex'
   import { FadeRenderTransition } from 'src/components/index'
   import { PasswordModel } from 'src/models/passwordModel'
-  import { mandatory, password, confirmNewPassword } from 'src/validations/userValidator.js'
   import swal from 'sweetalert2'
 
   export default {
@@ -99,7 +98,7 @@
         }).then((result) => {
           if (result.value) {
             this.changePassword({ oldPassword: this.model.oldPassword, newPassword: this.model.newPassword })
-            .then(()=>{
+            .then(() => {
               this.showNotifyMessage('Your password has been changed successfully.', 5000, 'primary', 'nc-icon nc-check-2')
               this.$router.push('Dashboard')
             }, (error) => {

@@ -13,7 +13,7 @@
   .landing-div{
     min-height: 60px;
     width: 100%;
-    padding: 10px 15px;
+    margin-top: 16px;
     z-index: 100;
     position: relative;
   }

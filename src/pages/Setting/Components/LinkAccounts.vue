@@ -97,7 +97,7 @@
         var sameTypeExists = 0
         var sameValueExists = 0
 
-        const mapping = this.value.map(x => {
+        this.value.map(x => {
           if (x.type === val.type) {
             sameTypeExists = sameTypeExists + 1
           }
@@ -107,12 +107,12 @@
           }
         })
         
-        if (sameTypeExists > 0){
+        if (sameTypeExists > 0) {
           this.showNotifyMessage("Only one '" + val.type + "' linked account is allowed.", 5000, 'warning')
           return
         }
 
-        if (sameValueExists > 0){
+        if (sameValueExists > 0) {
           this.showNotifyMessage("'" + val.value + "' is already exists in linked account.", 5000, 'warning')
           return
         }
