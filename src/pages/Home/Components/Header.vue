@@ -1,5 +1,5 @@
 <template>
-  <el-container direction="vertical" class="container-fluid ctn-header">
+  <el-container direction="vertical" class="container-fluid ctn">
     <!-- navigation landing bar -->
     <el-header>
       <landing-nav :title="'My Buzz Money'"></landing-nav>
@@ -44,7 +44,7 @@
     height: 70px!important;
   }
 
-  .ctn-header{
+  .ctn{
     min-height: 100vh;
     background-image: url("/static/images/background/bg_home.jpg");
     background-size: auto;                      

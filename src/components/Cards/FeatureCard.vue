@@ -1,12 +1,16 @@
 <template>
-  <div class="card-item">
+  <div class="fc-item">
     <slot if="$slot['image']" name="image">
-      <div class="card-item-img">
+      <label class="fc-img">
         <img :src="'/static/images/' + imgName " />
-      </div>
+      </label>
     </slot>
     <h6>{{ title }} </h6>
-    <p class="text-muted">{{ message }}</p>
+    <slot if="$slot['message']" name="message">
+      <label class="fc-message">
+        <small class="text-muted">{{ message }}</small>
+      </label>
+    </slot>
   </div>
 </template>
 
@@ -15,7 +19,7 @@
       padding-top: 16px;
     }
 
-    .card-item {
+    .fc-item {
       text-align: center;
       display: inline-block;
       vertical-align: top;
@@ -25,34 +29,36 @@
       padding-right: 15px;
     }
 
-    .card-item-img {
+    .fc-img {
       max-height: 100px;
       max-width: 100px;
       padding: 20px;
       border-radius: 50%;
-      background-color: aliceblue;
+      background-color: transparent;
     }
 
-    .card-item-img > img{
+    .fc-img:hover{
+      cursor: pointer;
+      background-color: #f8f9fa;
+      animation: pulse 0.4s linear;
+      -webkit-animation: pulse 0.4s linear;
+    }
+
+    .fc-img > img{
       max-height: 60px;
       max-width: 60px;
-      display: block; /*for the img inside your div */ 
       margin: 0 auto; 
     }
 
-    .card-item > p{
-      text-align: center;
-      font-size: small;
-      padding-top: 10px;
-      display: block;
+    .fc-message{
       max-width: 250px;
+      width: 250px;
     }
-
 </style>
 
 <script>
   export default {
-    name: 'card-info',
+    name: 'feature-card',
     props: {
       imgName: String,
       title: String,

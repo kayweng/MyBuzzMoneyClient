@@ -5,7 +5,7 @@
       <app-features :key="2"></app-features>
       <!-- <app-local-currency :key="3"></app-local-currency>
       <app-currency-converter :key="4"></app-currency-converter> -->
-      <app-get-started :key="5"></app-get-started>
+      <!-- <app-get-started :key="5"></app-get-started> -->
       <app-footer :key="6"></app-footer>
     </transition-group>
   </div>

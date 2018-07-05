@@ -15,7 +15,7 @@ import SlideRenderTransition from './Transitions/SlideRenderTransition.vue'
 import Card from './Cards/Card.vue'
 import ChartCard from './Cards/ChartCard.vue'
 import StatsCard from './Cards/StatsCard.vue'
-import InfoCard from './Cards/InfoCard.vue'
+import FeatureCard from './Cards/FeatureCard.vue'
 import SmallNoteCard from './Cards/SmallNoteCard.vue'
 import CircleInfoCard from './Cards/CircleInfoCard.vue'
 
@@ -38,7 +38,7 @@ let components = {
   Card,
   ChartCard,
   StatsCard,
-  InfoCard,
+  FeatureCard,
   SmallNoteCard,
   CircleInfoCard,
   Table,
@@ -62,7 +62,7 @@ export {
   Card,
   ChartCard,
   StatsCard,
-  InfoCard,
+  FeatureCard,
   SmallNoteCard,
   CircleInfoCard,
   Table,

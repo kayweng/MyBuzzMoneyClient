@@ -1,9 +1,11 @@
 <template>
-  <el-container direction="vertical" class="container-fluid">
-    <el-row class="white get-started-info">
-      <h3>Get started to change your way of exchange foregin currency today</h3>
-      <p>Register an account to explores more currency rates in our platform and remember authenticate yourself to be a genuine user for enjoy more features.</p>
-    </el-row>
+  <el-container direction="vertical" class="container-fluid ctn">
+    <el-main>
+      <el-row class="white get-started-info">
+        <h3>Get started to change your way of exchange currency today</h3>
+        <p>Register an account to explores more currency rates in our platform and remember authenticate yourself to be a genuine user for enjoy more features.</p>
+      </el-row>
+    </el-main>
     <el-row>
       <router-link class="btn btn-join btn-round btn-wd" to="/signup" tag="button">Join now</router-link>
     </el-row>
@@ -11,10 +13,16 @@
 </template>
 
 <style scoped>
-  .container-fluid{
+  .ctn{
     background-color: #283747;
     background: linear-gradient(to right, #283747, #2C3E50);
     min-height: 250px;
+  }
+
+  h3{
+    margin-bottom: 0;
+    font-weight: bold;
+    width: 100%;
   }
 
   .btn{
@@ -53,11 +61,5 @@
     .btn{
       margin-left: 50px;
     }
-  }
-
-  h3{
-    margin-bottom: 0;
-    font-weight: bold;
-    width: 100%;
   }
 </style>
