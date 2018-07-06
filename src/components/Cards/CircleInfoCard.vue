@@ -9,8 +9,8 @@
       <slot name="info">
           <div class="inner-info white">
             <h5>{{ name }}</h5>
-            <p class="italic gill-Sans"><span>{{title}}</span></p>
-            <p class="info gill-Sans">{{info}}</p>
+            <p class="italic"><span>{{title}}</span></p>
+            <p class="info">{{info}}</p>
           </div>
       </slot>
     </div>

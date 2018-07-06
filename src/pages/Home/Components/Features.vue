@@ -1,11 +1,11 @@
 <template>
   <el-container direction="vertical" class="container-fluid ctn">
     <el-header class="center">
-      <h2 class="primary">Read All Features</h2>
+      <h3 class="primary">Exchange With Everyone</h3>
     </el-header>
     <el-container direction="vertical">
       <el-row>
-        <el-col :lg="8" :md="8" :sm="12" :xs="24" v-for="(item, index) in items" :key="index">
+        <el-col :md="8" :sm="12" :xs="24" v-for="(item, index) in items" :key="index">
           <feature-card  :imgName="item.img" 
                       :title="item.title"
                       :message="item.message">
@@ -18,7 +18,6 @@
 
 <style scoped>
   .ctn{
-    padding: 0px 50px 50px 50px;
     min-height: 100px;
   }
 
@@ -42,7 +41,7 @@
             message: 'You could offers a competitive currency rate to everyone or accept an offer from someone near you.'},
           {img: 'benefits/meetup.png',
             title: 'Meet up',
-            message: 'You are dealing with other person involved at right place and best time you both agreed.'},
+            message: 'You are dealing with other person involved at both agreed right place and time.'},
           {img: 'benefits/aml.png',
             title: 'Anti Money Laundaring',
             message: 'All exchange currency deals are monitoring by our team to ensures we remain in compliance AML laws.'},

@@ -25,8 +25,6 @@
       vertical-align: top;
       width: 100%;
       min-height: 180px;
-      padding-left: 15px;
-      padding-right: 15px;
     }
 
     .fc-img {
@@ -39,7 +37,7 @@
 
     .fc-img:hover{
       cursor: pointer;
-      background-color: #f8f9fa;
+      background-color: #F2F3F4;
       animation: pulse 0.4s linear;
       -webkit-animation: pulse 0.4s linear;
     }
