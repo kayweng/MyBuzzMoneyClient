@@ -1,141 +1,144 @@
 <template>
-  <el-container class="container-fluid ctn">
-    <el-header>
-      <h3 class="center bold">How It Works</h3>
+  <el-container direction="vertical" class="container-fluid ctn">
+    <el-header class="center">
+      <h3 class="white">How It Works</h3>
     </el-header>
-    <el-main>
-      <el-row class="empty-row"></el-row>
-      <el-row>
-        <el-col :sm="9">
-          <hr/>
-        </el-col>
-        <el-col :sm="6" class="center">
-          <label for="">Offer Currency Exchange</label>
-        </el-col>
-        <el-col :sm="9">
-          <hr/>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :sm="6" :xs="24" v-for="(item, index) in offers" :key="index">
-          <card>
-            <div name="image" class="center">
-              <label class="card-image">
-                <img :src="'/static/images/' + item.img ">
-              </label>
-            </div>
-            <div class="secondary">
-              <h5 class="bold">{{item.title}}</h5>
-              <hr/>
-              <p class="medium">{{item.message}}</p>
-            </div>
-          </card>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :sm="9">
-          <hr/>
-        </el-col>
-        <el-col :sm="6" class="center">
-          <label for="">Accept Currency Exchange</label>
-        </el-col>
-        <el-col :sm="9">
-          <hr/>
-        </el-col>
-      </el-row>
-      <!-- Accept -->
-      <el-row>
-        <el-col :sm="6" :xs="24" v-for="(item, index) in accepts" :key="index">
-          <card>
-            <div name="image" class="center">
-              <label class="card-image">
-                <img :src="'/static/images/' + item.img ">
-              </label>
-            </div>
-            <div class="secondary">
-              <h5 class="bold">{{item.title}}</h5>
-              <hr/>
-              <p class="medium">{{item.message}}</p>
-            </div>
-          </card>
-        </el-col>
-      </el-row>
+    <el-main v-if="deviceType !== 'mobile'">
+      <!-- Left Steps : Offer Your Currency -->
+      <el-col :sm="12" :xs="24" v-if="!isRight || imageSource === null">
+        <label ref="leftSteps" class="step-label" @mouseover="isLeft = true" @mouseleave="isLeft = false">
+          <vertical-steps @mouseover="leftStepOver" @mouseleave="imageSource = null"
+                  :prefixChar="'l_'"
+                  :title="'Offer Your Currency'" 
+                  :items="offers"></vertical-steps>
+        </label>
+      </el-col>
+      <!-- Images Detail -->
+      <el-col :sm="12" :xs="24" v-show="imageSource !== null" :style="{ 'background-color': '#5DADE2', 'height': imageHeight}">
+        <transition name="fade" mode="out-in">
+          <label class="step-label" :key="'/static/images/' + imageSource">
+            <img class="step-image" :src=" imageSource === null ? '/static/images/icons/transparent.png' : '/static/images/' + imageSource">
+          </label>
+        </transition>
+      </el-col>
+      <!-- Right Steps : Accept An Offer -->
+      <el-col :sm="12" :xs="24" v-if="!isLeft || imageSource === null">
+        <label ref="rightSteps" class="step-label" @mouseover="isRight = true" @mouseleave="isRight = false">
+          <vertical-steps @mouseover="rightStepOver" @mouseleave="imageSource = null"
+                  :prefixChar="'r_'"
+                  :title="'Accept An Offer'" 
+                  :items="accepts"></vertical-steps>
+        </label>
+      </el-col>
+    </el-main>
+    <el-main v-else>
+      <el-col :xs="24" :style="{ 'height':'450px'}">
+        <el-carousel style="height:100%;">
+          <el-carousel-item>
+            <label ref="m_leftSteps">
+              <vertical-steps 
+                      :prefixChar="'l_'"
+                      :title="'Offer Your Currency'" 
+                      :items="offers"></vertical-steps>
+            </label>
+          </el-carousel-item>
+          <el-carousel-item>
+            <label ref="m_rightSteps" class="step-label">
+              <vertical-steps 
+                      :prefixChar="'r_'"
+                      :title="'Accept An Offer'" 
+                      :items="accepts"></vertical-steps>
+            </label>
+          </el-carousel-item>
+        </el-carousel>
+      </el-col>
     </el-main>
   </el-container>
 </template>
 
 <style scoped>
   .ctn{
-    background-color: #0062cc;
-    color: white;
+    background-color: #3498DB;
+    background: linear-gradient(to bottom, #3498DB, #5DADE2);
+    color: #000;
+    min-height: 100px;
   }
 
-  .card-image{
-    width: 100px;
-    height: 100px;
-  }
-
-  .ctn > main{
-    overflow: hidden;
-  }
-
-  .card{
-    border-radius: 0;
-    margin: 10px;
-    -webkit-box-shadow: 0px 4px 4px 1px #343a40;
-    -moz-box-shadow: 0px 4px 4px 1px #343a40;
-    box-shadow: 0px 4px 4px 1px #343a40;
+  .el-main{
+    padding-top: 50px;
+    height: 100%;
+    z-index: 100;
   }
   
-  hr{
-    background-color: silver;
+  label{
+    padding-top: 16px;
   }
 
-  p{
-    min-height: 60px;
-    max-height: 60px;
+  .step-label{
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+  }
+
+  .step-label:hover{
+    background-color: #5DADE2;
+  }
+
+  .step-image{
+    height: 100%;
+    width: 100%;
+    border: 0;
   }
 </style>
 
 <script>
-  import { Card } from 'src/components/index'
+  import { VerticalSteps } from 'src/components/index'
 
   export default {
     name: 'app-works',
     components: {
-      Card
+      [VerticalSteps.name]: VerticalSteps
     },
     data () {
       return {
+        isLeft: false,
+        isRight: false,
+        imageHeight: {},
+        imageSource: null,
         offers: [
-          { img: 'benefits/genuine_user.png',
-            title: '1. Create An Offer',
+          { img: 'works/work_1.jpg',
+            title: 'Create An Offer',
             message: 'Create an offer with your offer currency and accepted currency, best rate and meet up places, etc.'},
-          { img: 'benefits/genuine_user.png',
-            title: '2. Confirm the acceptance',
-            message: 'Receive notification message about other accept your offer and confirm the deal.'},
-          { img: 'benefits/genuine_user.png',
-            title: '3. Meet up & Exchange',
-            message: 'Meet up with the person involved at both agreed places and time.'},
-          { img: 'benefits/genuine_user.png',
-            title: '4. Update the deal',
-            message: 'Remember update your offer status to gain reputations.'}
+          { img: 'works/work_2.jpg',
+            title: 'Confirm Or Reject',
+            message: 'Receive notification message about other accept your offer and you can confirm or reject the deal.'},
+          { img: 'works/work_3.jpg',
+            title: 'Meet up & Exchange',
+            message: 'Meet up with the person involved at both agreed places and time.'}
         ],
         accepts: [
-          { img: 'benefits/genuine_user.png',
-            title: '1. Accept An Offer',
-            message: 'Search an offer from listing, accept your desire offer.'},
-          { img: 'benefits/genuine_user.png',
-            title: '2. Receive a confirmation',
-            message: 'Platform will send you a notification if your request is accepted or denied.'},
-          { img: 'benefits/genuine_user.png',
-            title: '3. Meet up & Exchange',
-            message: 'Meet up with the person involved at both agreed places and time.'},
-          { img: 'benefits/genuine_user.png',
-            title: '4. Rate the deal',
-            message: 'Rate the host for the deal'}
+          { img: 'works/work_1.jpg',
+            title: 'Accept An Offer',
+            message: 'Search your preference offer and send accept offer request to host.'},
+          { img: 'works/work_2.jpg',
+            title: 'Receive a confirmation',
+            message: 'Receive a notification message about your request is accepted or denied.'},
+          { img: 'works/work_3.jpg',
+            title: 'Meet up & Exchange',
+            message: 'Meet up with the person involved at both agreed places and time.'}
         ]
       }
+    },
+    methods: {
+      leftStepOver (val) {
+        this.imageSource = this.offers[val].img
+      },
+      rightStepOver (val) {
+        this.imageSource = this.accepts[val].img
+      }
+    },
+    mounted () {
+      this.imageHeight = this.$refs.leftSteps.clientHeight + 'px'
     }
   }
 </script>

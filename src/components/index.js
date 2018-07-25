@@ -11,6 +11,7 @@ import Table from './Table.vue'
 
 import FadeRenderTransition from './Transitions/FadeRenderTransition.vue'
 import SlideRenderTransition from './Transitions/SlideRenderTransition.vue'
+import SlideXRenderTransition from './Transitions/SlideXRenderTransition.vue'
 
 import Card from './Cards/Card.vue'
 import ChartCard from './Cards/ChartCard.vue'
@@ -26,6 +27,8 @@ import BreadcrumbItem from './Breadcrumb/BreadcrumbItem.vue'
 import Pagination from './Pagination.vue'
 
 import SidebarPlugin from './SidebarPlugin'
+
+import VerticalSteps from './VerticalSteps.vue'
 
 let components = {
   Checkbox,
@@ -48,8 +51,10 @@ let components = {
   SidebarPlugin,
   FadeRenderTransition,
   SlideRenderTransition,
+  SlideXRenderTransition,
   Breadcrumb,
-  BreadcrumbItem
+  BreadcrumbItem,
+  VerticalSteps
 }
 
 export {
@@ -73,8 +78,10 @@ export {
   SidebarPlugin,
   FadeRenderTransition,
   SlideRenderTransition,
+  SlideXRenderTransition,
   Breadcrumb,
-  BreadcrumbItem
+  BreadcrumbItem,
+  VerticalSteps
 }
 
 export default components

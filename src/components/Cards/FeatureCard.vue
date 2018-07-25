@@ -5,7 +5,7 @@
         <img :src="'/static/images/' + imgName " />
       </label>
     </slot>
-    <h6>{{ title }} </h6>
+    <h5 class="bolder">{{ title }} </h5>
     <slot if="$slot['message']" name="message">
       <label class="fc-message">
         <small class="text-muted">{{ message }}</small>
@@ -15,10 +15,6 @@
 </template>
 
 <style scoped>
-    h6{
-      padding-top: 16px;
-    }
-
     .fc-item {
       text-align: center;
       display: inline-block;
@@ -51,6 +47,8 @@
     .fc-message{
       max-width: 250px;
       width: 250px;
+      min-height: 120px;
+      max-height:120px;
     }
 </style>
 

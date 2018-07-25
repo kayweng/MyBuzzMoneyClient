@@ -2,9 +2,17 @@
   <div class="landing-div">
     <i :class="iconClass" />
     <router-link to="/" tag="label" :class="titleClass">{{ title }}</router-link>
-    <div class="button-inline">
-        <router-link to="/signup" tag="button" :class="signUpButtonClass">Sign Up</router-link>
-        <router-link to="/login" tag="button" :class="signInButtonClass">Sign In</router-link>
+    <div class="button-inline" v-if="deviceType !== 'mobile'">
+      <router-link to="/signup" tag="button" :class="signUpButtonClass">Sign Up</router-link>
+      <router-link to="/login" tag="button" :class="signInButtonClass">Sign In</router-link>
+    </div>
+    <div class="button-inline" v-else>
+      <router-link to="/signup" tag="button" class="btn btn-auth-circle">
+        <span>S</span>
+      </router-link>
+      <router-link to="/login" tag="button" class="btn btn-auth-circle">
+        <span>L</span>
+      </router-link>
     </div>
   </div>
 </template>

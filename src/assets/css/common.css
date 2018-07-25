@@ -21,6 +21,16 @@
   border-radius: 50%;
 }
 
+.label-circle{
+  border-radius: 50%;
+  border: solid 2px white;
+  font-weight: bold;
+  padding: 4px;
+  min-height: 42px;
+  min-width: 42px;
+  text-align: center;
+}
+
 .shadow{
   -moz-box-shadow:    outset 0 0 10px #000000;
   -webkit-box-shadow: outset 0 0 10px #000000;
@@ -105,9 +115,9 @@
 
 .btn-join{
   background-color:#FFFFFF;
-  border: 2px solid #409EFF;
+  border: 2px solid #3498DB;
   height: 40px;
-  color: darkblue;
+  color: black;
 }
 
 .btn-join:hover{

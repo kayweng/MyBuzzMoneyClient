@@ -12,7 +12,7 @@
                 <small-note-card class="small-note-hover" :rate="rate"></small-note-card>
               </div>
             </el-carousel-item>
-            </el-carousel>
+          </el-carousel>
           <div class="center" v-else>
             <v-loading loader='loadBaseCurrency'>
               <template slot='spinner'>

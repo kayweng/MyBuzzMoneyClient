@@ -20,7 +20,7 @@
           <small class="italic note dim-black" v-html="'Congratulations, You have found a great way to exchange your currency. <br/> - My Buzz Money Team'"></small>
         </el-col>
         <!-- socials -->
-        <el-col :sm="8" :xs="24" class="hidden-xs-only">
+        <el-col :sm="8" :xs="24" v-if="deviceType !== 'mobile'">
           <div class="right">
             <el-tooltip class="item" effect="dark" content="Send Email To Us" placement="top-start">
               <button class="btn btn-email" @click="emailUs">
@@ -41,7 +41,7 @@
 
 <style scoped>
   footer {
-    height: 70px!important;
+    height: 100px!important;
   }
 
   .ctn{
