@@ -1,5 +1,5 @@
 <template>
-  <div class="landing-div">
+  <el-header class="landing-div">
     <i :class="iconClass" />
     <router-link to="/" tag="label" :class="titleClass">{{ title }}</router-link>
     <div class="button-inline" v-if="deviceType !== 'mobile'">
@@ -14,7 +14,7 @@
         <span>L</span>
       </router-link>
     </div>
-  </div>
+  </el-header>
 </template>
 
 <style scoped>
@@ -22,7 +22,7 @@
     min-height: 60px;
     width: 100%;
     margin-top: 16px;
-    z-index: 100;
+    z-index: 10;
     position: relative;
   }
 

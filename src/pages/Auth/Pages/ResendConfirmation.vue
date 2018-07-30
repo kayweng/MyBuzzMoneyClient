@@ -1,5 +1,6 @@
 <template>
-    <landing-layout pageClass="login-page" :contentClass="'col-lg-5 col-md-6 col-sm-8'">>
+  <landing-layout pageClass="login-page" :contentClass="'col-lg-5 col-md-6 col-sm-8'">
+    <el-main>
       <form method="#" action="#">
         <fade-render-transition>
           <card :title="'Resend Confirmation'">
@@ -22,7 +23,8 @@
           </card>
         </fade-render-transition>
       </form>
-    </landing-layout>
+    </el-main>
+  </landing-layout>
 </template>
 
 <script>

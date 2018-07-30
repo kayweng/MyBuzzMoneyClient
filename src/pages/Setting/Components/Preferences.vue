@@ -4,15 +4,15 @@
       <el-main>
         <!-- Local Currency -->
         <el-row>
-          <el-col :xs="24" :sm="12">
-            <currency-select  ref="ddlCurrency"
-                              v-model="model.localCurrency"
-                              @changed="model.localCurrency = $event">
-              <span slot="label">
-                <label for="ddlCurrency" class="control-label medium">Local Currency &nbsp;</label>
-              </span>
-            </currency-select>
-          </el-col>
+          <currency-select  ref="ddlCurrency"
+                            :label="'Local Currency'"
+                            v-model="model.localCurrency"
+                            :class="{'input-error': $v.model.localCurrency.$error }"
+                            @changed="model.localCurrency = $event">
+          </currency-select>
+          <div class="error-message">
+            <span v-if="!$v.model.localCurrency.required">The Local currency field is required.</span>
+          </div>
         </el-row>
         <el-row class="empty-row"></el-row>
         <hr/>
@@ -24,35 +24,40 @@
           <el-col :xs="24" :sm="12">
             <simple-select  :id="'ddlCountry'" 
                             :items="countries"
+                            :label="'Country'"
                             v-model="model.location.country"
+                            :class="{'input-error': $v.model.location.country.$error }"
                             @changed="model.location.country = $event">
-              <span slot="label">
-                <label for="ddlCountry" class="control-label medium">Country &nbsp;</label>
-              </span>
             </simple-select>
+            <div class="error-message">
+              <span v-if="!$v.model.location.country.required">The Country field is required.</span>
+            </div>
           </el-col>
-          
           <el-col :xs="24" :sm="12">
             <simple-select  :id="'ddlState'" 
                             :items="stateValues"
+                            :label="'State'"
                             v-model="model.location.state"
+                            :class="{'input-error': $v.model.location.state.$error }"
                             @changed="model.location.state = $event">
-              <span slot="label">
-                <label for="ddlState" class="control-label medium">State &nbsp;</label>
-              </span>
             </simple-select>
+            <div class="error-message">
+              <span v-if="!$v.model.location.state.required">The State field is required.</span>
+            </div>
           </el-col>
         </el-row>
         <el-row>
           <el-col :xs="24" :sm="12">
             <simple-select  :id="'ddlCity'" 
                             :items="citiValues"
+                            :label="'City/Suburb'"
+                            :class="{'input-error': $v.model.location.city.$error }"
                             v-model="model.location.city"
                             @changed="model.location.city = $event">
-              <span slot="label">
-                <label for="ddlCity" class="control-label medium">City/Suburb &nbsp;</label>
-              </span>
             </simple-select>
+             <div class="error-message">
+              <span v-if="!$v.model.location.city.required">The City field is required.</span>
+            </div>
           </el-col>
         </el-row>
         <hr/>
@@ -66,7 +71,7 @@
                         :checked="message.checked" 
                         :value="message.ref" 
                         @input="checkNotification">
-              <span class="medium none-transform" v-html="message.message"></span>
+              <span class="standard-label none-transform" v-html="message.message"></span>
             </check-box>
           </div>
         </el-row>
@@ -84,16 +89,14 @@
 </template>
 
 <style scoped>
-  .control-label {
-    width: 100px;
-  }
-
-  h4{
-    margin-top: 0;
+  .error-message{
+    margin-left: 105px;
   }
 </style>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
+  import SettingModel from 'src/models/settingModel.js'
   import { FadeRenderTransition, CurrencySelect, SimpleSelect, Checkbox } from 'src/components/index'
   import clone from 'clone'
   import swal from 'sweetalert2'
@@ -117,22 +120,33 @@
           {
             ref: 'chkExpired',
             checked: false,
-            message: 'Send me notification for a request is <strong class="strongbow">expired.</strong>'
+            message: 'Get notified about an offer is <strong class="strongbow">expired.</strong>'
           },
           {
             ref: 'chkAccepted',
             checked: false,
-            message: 'Send me notification for a request is <strong class="green">accepted.</strong>'
+            message: 'Get notified about an offer is <strong class="green">accepted.</strong>'
           },
           {
             ref: 'chkDenied',
             checked: false,
-            message: 'Send me notification for a request is <strong class="text-danger">denied.</strong>'
+            message: 'Get notified about a request is <strong class="text-danger">denied.</strong>'
           }
         ]
       }
     },
+    validations: {
+      model: SettingModel.validationScheme()
+    },
+    computed: {
+      ...mapGetters([
+        'cognitoUserEmail'
+      ])
+    },
     methods: {
+      ...mapActions([
+        'saveUserPreferences'
+      ]),
       checkNotification (checked, id) {
         switch (id) {
           case 'chkExpired':
@@ -158,12 +172,42 @@
         }).then((result) => {
           if (result.value) {
             this.model = clone(this.value)
-            console.log(this.model)
           }
         })
       },
       savePreferences () {
-        console.log(this.model)
+        if (this.$v.model.$invalid || this.$v.model.$error) {
+          this.$v.model.$touch()
+          return
+        }
+
+        swal({
+          type: 'info',
+          title: 'Save Preference',
+          html: '<small>Are you confirm to save changes ?</small>',
+          buttonsStyling: false,
+          showCancelButton: true,
+          confirmButtonClass: 'btn btn-primary btn-round btn-wd',
+          confirmButtonText: 'Yes'
+        }).then((result) => {
+          if (result.value) {
+            console.log(this.model)
+            var preferences = {
+              'email': this.cognitoUserEmail,
+              'preferences': this.model,
+              'modifiedOn': new Date().toString()
+            }
+
+            this.$loading.startLoading('loading')
+            this.saveUserPreferences(preferences).then(response => {
+              this.$loading.endLoading('loading')
+            }, (error)=>{
+              console.log(error)
+              this.$loading.endLoading('loading')
+              return
+            })
+          }
+        })
       }
     },
     watch: {

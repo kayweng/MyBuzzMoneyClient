@@ -4,10 +4,6 @@
       <span slot="label"><i class="fa fa-cog"></i> Preferences</span>
       <preferences v-model="model.preferences"></preferences>
     </el-tab-pane>
-    <el-tab-pane name="Accounts">
-      <span slot="label"><i class="fa fa-cubes"></i> Accounts</span>
-      <!-- <link-accounts v-model="model.linkedAccounts"></link-accounts> -->
-    </el-tab-pane>
     <el-tab-pane name="Verification">
       <span slot="label"><i class="fa fa-certificate"></i> Verifications</span>
     </el-tab-pane>
@@ -37,7 +33,6 @@
     },
     watch: {
       '$store.state.setting.userSetting' (val) {
-        console.log(val)
         if (val) {
           this.model = val
         }
@@ -47,7 +42,7 @@
     },
     mounted () {
       if (this.$store.state.setting.userSetting.preferences === undefined) {
-        this.$loading.startLoading('loading')
+        //this.$loading.startLoading('loading')
       }
     }
   }

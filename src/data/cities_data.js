@@ -6,7 +6,7 @@ const cities = {
     'KD': [
       { 'value': 'KD_KP', 'label': 'Kubang Pasu' },
       { 'value': 'KD_SP', 'label': 'Sungai Petani' },
-      { 'value': 'KD_AS', 'label': 'Alor_Setar' },
+      { 'value': 'KD_AS', 'label': 'Alor Setar' },
       { 'value': 'KD_KU', 'label': 'Kulim' }
     ],
     'KT': [

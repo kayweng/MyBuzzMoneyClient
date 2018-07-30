@@ -1,62 +1,64 @@
 <template>
   <landing-layout pageClass="login-page" :contentClass="'col-lg-5 col-md-6 col-sm-8'">
-    <form method="#" action="#">
-      <fade-render-transition>
-        <card :title="'Sign In'">
-          <!-- Login Inputs -->
-          <div direction="vertical">
-            <!-- email -->
-            <fg-input type="email"
-                      name="email"
-                      label="Email address"
-                      @blur="$v.model.email.$touch()"
-                      :class="{'input-error': $v.model.email.$error }"
-                      :maxLength="40"
-                      v-model="model.email">
-            </fg-input>
-            <div class="error-message">
-              <span v-if="!$v.model.email.required" class="error-message">The email field is required</span>
-              <span v-if="!$v.model.email.email" class="error-message">Invalid email format</span>
-            </div>
-            <!-- password -->
-             <fg-input label="Password"
-                      :type="passwordType"
-                      name="password"
-                      @blur="$v.model.password.$touch()"
-                      :class="{'input-error': $v.model.password.$error }"
-                      :maxLength="20"
-                      :hintClasses="passwordIconClasses"
-                      @hint="showPassword"
-                      v-model="model.password"
-                      ref="txtPassword">
-            </fg-input>
-            <div class="error-message">
-              <span v-if="!$v.model.password.required" class="error-message">The password field is required</span>
-            </div>
-          </div>
-          <!-- Remember Me -->
-          <div class="empty-row"></div>
-          <div class="row">
-            <check-box ref="chkLoggedIn" :checked="this.loggedMeIn" @input="keepMeLoggedIn">
-              <span class="note-message">keep me signed in</span>
-            </check-box>
-          </div>
-          <div class="empty-row"></div>
-          <!-- Buttons -->
-          <div class="center">
-            <button @click.enter.prevent="submitForm" type="submit" class="btn btn-fill btn-primary btn-round btn-wd ">Login</button>
-          </div>
-          <div slot="footer" class="row center">
-              <div class="col-sm-6 col-12">
-                <router-link to="/reset-password" class="btn btn-simple btn-link btn-sm">Forgot password</router-link>
+    <el-main>
+        <form method="#" action="#">
+          <fade-render-transition>
+            <card :title="'Sign In'">
+              <!-- Login Inputs -->
+              <div direction="vertical">
+                <!-- email -->
+                <fg-input type="email"
+                          name="email"
+                          label="Email address"
+                          @blur="$v.model.email.$touch()"
+                          :class="{'input-error': $v.model.email.$error }"
+                          :maxLength="40"
+                          v-model="model.email">
+                </fg-input>
+                <div class="error-message">
+                  <span v-if="!$v.model.email.required" class="error-message">The email field is required</span>
+                  <span v-if="!$v.model.email.email" class="error-message">Invalid email format</span>
+                </div>
+                <!-- password -->
+                <fg-input label="Password"
+                          :type="passwordType"
+                          name="password"
+                          @blur="$v.model.password.$touch()"
+                          :class="{'input-error': $v.model.password.$error }"
+                          :maxLength="20"
+                          :hintClasses="passwordIconClasses"
+                          @hint="showPassword"
+                          v-model="model.password"
+                          ref="txtPassword">
+                </fg-input>
+                <div class="error-message">
+                  <span v-if="!$v.model.password.required" class="error-message">The password field is required</span>
+                </div>
               </div>
-              <div class="col-sm-6 col-12">
-                <router-link to="/resend-confirmation" class="btn btn-simple btn-link btn-sm">Resend Confirmation</router-link>
+              <!-- Remember Me -->
+              <div class="empty-row"></div>
+              <div class="row">
+                <check-box ref="chkLoggedIn" :checked="this.loggedMeIn" @input="keepMeLoggedIn">
+                  <span class="note-message">keep me signed in</span>
+                </check-box>
               </div>
-            </div>
-        </card>
-      </fade-render-transition>
-    </form>
+              <div class="empty-row"></div>
+              <!-- Buttons -->
+              <div class="center">
+                <button @click.enter.prevent="submitForm" type="submit" class="btn btn-fill btn-primary btn-round btn-wd ">Login</button>
+              </div>
+              <div slot="footer" class="row center">
+                  <div class="col-sm-6 col-12">
+                    <router-link to="/reset-password" class="btn btn-simple btn-link btn-sm">Forgot password</router-link>
+                  </div>
+                  <div class="col-sm-6 col-12">
+                    <router-link to="/resend-confirmation" class="btn btn-simple btn-link btn-sm">Resend Confirmation</router-link>
+                  </div>
+                </div>
+            </card>
+          </fade-render-transition>
+        </form>
+      </el-main>
   </landing-layout>
 </template>
 

@@ -23,6 +23,17 @@ const actions = {
         })
       }
     })
+  },
+  saveUserPreferences({commit}, payload) {
+    return new Promise((resolve, reject) => {
+      aws.post('/setting/preferences/' + payload.email, payload).then(response => {
+        commit('setUserSettingState', response.data)
+        resolve(response.data)
+      }).catch(error => {
+        console.log(error)
+        reject(error)
+      })
+    })
   }
 }
 

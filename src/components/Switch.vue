@@ -15,6 +15,7 @@
     </div>
   </div>
 </template>
+
 <script>
   export default {
     name: 'l-switch',
@@ -56,5 +57,4 @@
     }
   }
 </script>
-<style>
-</style>
+

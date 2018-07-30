@@ -138,7 +138,9 @@
       }
     },
     mounted () {
-      this.imageHeight = this.$refs.leftSteps.clientHeight + 'px'
+      if (this.deviceType !== 'mobile') {
+        this.imageHeight = this.$refs.leftSteps.clientHeight + 'px'
+      }
     }
   }
 </script>

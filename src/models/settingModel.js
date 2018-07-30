@@ -1,4 +1,4 @@
-// import { required, numeric, requiredIf } from 'vuelidate/lib/validators'
+import * as validator from 'src/validations/settingValidator'
 import basedModel from './baseModel'
 
 class SettingModel extends basedModel {
@@ -19,6 +19,10 @@ class SettingModel extends basedModel {
         preferences = JSON.parse(setting.preferences)
       }
 
+      if (preferences === null) {
+        return
+      }
+
       if (typeof preferences.location === 'object') {
         location = preferences.location
       } else {
@@ -30,8 +34,6 @@ class SettingModel extends basedModel {
       } else {
         notifications = JSON.parse(preferences.notifications)
       }
-
-      var linkedAccounts = setting.linkedAccounts
 
       this.preferences = {
         localCurrency: preferences.localCurrency === '-' ? null : preferences.localCurrency,
@@ -46,10 +48,20 @@ class SettingModel extends basedModel {
           denied: notifications.denied
         }
       }
-      this.linkedAccounts = linkedAccounts
     }
   }
 
+  static validationScheme () {
+    return {
+      localCurrency: validator.mandatory,
+      location: {
+        country: validator.mandatory,
+        state: validator.mandatory,
+        city: validator.mandatory
+      }
+    }
+  }
+  
   resetState () {
     this.preferences = {
       localCurrency: null,
@@ -64,7 +76,6 @@ class SettingModel extends basedModel {
         denied: false
       }
     }
-    this.linkedAccounts = []
   }
 }
 

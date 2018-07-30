@@ -1,33 +1,35 @@
 <template>
-    <landing-layout pageClass="login-page" :contentClass="'col-lg-5 col-md-6 col-sm-8'">
-      <form method="#" action="#">
-        <fade-render-transition>
-          <card :title="'Forgot Password'">
-            <!-- email -->
-            <fg-input type="email"
+  <landing-layout pageClass="login-page" :contentClass="'col-lg-5 col-md-6 col-sm-8'">
+    <el-main>
+        <form method="#" action="#">
+          <fade-render-transition>
+            <card :title="'Forgot Password'">
+              <!-- email -->
+              <fg-input type="email"
                         name="email"
                         label="Email address"
                         @blur="$v.email.$touch()"
                         :class="{'input-error': $v.email.$error }"
                         v-model="email">
-            </fg-input>
-            <div class="error-message">
-              <span v-if="!$v.email.required" class="error-message">The email field is required</span>
-              <span v-if="!$v.email.email" class="error-message">Invalid email format</span>
-            </div>
-            <div class="empty-row"></div>
-            <div class="text-center">
-              <button type="submit" @click.prevent="submitForm" class="btn btn-round btn-submit btn-wd">Submit</button>
-            </div>
-            <div slot="footer" class="text-center">
-              <div class="col-12">
-                <router-link to="/confirm-password" class="btn btn-simple btn-link btn-sm">Already with verifiction code ?<br/> create new password now</router-link>
+              </fg-input>
+              <div class="error-message">
+                <span v-if="!$v.email.required" class="error-message">The email field is required</span>
+                <span v-if="!$v.email.email" class="error-message">Invalid email format</span>
               </div>
-            </div>
-          </card>
-        </fade-render-transition>
-      </form>
-    </landing-layout>
+              <div class="empty-row"></div>
+              <div class="text-center">
+                <button type="submit" @click.prevent="submitForm" class="btn btn-round btn-submit btn-wd">Submit</button>
+              </div>
+              <div slot="footer" class="text-center">
+                <div class="col-12">
+                  <router-link to="/confirm-password" class="btn btn-simple btn-link btn-sm">Already with verifiction code ?<br/> create new password now</router-link>
+                </div>
+              </div>
+            </card>
+          </fade-render-transition>
+        </form>
+      </el-main>
+  </landing-layout>
 </template>
 
 <script>

@@ -1,61 +1,63 @@
 <template>
   <landing-layout pageClass="login-page">
-    <fade-render-transition>
-       <div class="row d-flex justify-content-center">
-         <div class="col-12">
-          <div class="card card-wizard">
-            <form-wizard step-size="sm" ref="wizardForm"
-                        error-color="#f79483"
-                        color="#2874A6">
-              <h3 slot="title" class="text-center">Create New Password</h3>   
-              <!-- verify email -->
-              <tab-content title="Email"
-                          class="col-12"
-                          :tabId="1"
-                          :before-change="() => validateStep('verifyEmail')"
-                          icon="nc-icon nc-circle-09">
-                <verify-email ref="verifyEmail" @on-validated="returnEmail"></verify-email>
-              </tab-content>
-              <!-- verify code -->
-              <tab-content title="Verification"
-                          class="col-12"
-                          :tabId="2"
-                          :before-change="() => validateStep('verifyCode')"
-                          icon="nc-icon nc-lock-circle-open">
-                <verify-code ref="verifyCode" @on-validated="returnVerificationCode"></verify-code>
-              </tab-content>
-              <!-- enter new password -->
-              <tab-content title="Password"
-                          class="col-12"
-                          :tabId="3"
-                          :before-change="() => validateStep('newPassword')"
-                          icon="nc-icon nc-key-25">
-                <new-password ref="newPassword" @on-validated="returnNewPassword"></new-password>
-              </tab-content>
-               <!-- confirm to create -->
-              <tab-content title="Completion"
-                          class="col-12"
-                          :tabId="4"
-                          :before-change="() => validateStep('createNewPassword')"
-                          icon="nc-icon nc-check-2">
-                <create-password ref="createNewPassword" v-on:resetWizardForm="resetForm" :confirmPasswordResult="confirmPasswordResult"></create-password>
-              </tab-content>
+    <el-main>
+      <fade-render-transition>
+        <div class="row d-flex justify-content-center">
+          <div class="col-12">
+            <div class="card card-wizard">
+              <form-wizard step-size="sm" ref="wizardForm"
+                          error-color="#f79483"
+                          color="#2874A6">
+                <h3 slot="title" class="text-center">Create New Password</h3>   
+                <!-- verify email -->
+                <tab-content title="Email"
+                            class="col-12"
+                            :tabId="1"
+                            :before-change="() => validateStep('verifyEmail')"
+                            icon="nc-icon nc-circle-09">
+                  <verify-email ref="verifyEmail" @on-validated="returnEmail"></verify-email>
+                </tab-content>
+                <!-- verify code -->
+                <tab-content title="Verification"
+                            class="col-12"
+                            :tabId="2"
+                            :before-change="() => validateStep('verifyCode')"
+                            icon="nc-icon nc-lock-circle-open">
+                  <verify-code ref="verifyCode" @on-validated="returnVerificationCode"></verify-code>
+                </tab-content>
+                <!-- enter new password -->
+                <tab-content title="Password"
+                            class="col-12"
+                            :tabId="3"
+                            :before-change="() => validateStep('newPassword')"
+                            icon="nc-icon nc-key-25">
+                  <new-password ref="newPassword" @on-validated="returnNewPassword"></new-password>
+                </tab-content>
+                <!-- confirm to create -->
+                <tab-content title="Completion"
+                            class="col-12"
+                            :tabId="4"
+                            :before-change="() => validateStep('createNewPassword')"
+                            icon="nc-icon nc-check-2">
+                  <create-password ref="createNewPassword" v-on:resetWizardForm="resetForm" :confirmPasswordResult="confirmPasswordResult"></create-password>
+                </tab-content>
 
-              <div class="empty-row"></div>
+                <div class="empty-row"></div>
 
-              <template slot="footer" slot-scope="props">
-                <div class=wizard-footer-left>
-                  <wizard-button  v-if="props.activeTabIndex > 0 && !props.isLastStep" @click.native="props.prevTab()" :style="props.fillButtonStyle">Previous</wizard-button>
-                </div>
-                <div class="wizard-footer-right">
-                  <wizard-button v-if="!props.isLastStep" @click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Next</wizard-button>
-                </div>
-              </template>
-            </form-wizard>
+                <template slot="footer" slot-scope="props">
+                  <div class=wizard-footer-left>
+                    <wizard-button  v-if="props.activeTabIndex > 0 && !props.isLastStep" @click.native="props.prevTab()" :style="props.fillButtonStyle">Previous</wizard-button>
+                  </div>
+                  <div class="wizard-footer-right">
+                    <wizard-button v-if="!props.isLastStep" @click.native="props.nextTab()" class="wizard-footer-right" :style="props.fillButtonStyle">Next</wizard-button>
+                  </div>
+                </template>
+              </form-wizard>
+            </div>
           </div>
-         </div>
-      </div>
-    </fade-render-transition>
+        </div>
+      </fade-render-transition>
+    </el-main>
   </landing-layout>
 </template>
 

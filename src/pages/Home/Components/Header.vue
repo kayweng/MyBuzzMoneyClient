@@ -1,9 +1,7 @@
 <template>
-  <el-container direction="vertical" class="container-fluid ctn">
+  <el-container direction="vertical" class="wrapper wrapper-full-page ctn">
     <!-- navigation landing bar -->
-    <el-header>
-      <landing-nav :title="'My Buzz Money'"></landing-nav>
-    </el-header>
+    <landing-nav :title="'My Buzz Money'"></landing-nav>
     <!-- content -->
     <el-container direction="vertical">
       <el-main class="ctn-body">

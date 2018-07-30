@@ -193,7 +193,7 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import { FadeRenderTransition, SlideRenderTransition } from 'src/components/index'
+  import { FadeRenderTransition, SlideRenderTransition, Switch } from 'src/components/index'
   import { readImageFileData } from 'src/js/image'
   import UserImage from './../Components/UserImage.vue'
   import UserModel from 'src/models/userModel'
@@ -205,6 +205,7 @@
     components: {
       FadeRenderTransition,
       SlideRenderTransition,
+      [Switch.name]: Switch,
       [UserImage.name]: UserImage
     },
     data () {

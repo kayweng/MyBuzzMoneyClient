@@ -1,11 +1,9 @@
 <template>
   <div :class="selectClasses">
     <slot name="label">
-      <span style="display:block;" v-if="label">
-        <label  class="control-label" :class="labelClasses">
-          {{ label }}
-        </label>
-      </span>
+      <label class="control-label" :class="labelClasses" v-if="label">
+        {{ label }}
+      </label>
     </slot>
     <el-select v-model="fieldModelValue" placeholder="Select">
       <el-option
@@ -32,7 +30,6 @@
   }
 </style>
 
-
 <script>
   export default {
     name: 'currency-select',
@@ -41,7 +38,7 @@
       value: String,
       labelClasses: {
         type: String,
-        default: 'medium'
+        default: 'standard-label inline-block'
       },
       selectClasses: {
         type: String,

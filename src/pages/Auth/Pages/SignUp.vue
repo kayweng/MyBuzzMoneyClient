@@ -1,173 +1,175 @@
 <template>
-  <landing-layout pageClass="login-page" >
-    <form method="#" action="#">
-      <fade-render-transition :duration="200">
-        <card :title="'Create Account'">
-          <div class="center">
-            <el-collapse accordion>
-              <el-collapse-item title="Are you on with facebook ?" name="1">
-                <div class="empty-row"></div>
-                <button type="button" class="btn btn-facebook btn-wd" @click="signupWithFacebook">
-                  <i class="fa fa-facebook"></i>
-                  Signup with facebook
-                </button>
-                <div class="default-row">
-                  <el-button @click="openFacebookPrivacyURL" type="text">Read Facebook Privacy Policy</el-button>
+  <landing-layout pageClass="login-page">
+    <el-main>
+      <form method="#" action="#">
+        <fade-render-transition :duration="200">
+          <card :title="'Create Account'">
+            <div class="center">
+              <el-collapse accordion>
+                <el-collapse-item title="Are you on with facebook ?" name="1">
+                  <div class="empty-row"></div>
+                  <button type="button" class="btn btn-facebook btn-wd" @click="signupWithFacebook">
+                    <i class="fa fa-facebook"></i>
+                    Signup with facebook
+                  </button>
+                  <div class="default-row">
+                    <el-button @click="openFacebookPrivacyURL" type="text">Read Facebook Privacy Policy</el-button>
+                  </div>
+                </el-collapse-item>
+              </el-collapse>
+            </div>
+            <!-- User Info -->
+            <div class="row">
+              <!-- first name -->
+              <div class="col-md-6 col-12">
+                <fg-input type="text"
+                          name="first name"
+                          label="First Name"
+                          placeholder= "Alan"
+                          @blur="$v.model.firstName.$touch()"
+                          :class="{'input-error': $v.model.firstName.$error }"
+                          :maxLength="20"
+                          v-model="model.firstName">
+                </fg-input>
+                <div class="error-message">
+                  <span v-if="!$v.model.firstName.required" class="error-message">The first name field is required</span>
+                  <span v-if="$v.model.firstName.required && !$v.model.firstName.alphaSpace" class="error-message">The first name field must be only alphabet characters</span>
                 </div>
-              </el-collapse-item>
-            </el-collapse>
-          </div>
-          <!-- User Info -->
-          <div class="row">
-            <!-- first name -->
-            <div class="col-md-6 col-12">
-              <fg-input type="text"
-                        name="first name"
-                        label="First Name"
-                        placeholder= "Alan"
-                        @blur="$v.model.firstName.$touch()"
-                        :class="{'input-error': $v.model.firstName.$error }"
-                        :maxLength="20"
-                        v-model="model.firstName">
-              </fg-input>
-              <div class="error-message">
-                <span v-if="!$v.model.firstName.required" class="error-message">The first name field is required</span>
-                <span v-if="$v.model.firstName.required && !$v.model.firstName.alphaSpace" class="error-message">The first name field must be only alphabet characters</span>
+              </div>
+              <!-- last name -->
+              <div class="col-md-6 col-12">
+                <fg-input type="text"
+                          name="last name"
+                          label="Last Name"
+                          placeholder= "Bob"
+                          @blur="$v.model.lastName.$touch()"
+                          :class="{'input-error': $v.model.lastName.$error }"
+                          :maxLength="30"
+                          v-model="model.lastName">
+                </fg-input>
+                <div class="error-message">
+                  <span v-if="!$v.model.lastName.required">The last name field is required</span>
+                  <span v-if="$v.model.lastName.required && !$v.model.lastName.alphaSpace">The last name field must be only alphabet characters</span>
+                </div>
+              </div>
+            </div> 
+            <div class="row">
+              <!-- email -->
+              <div class="col-md-6 col-12">
+                <fg-input type="email"
+                          name="email"
+                          label="Email address"
+                          placeholder= "abc@email.com"
+                          @blur="$v.model.email.$touch()"
+                          :class="{'input-error': $v.model.email.$error }"
+                          :maxLength="40"
+                          v-model="model.email">
+                </fg-input>
+                <div class="error-message">
+                  <span v-if="!$v.model.email.required">The email field is required</span>
+                  <span v-if="$v.model.email.required && !$v.model.email.email">Invalid email format</span>
+                </div>
+              </div>
+              <!-- mobile -->
+              <div class="col-md-6 col-12">
+                <fg-input type="mobile"
+                          name="mobile"
+                          label="Mobile Number"
+                          placeholder= "+6012345678"
+                          @blur="$v.model.mobile.$touch()"
+                          :class="{'input-error': $v.model.mobile.$error }"
+                          :maxLength="14"
+                          hintClasses="pointer fa fa-mobile green-sea"
+                          @hint="showMobileHint"
+                          v-model="model.mobile">
+                </fg-input>  
+                <div class="error-message">
+                  <span v-if="!$v.model.mobile.numericPlus" class="error-message">Invalid mobile format.Please start with + and country code</span>
+                </div>  
               </div>
             </div>
-            <!-- last name -->
-            <div class="col-md-6 col-12">
-              <fg-input type="text"
-                        name="last name"
-                        label="Last Name"
-                        placeholder= "Bob"
-                        @blur="$v.model.lastName.$touch()"
-                        :class="{'input-error': $v.model.lastName.$error }"
-                        :maxLength="30"
-                        v-model="model.lastName">
-              </fg-input>
-              <div class="error-message">
-                <span v-if="!$v.model.lastName.required">The last name field is required</span>
-                <span v-if="$v.model.lastName.required && !$v.model.lastName.alphaSpace">The last name field must be only alphabet characters</span>
+            <div class="row">
+              <!-- birthdate -->
+              <div class="col-md-6 col-12">
+                <fg-input label="Birth Date" 
+                          name="birthdate"
+                          @blur="$v.model.birthdate.$touch()"
+                          :class="{'input-error': $v.model.birthdate.$error }"
+                          v-model="model.birthdate">
+                  <el-date-picker v-model="calendarDate"
+                                  format="dd-MMM-yyyy"
+                                  type="date"
+                                  :class="{'input-error': $v.model.birthdate.$error }"
+                                  placeholder="Date of Birth"></el-date-picker>
+                </fg-input>
+                <div class="error-message">
+                  <span v-if="!$v.model.birthdate.required">The birth date field is required</span>
+                  <span v-if="$v.model.birthdate.required && !$v.model.birthdate.between">You must be age of 18 or order to sign up</span>
+                </div>
+              </div>
+              <div class="empty-row">
+              </div>
+            </div> 
+            <hr/>
+            <div class="row">
+              <!-- Password -->
+              <div class="col-md-6 col-12">
+                <fg-input label="Password"
+                          type="password"
+                          name="password"
+                          @blur="$v.model.password.$touch()"
+                          :class="{'input-error': $v.model.password.$error }"
+                          :maxLength="20"
+                          v-model="model.password">
+                </fg-input>
+                <div class="error-message-36">
+                  <span v-if="!$v.model.password.required" class="error-message">The password field is required</span>
+                  <span v-if="$v.model.password.required && !$v.model.password.passwordPolicy" class="error-message">Passwords must be at least 8 characters and numbers in length</span>
+                </div>
+              </div>
+              <!-- confirm Password -->
+              <div class="col-md-6 col-12">
+                <fg-input label="Confirm Password"
+                          type="password"
+                          name="confirm password"
+                          @blur="$v.model.confirmPassword.$touch()"
+                          :class="{'input-error': $v.model.confirmPassword.$error }"
+                          :maxLength="20"
+                          v-model="model.confirmPassword">
+                </fg-input>
+                <div class="error-message-36">
+                  <span v-if="!$v.model.confirmPassword.required" class="error-message">The confirm password field is required</span>
+                  <span v-if="$v.model.confirmPassword.required && !$v.model.confirmPassword.sameAs" class="error-message">The confirm password must be same as password</span>
+                </div>
               </div>
             </div>
-          </div> 
-          <div class="row">
-            <!-- email -->
-            <div class="col-md-6 col-12">
-              <fg-input type="email"
-                        name="email"
-                        label="Email address"
-                        placeholder= "abc@email.com"
-                        @blur="$v.model.email.$touch()"
-                        :class="{'input-error': $v.model.email.$error }"
-                        :maxLength="40"
-                        v-model="model.email">
-              </fg-input>
-              <div class="error-message">
-                <span v-if="!$v.model.email.required">The email field is required</span>
-                <span v-if="$v.model.email.required && !$v.model.email.email">Invalid email format</span>
+            <br/>
+            <!-- Agreement -->
+            <div class="row">
+              <check-box ref="chkTerms" v-model="model.agreement">
+                <span class="terms" v-html="terms"></span>
+              </check-box>
+            </div>
+            <br/>
+            <!-- Recaptcha -->
+            <div class="row center-item">
+                <div class="g-recaptcha" ref="recaptcha" :data-sitekey="rcapt_sig_key"></div>
+                <input type="hidden" v-model="model.reCaptcha" />
+            </div>
+            <br/>
+            <!-- Buttons -->
+            <div class="row">
+              <div class="text-center col-12">
+                <div class="button-inline">
+                  <button type="reset" @click="resetForm" class="btn btn-round btn-reset btn-wd">Reset</button>
+                  <button type="submit" @click.prevent="submitForm" class="btn btn-round btn-submit btn-wd">Submit</button>
+                </div>
               </div>
             </div>
-            <!-- mobile -->
-            <div class="col-md-6 col-12">
-              <fg-input type="mobile"
-                        name="mobile"
-                        label="Mobile Number"
-                        placeholder= "+6012345678"
-                        @blur="$v.model.mobile.$touch()"
-                        :class="{'input-error': $v.model.mobile.$error }"
-                        :maxLength="14"
-                        hintClasses="pointer fa fa-mobile green-sea"
-                        @hint="showMobileHint"
-                        v-model="model.mobile">
-              </fg-input>  
-              <div class="error-message">
-                <span v-if="!$v.model.mobile.numericPlus" class="error-message">Invalid mobile format.Please start with + and country code</span>
-              </div>  
-            </div>
-          </div>
-          <div class="row">
-            <!-- birthdate -->
-            <div class="col-md-6 col-12">
-              <fg-input label="Birth Date" 
-                        name="birthdate"
-                        @blur="$v.model.birthdate.$touch()"
-                        :class="{'input-error': $v.model.birthdate.$error }"
-                        v-model="model.birthdate">
-                <el-date-picker v-model="calendarDate"
-                                format="dd-MMM-yyyy"
-                                type="date"
-                                :class="{'input-error': $v.model.birthdate.$error }"
-                                placeholder="Date of Birth"></el-date-picker>
-              </fg-input>
-              <div class="error-message">
-                <span v-if="!$v.model.birthdate.required">The birth date field is required</span>
-                <span v-if="$v.model.birthdate.required && !$v.model.birthdate.between">You must be age of 18 or order to sign up</span>
-              </div>
-            </div>
-            <div class="empty-row">
-            </div>
-          </div> 
-          <hr/>
-          <div class="row">
-             <!-- Password -->
-            <div class="col-md-6 col-12">
-              <fg-input label="Password"
-                        type="password"
-                        name="password"
-                        @blur="$v.model.password.$touch()"
-                        :class="{'input-error': $v.model.password.$error }"
-                        :maxLength="20"
-                        v-model="model.password">
-              </fg-input>
-              <div class="error-message-36">
-                <span v-if="!$v.model.password.required" class="error-message">The password field is required</span>
-                <span v-if="$v.model.password.required && !$v.model.password.passwordPolicy" class="error-message">Passwords must be at least 8 characters and numbers in length</span>
-              </div>
-            </div>
-            <!-- confirm Password -->
-            <div class="col-md-6 col-12">
-              <fg-input label="Confirm Password"
-                        type="password"
-                        name="confirm password"
-                        @blur="$v.model.confirmPassword.$touch()"
-                        :class="{'input-error': $v.model.confirmPassword.$error }"
-                        :maxLength="20"
-                        v-model="model.confirmPassword">
-              </fg-input>
-              <div class="error-message-36">
-                <span v-if="!$v.model.confirmPassword.required" class="error-message">The confirm password field is required</span>
-                <span v-if="$v.model.confirmPassword.required && !$v.model.confirmPassword.sameAs" class="error-message">The confirm password must be same as password</span>
-              </div>
-            </div>
-          </div>
-          <br/>
-          <!-- Agreement -->
-          <div class="row">
-            <check-box ref="chkTerms" v-model="model.agreement">
-              <span class="terms" v-html="terms"></span>
-            </check-box>
-          </div>
-          <br/>
-          <!-- Recaptcha -->
-          <div class="row center-item">
-              <div class="g-recaptcha" ref="recaptcha" :data-sitekey="rcapt_sig_key"></div>
-              <input type="hidden" v-model="model.reCaptcha" />
-          </div>
-          <br/>
-          <!-- Buttons -->
-          <div class="row">
-            <div class="text-center col-12">
-              <div class="button-inline">
-                <button type="reset" @click="resetForm" class="btn btn-round btn-reset btn-wd">Reset</button>
-                <button type="submit" @click.prevent="submitForm" class="btn btn-round btn-submit btn-wd">Submit</button>
-              </div>
-            </div>
-          </div>
-        </card>
-      </fade-render-transition>
-    </form>
+          </card>
+        </fade-render-transition>
+      </form>
+    </el-main>
   </landing-layout>
 </template>
 
