@@ -1,14 +1,14 @@
 <template>
-    <div>
-        <div class="currency one-edge-shadow">
-            <span class="code">
-                <small>{{ rate['code'] }}</small>
-            </span>
-            <span class="rate">
-                <small>{{ rate['rate'] }}</small>
-            </span>
-        </div>
-    </div>
+  <div>
+      <div class="currency one-edge-shadow">
+        <span class="code">
+          <small>{{ rate['code'] }}</small>
+        </span>
+        <span class="rate">
+          <small>{{ rate['rate'] }}</small>
+        </span>
+      </div>
+  </div>
 </template>
 
 <style scoped>

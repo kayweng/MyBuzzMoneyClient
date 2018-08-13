@@ -1,4 +1,5 @@
 import { store } from 'src/store/index'
+import swal from 'sweetalert2'
 
 let noAuthPage = ['Home', 'Login', 'SignUp', 'ResetPassword', 'ResendConfirmation', 'PageNotFound', 'Error']
  
@@ -40,7 +41,24 @@ async function authRoute (to, from, next) {
     next('/login?s=true')
     return
   })
-  
+
+  if (to.path !== '/user-profile' && store.state.user !== null && store.state.user.profile !== null) {
+    let profile = store.state.user.profile
+
+    if (profile.firstName === null || profile.lastName === null || profile.gender === null || profile.mobile === null || profile.birthdate === null || profile.address === null || profile.country === null || profile.imageData === null) {
+      swal({
+        type: 'info',
+        title: 'Complete Your Profile',
+        html: '<small>Completing your profile helps us more understand you and improve online visibility.</small>',
+        buttonsStyling: false,
+        confirmButtonClass: 'btn btn-info btn-round btn-wd'
+      })
+    
+      next('/user-profile')
+      return
+    }
+  }
+
   next()
 }
 

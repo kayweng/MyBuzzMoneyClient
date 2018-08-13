@@ -24,7 +24,7 @@ const actions = {
       }
     })
   },
-  saveUserPreferences({commit}, payload) {
+  saveUserPreferences ({commit}, payload) {
     return new Promise((resolve, reject) => {
       aws.post('/setting/preferences/' + payload.email, payload).then(response => {
         commit('setUserSettingState', response.data)
@@ -33,6 +33,24 @@ const actions = {
         console.log(error)
         reject(error)
       })
+    })
+  },
+  uploadVerificationDocument ({commit}, payload) {
+    var config = {
+      headers: { 'content-type': 'multipart/form-data' }
+    }
+
+    return new Promise((resolve, reject) => {
+      var reader = new FileReader()
+      reader.readAsDataURL(payload.image)
+
+      reader.onload = (upload) => {
+        aws.post('/setting/verification/' + payload.type + '/' + payload.username, { data: upload.target.result }, config).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      }
     })
   }
 }

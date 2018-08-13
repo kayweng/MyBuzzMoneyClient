@@ -1,5 +1,6 @@
 <template>
-  <div class="fc-item">
+  <div class="fc-item" :class="cardClass">
+    <slot if="$slot['icon']" name="icon"></slot>
     <slot if="$slot['image']" name="image">
       <label class="fc-img">
         <img :src="'/static/images/' + imgName " />
@@ -11,6 +12,7 @@
         <small class="text-muted">{{ message }}</small>
       </label>
     </slot>
+    <slot name="action"></slot>
   </div>
 </template>
 
@@ -58,7 +60,11 @@
     props: {
       imgName: String,
       title: String,
-      message: String
+      message: String,
+      cardClass: {
+        type: String,
+        default: ''
+      }
     }
   }
 </script>

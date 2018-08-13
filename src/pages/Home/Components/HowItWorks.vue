@@ -106,10 +106,10 @@
         imageHeight: {},
         imageSource: null,
         offers: [
-          { img: 'works/work_1.jpg',
+          { img: 'common/work_1.jpg',
             title: 'Create An Offer',
             message: 'Create an offer with your offer currency and accepted currency, best rate and meet up places, etc.'},
-          { img: 'works/work_2.jpg',
+          { img: 'common/work_2.jpg',
             title: 'Confirm Or Reject',
             message: 'Receive notification message about other accept your offer and you can confirm or reject the deal.'},
           { img: 'works/work_3.jpg',
@@ -117,13 +117,13 @@
             message: 'Meet up with the person involved at both agreed places and time.'}
         ],
         accepts: [
-          { img: 'works/work_1.jpg',
+          { img: 'common/work_1.jpg',
             title: 'Accept An Offer',
             message: 'Search your preference offer and send accept offer request to host.'},
-          { img: 'works/work_2.jpg',
+          { img: 'common/work_2.jpg',
             title: 'Receive a confirmation',
             message: 'Receive a notification message about your request is accepted or denied.'},
-          { img: 'works/work_3.jpg',
+          { img: 'common/work_3.jpg',
             title: 'Meet up & Exchange',
             message: 'Meet up with the person involved at both agreed places and time.'}
         ]

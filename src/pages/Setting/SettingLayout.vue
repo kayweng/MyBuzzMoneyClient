@@ -6,6 +6,7 @@
     </el-tab-pane>
     <el-tab-pane name="Verification">
       <span slot="label"><i class="fa fa-certificate"></i> Verifications</span>
+      <verifications v-model="model.verifications"></verifications>
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -13,12 +14,12 @@
 <script scoped>
   import SettingModel from 'src/models/settingModel.js'
   import Preferences from 'src/pages/Setting/Components/Preferences.vue'
-  import LinkAccounts from 'src/pages/Setting/Components/LinkAccounts.vue'
+  import Verifications from 'src/pages/Setting/Components/Verifications.vue'
 
   export default {
     components: {
       Preferences,
-      LinkAccounts
+      Verifications
     },
     data () {
       return {
@@ -42,7 +43,11 @@
     },
     mounted () {
       if (this.$store.state.setting.userSetting.preferences === undefined) {
-        //this.$loading.startLoading('loading')
+        this.$loading.startLoading('loading')
+      }
+      
+      if (this.model.preferences.localCurrency === null) {
+        this.model = this.$store.state.setting.userSetting
       }
     }
   }

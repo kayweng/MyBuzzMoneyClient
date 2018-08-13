@@ -283,10 +283,10 @@
           this.originalState = clone(this.model)
           this.model.edit = false
           this.$loading.endLoading('loading')
-          this.showNotifyMessage('User profile information has been updated successfully.', 5000, 'primary', 'nc-icon nc-check-2')
+          this.showNotifyMessage('User profile has been updated successfully.', 5000, 'primary', 'nc-icon nc-check-2')
         }, (error) => {
           console.log(error)
-          this.showNotifyMessage('User profile information failed to updated', 5000, 'error', 'nc-icon nc-check-2')
+          this.showNotifyMessage('User profile failed to updated', 5000, 'error', 'nc-icon nc-check-2')
           this.$loading.endLoading('loading')
         })
       },
@@ -301,16 +301,8 @@
           return
         }
 
-        swal({
-          type: 'info',
-          title: 'Save Profile',
-          html: '<small>Are you confirm to save changes ?</small>',
-          buttonsStyling: false,
-          showCancelButton: true,
-          confirmButtonClass: 'btn btn-primary btn-round btn-wd',
-          confirmButtonText: 'Yes'
-        }).then((result) => {
-          if (result.value) {
+        this.swalConfirmation('info', 'Update Profile', 'Are you confirm to update profile ?').then((response) => {
+          if (response) {
             this.$loading.startLoading('loading')
             
             if (this.selectedImageFile) {

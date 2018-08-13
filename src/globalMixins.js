@@ -50,11 +50,21 @@ export default {
       return Math.round(Number(number))
     },
     
+    swalInfo (title, message) {
+      swal({
+        type: 'info',
+        title: title,
+        html: `<small>${message}</small>`,
+        buttonsStyling: false,
+        confirmButtonClass: 'btn btn-info btn-round btn-wd'
+      })
+    },
+
     swalError (message) {
       swal({
         type: 'error',
         title: 'Oops...',
-        html: '<small>' + message + '</small>',
+        html: `<small>${message}</small>`,
         buttonsStyling: false,
         confirmButtonClass: 'btn btn-warning btn-round btn-wd'
       })
@@ -64,9 +74,25 @@ export default {
       swal({
         type: 'success',
         title: title,
-        html: '<small>' + message + '</small>',
+        html: `<small>${message}</small>`,
         buttonsStyling: false,
         confirmButtonClass: 'btn btn-info btn-round btn-wd'
+      })
+    },
+
+    swalConfirmation (type, title, message) {
+      return new Promise((resolve, reject) => {
+        swal({
+          type: type,
+          title: title,
+          html: `<span>${message}</span>`,
+          buttonsStyling: false,
+          showCancelButton: true,
+          confirmButtonClass: 'btn btn-primary btn-round btn-wd',
+          confirmButtonText: 'Yes'
+        }).then((result) => {
+          resolve(result.value)
+        })
       })
     },
 
@@ -108,11 +134,7 @@ export default {
       return countryStates[countryCode]
     },
     getCities (countryCode, statesCode) {
-      if (countryCode && statesCode) {
-        return stateCities[countryCode][statesCode]
-      } else {
-        return []
-      }
+      return (countryCode && statesCode) ? stateCities[countryCode][statesCode] : []
     }
   }
 }

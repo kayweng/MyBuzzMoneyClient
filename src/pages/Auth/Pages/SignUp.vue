@@ -1,10 +1,10 @@
 <template>
-  <landing-layout pageClass="login-page">
+  <landing-layout pageClass="login-page" >
     <el-main>
       <form method="#" action="#">
         <fade-render-transition :duration="200">
           <card :title="'Create Account'">
-            <div class="center">
+            <div class="center" v-show="false">
               <el-collapse accordion>
                 <el-collapse-item title="Are you on with facebook ?" name="1">
                   <div class="empty-row"></div>
@@ -31,9 +31,9 @@
                           :maxLength="20"
                           v-model="model.firstName">
                 </fg-input>
-                <div class="error-message">
-                  <span v-if="!$v.model.firstName.required" class="error-message">The first name field is required</span>
-                  <span v-if="$v.model.firstName.required && !$v.model.firstName.alphaSpace" class="error-message">The first name field must be only alphabet characters</span>
+                <div class="error-message-36">
+                  <span v-if="!$v.model.firstName.required">The first name field is required</span>
+                  <span v-if="$v.model.firstName.required && !$v.model.firstName.alphaSpace" >The first name field must be only alphabet characters</span>
                 </div>
               </div>
               <!-- last name -->
@@ -47,7 +47,7 @@
                           :maxLength="30"
                           v-model="model.lastName">
                 </fg-input>
-                <div class="error-message">
+                <div class="error-message-36">
                   <span v-if="!$v.model.lastName.required">The last name field is required</span>
                   <span v-if="$v.model.lastName.required && !$v.model.lastName.alphaSpace">The last name field must be only alphabet characters</span>
                 </div>
@@ -65,7 +65,7 @@
                           :maxLength="40"
                           v-model="model.email">
                 </fg-input>
-                <div class="error-message">
+                <div class="error-message-36">
                   <span v-if="!$v.model.email.required">The email field is required</span>
                   <span v-if="$v.model.email.required && !$v.model.email.email">Invalid email format</span>
                 </div>
@@ -83,8 +83,8 @@
                           @hint="showMobileHint"
                           v-model="model.mobile">
                 </fg-input>  
-                <div class="error-message">
-                  <span v-if="!$v.model.mobile.numericPlus" class="error-message">Invalid mobile format.Please start with + and country code</span>
+                <div class="error-message-36">
+                  <span v-if="!$v.model.mobile.numericPlus">Invalid mobile format.Please start with + and country code</span>
                 </div>  
               </div>
             </div>
@@ -123,8 +123,8 @@
                           v-model="model.password">
                 </fg-input>
                 <div class="error-message-36">
-                  <span v-if="!$v.model.password.required" class="error-message">The password field is required</span>
-                  <span v-if="$v.model.password.required && !$v.model.password.passwordPolicy" class="error-message">Passwords must be at least 8 characters and numbers in length</span>
+                  <span v-if="!$v.model.password.required">The password field is required</span>
+                  <span v-if="$v.model.password.required && !$v.model.password.passwordPolicy">Passwords must be at least 8 characters and numbers in length</span>
                 </div>
               </div>
               <!-- confirm Password -->
@@ -138,8 +138,8 @@
                           v-model="model.confirmPassword">
                 </fg-input>
                 <div class="error-message-36">
-                  <span v-if="!$v.model.confirmPassword.required" class="error-message">The confirm password field is required</span>
-                  <span v-if="$v.model.confirmPassword.required && !$v.model.confirmPassword.sameAs" class="error-message">The confirm password must be same as password</span>
+                  <span v-if="!$v.model.confirmPassword.required">The confirm password field is required</span>
+                  <span v-if="$v.model.confirmPassword.required && !$v.model.confirmPassword.sameAs">The confirm password must be same as password</span>
                 </div>
               </div>
             </div>
@@ -345,7 +345,7 @@
             email: this.model.email,
             name: this.model.name(),
             phone_number: this.model.mobile === null ? null : this.model.mobile,
-            birthdate: date.toISODateString(vathis.model.birthdatel)
+            birthdate: date.toISODateString(this.model.birthdate)
           }
         }).then(() => {
           swal({

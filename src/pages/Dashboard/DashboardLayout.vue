@@ -1,6 +1,7 @@
 <template>
   <div id="dashboardLayout" class="wrapper" :class="{'nav-open': $sidebar.showSidebar}">
     <notifications></notifications>
+    <verify-identity-modal></verify-identity-modal>
     <side-bar>
       <user-menu v-model="model">
         <li :class="{ active: isActive, 'nav-item': true }">
@@ -60,6 +61,7 @@
   import DashboardContent from './Layout/Content.vue'
   import loadingSpinner from 'vuex-loading/src/spinners/spinner.vue'
   import swal from 'sweetalert2'
+  import VerifyIdentity from 'src/pages/Setting/Modals/VerifyIdentity.vue'
 
   export default {
     components: {
@@ -67,7 +69,8 @@
       TopNavbar,
       ContentFooter,
       DashboardContent,
-      loadingSpinner
+      loadingSpinner,
+      [VerifyIdentity.name]: VerifyIdentity
     },
     data () {
       return {
@@ -157,20 +160,22 @@
         vm.idleTime = 0
       }
     },
+    beforeMount () {
+      this.retrieveUserInfo()
+      this.retrieveUserSetting()
+      this.initIdleIncreament(this)
+    },
     beforeRouteEnter (to, from, next) {
       next(vm => {
-        vm.retrieveUserInfo()
-        vm.retrieveUserSetting()
-        vm.initIdleIncreament(vm)
-
         document.getElementById('dashboardLayout').addEventListener('mousemove', function () {
           vm.resetIdleTime(vm)
         })
 
         document.getElementById('dashboardLayout').addEventListener('keyup', function () {
-          vm.resetIdleTime(vm)
+          vm.idleTime = 0
         })
       })
     }
-}
+  }
+
 </script>

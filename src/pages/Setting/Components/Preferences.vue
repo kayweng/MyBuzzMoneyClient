@@ -14,7 +14,6 @@
             <span v-if="!$v.model.localCurrency.required">The Local currency field is required.</span>
           </div>
         </el-row>
-        <el-row class="empty-row"></el-row>
         <hr/>
         <!-- Current Location -->
         <el-row>
@@ -191,17 +190,17 @@
           confirmButtonText: 'Yes'
         }).then((result) => {
           if (result.value) {
-            console.log(this.model)
             var preferences = {
               'email': this.cognitoUserEmail,
-              'preferences': this.model,
+              'preferences': JSON.stringify(this.model),
+              'verifications': JSON.stringify(this.$store.state.setting.userSetting.verifications),
               'modifiedOn': new Date().toString()
             }
 
             this.$loading.startLoading('loading')
             this.saveUserPreferences(preferences).then(response => {
               this.$loading.endLoading('loading')
-            }, (error)=>{
+            }, (error) => {
               console.log(error)
               this.$loading.endLoading('loading')
               return
@@ -212,15 +211,21 @@
     },
     watch: {
       'value' (value) {
-        this.model = clone(value)
+        if (value !== undefined) {
+          this.model = clone(value)
+
+          if (this.model !== undefined) {
+            this.messages[0].checked = this.model.notifications.expired
+            this.messages[1].checked = this.model.notifications.accepted
+            this.messages[2].checked = this.model.notifications.denied
+          }
+        }
       },
       'model.location.country' (value) {
         var states = this.getStates(value)
         this.stateValues = []
         this.citiValues = []
-        this.model.location.state = null
-        this.model.location.city = null
-      
+        
         if (states) {
           this.stateValues = states
         }
@@ -228,10 +233,13 @@
       'model.location.state' (value) {
         var cities = this.getCities(this.model.location.country, value)
         this.citiValues = []
-        this.model.location.city = null
 
         if (cities) {
           this.citiValues = cities
+        }
+
+        if (!value) {
+          this.model.location.city = null
         }
       }
     }

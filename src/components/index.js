@@ -17,9 +17,7 @@ import Card from './Cards/Card.vue'
 import ChartCard from './Cards/ChartCard.vue'
 import StatsCard from './Cards/StatsCard.vue'
 import FeatureCard from './Cards/FeatureCard.vue'
-import SmallNoteCard from './Cards/SmallNoteCard.vue'
-import CircleInfoCard from './Cards/CircleInfoCard.vue'
-import SquareInfoCard from './Cards/SquareInfoCard.vue'
+import CurrencyCard from './Cards/CurrencyCard.vue'
 
 import Breadcrumb from './Breadcrumb/Breadcrumb.vue'
 import BreadcrumbItem from './Breadcrumb/BreadcrumbItem.vue'
@@ -43,9 +41,7 @@ let components = {
   ChartCard,
   StatsCard,
   FeatureCard,
-  SmallNoteCard,
-  CircleInfoCard,
-  SquareInfoCard,
+  CurrencyCard,
   Table,
   DropDown,
   SidebarPlugin,
@@ -70,9 +66,7 @@ export {
   ChartCard,
   StatsCard,
   FeatureCard,
-  SmallNoteCard,
-  CircleInfoCard,
-  SquareInfoCard,
+  CurrencyCard,
   Table,
   DropDown,
   SidebarPlugin,

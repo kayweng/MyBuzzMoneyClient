@@ -4,7 +4,7 @@ import basedModel from './baseModel'
 class SettingModel extends basedModel {
   constructor (data) {
     super()
-    
+   
     this.resetState()
    
     if (data !== null && data !== undefined) {
@@ -13,28 +13,15 @@ class SettingModel extends basedModel {
       var location = null
       var notifications = null
 
-      if (typeof setting.preferences === 'object') {
-        preferences = setting.preferences
-      } else {
-        preferences = JSON.parse(setting.preferences)
-      }
+      preferences = (typeof setting.preferences === 'object' ? setting.preferences : JSON.parse(setting.preferences))
 
       if (preferences === null) {
         return
       }
 
-      if (typeof preferences.location === 'object') {
-        location = preferences.location
-      } else {
-        location = JSON.parse(preferences.location)
-      }
-
-      if (typeof preferences.location === 'object') {
-        notifications = preferences.notifications
-      } else {
-        notifications = JSON.parse(preferences.notifications)
-      }
-
+      location = (typeof preferences.location === 'object' ? preferences.location : JSON.parse(preferences.location))
+      notifications = (typeof preferences.notifications === 'object' ? preferences.notifications : JSON.parse(preferences.notifications))
+  
       this.preferences = {
         localCurrency: preferences.localCurrency === '-' ? null : preferences.localCurrency,
         location: {
@@ -48,6 +35,8 @@ class SettingModel extends basedModel {
           denied: notifications.denied
         }
       }
+      
+      this.verifications = (typeof setting.verifications === 'object' ? setting.verifications : JSON.parse(setting.verifications))
     }
   }
 
@@ -72,9 +61,16 @@ class SettingModel extends basedModel {
       },
       notifications: {
         expired: true,
-        accepted: false,
-        denied: false
+        accepted: true,
+        denied: true
       }
+    }
+    
+    this.verifications = {
+      emailVerified: false,
+      addressVerified: false,
+      mobileVerified: false,
+      identityVerified: false
     }
   }
 }
